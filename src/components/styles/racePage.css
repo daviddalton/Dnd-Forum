@@ -1,0 +1,73 @@
+.wiki-race-content-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.race-page-title {
+    color: white;
+    background: rgb(118, 30, 33);
+    min-width: 320px;
+    max-width: 780px;
+    width: 100%;
+    opacity: .6;
+    display: flex;
+    justify-content: center;
+    font-family: buenard
+}
+.race-page-image-desc-container {
+    min-width: 320px;
+    max-width: 780px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #393E46;
+    opacity: .6
+}
+.race-page-image {
+    border: 1px white solid;
+    margin: 5px;
+    width: 320px;
+    height: 320px;
+    color: white
+}
+.race-page-image-desc {
+    display: flex;
+    color: white
+}
+.race-page-accordions-container {
+    min-width: 320px;
+    max-width: 780px;
+    width: 100%;
+    opacity: .6
+}
+.race-page-accordion-subsections {
+    background: #393E46;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 15px
+}
+.race-page-s-of-s-title {
+    border-bottom: 1px white solid;
+    width: fit-content;
+    font-family: buenard
+}
+.race-page-s-of-s-desc {
+    padding: 5px;
+    font-family: buenard
+}
+.race-page-s-of-s-table {
+    width: 100%;
+    display: flex;
+    justify-content: center
+}
+.race-page-subsection-desc {
+    background: #393E46;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 15px;
+    font-family: buenard
+}

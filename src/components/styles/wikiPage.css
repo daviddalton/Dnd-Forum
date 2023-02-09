@@ -1,0 +1,15 @@
+/* .wikiContainer {
+    display: grid;
+    grid-template-areas: 
+    "c1 c2";
+    grid-template-columns: 15% 85%;
+}
+
+.topicMenu {
+    grid-column-start: c1;
+}
+
+.wikiContent {
+    grid-column-start: c2;
+    margin-top: 100px;
+} */

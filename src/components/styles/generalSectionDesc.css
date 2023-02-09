@@ -1,0 +1,27 @@
+.genSectionDesc-title-desc-container {
+    width: 100%;
+    max-width: 780px;
+    min-width: 300px;
+    background: #393E46;
+    margin: 5px;
+    display: flex;
+    opacity: .6;
+    flex-direction: column;
+    box-shadow: 0px 2px 2px 0px black;
+    font-family: buenard;
+}
+.genSectionDesc-title {
+    display: flex;
+    justify-content: center;
+    background: rgb(118, 30, 33)
+}
+.genSectionDesc-desc-container {
+    margin: 5px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 10px
+}
+.genSectionDesc-desc {
+    margin: 5px
+}

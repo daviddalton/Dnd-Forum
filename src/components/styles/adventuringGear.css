@@ -1,0 +1,60 @@
+.andventuringGear-title-desc-container {
+    margin-top: 30px;
+    min-width: 320px;
+    max-width: 660px;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    opacity: .6;
+    box-shadow: 0px 2px 2px 0px black
+}
+.adventuringGar-title {
+    background: rgb(118, 30, 33);
+    display: flex;
+    justify-content: center
+}
+.adventuringGear-desc-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #393E46
+}
+.adventuringGear-descs {
+    max-width: 1000px;
+    margin: 10px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    font-size: 15px
+}
+.adventuringGear-content-container {
+    height: fit-content;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    font-family: buenard;
+    align-items: center;
+    margin-top: 20px;
+}
+.adventuringGear-indv-subsection-container {
+
+    margin: 10px;
+    opacity: .6;
+    width: 320px;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 2px 2px 0px black;
+    height: 350px;
+    background: rgb(57, 62, 70)
+}
+.adventuringGear-subSection-container {
+    margin: 5px;
+    justify-content: center;
+    max-width: 660px;
+    width: 100%;
+    min-width: 520px;
+    flex-wrap: wrap
+}

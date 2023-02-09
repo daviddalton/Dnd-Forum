@@ -1,0 +1,37 @@
+.subtopics-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: buenard;
+}
+.indv-subtopic-container {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    margin: 10px;
+    opacity: .6;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px 0px black;
+    color: #FFFFFF
+}
+.subtopic-title {
+    display: flex;
+    border-top-right-radius: 10px;
+    background: rgb(118, 30, 33);
+    justify-content: center;
+
+}
+.subtopic-desc-container {
+    height: 100%;
+    background: #393E46
+}
+.subtopic-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: large;
+}

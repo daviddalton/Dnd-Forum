@@ -1,0 +1,15 @@
+.subSection-accordion {
+    font-family: buenard;
+    opacity: .6;
+    margin: 5px;
+}
+.subSection-accordionSummary {
+    color: white
+}
+.subSection-accordion-desc {
+    border: 1px black solid;
+    padding: 10px;
+    background: #444a54;
+    color: white;
+    font-size: large
+}

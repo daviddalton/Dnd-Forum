@@ -1,0 +1,47 @@
+.character-select-indv-card-container {
+    margin: 5px;
+width: 320px;
+height: 320px;
+display: flex;
+flex-direction: column;
+background: #393E46;
+opacity: .6;
+cursor: pointer
+}
+.character-select-indv-title-text {
+    display: flex;
+    justify-content: center;
+    background: #761e21;
+    padding: 5px
+}
+.character-select-indv-info-container {
+    display: flex;
+    flex-direction: column
+}
+.character-select-image-ability-scores-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end
+}
+.character-select-indv-ability-scores {
+    padding: 1px 0px 1px 5px;
+    width: 90px;
+    border: 1px white solid
+}
+.character-select-class-container {
+    border: 1px white solid;
+    padding: 5px
+}
+.character-select-race-continer {
+    border: 1px white solid;
+    padding: 5px
+}
+.character-select-delete-container {
+    display: flex;
+    justify-content: flex-end
+}
+.character-select-delete-button {
+    width: 60px;
+    padding: 6px;
+    cursor: pointer
+}

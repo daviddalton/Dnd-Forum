@@ -1,0 +1,37 @@
+.equipment-content-container {
+    margin-top: 20px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    font-family: buenard;
+}
+.equipment-table-panel {
+    padding: 10px;
+    margin: 5px;
+    background: #393E46;
+    box-shadow: 0px 2px 2px 0px black;
+    height: fit-content
+}
+.equipment-table {
+    margin: 5px;
+    display: flex
+}
+.equipment-heading-data-container {
+    opacity: .6;
+}
+.equipment-heading {
+    border: 1px white solid;
+    background: rgb(118, 30, 33);
+    display: flex;
+    justify-content: center
+}
+.equipment-data {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border: 1px white solid
+}
