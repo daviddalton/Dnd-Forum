@@ -2,6 +2,7 @@ import { Paper, Stack, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addCharacter } from "../controller";
+import { useAuth } from "../userContext";
 import AbilityCreator from "./AbilityCreator/AbilityCreator";
 import AppBarCreate from "./AppBarCreate";
 import ClassCard from "./ClassCreator/ClassCard";
@@ -40,6 +41,8 @@ class score {
 }
 
 function CharCreation() {
+    const user = useAuth()
+    const uid = user.user!.uid
     const [id, setId] = useState("")
     const [img, setImg] = useState("")
     const [level, setLevel] = useState("1")
@@ -139,6 +142,8 @@ function CharCreation() {
     const addNewCharacter = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         addCharacter({
+            id,
+            uid,
             characterName,
             advancementType,
             hitPointType,
@@ -256,7 +261,7 @@ function CharCreation() {
 
 
 
-                    {/* <button>Add Character</button> */}
+                    <button>Add Character</button>
                 </form>
             </div>
         </div>

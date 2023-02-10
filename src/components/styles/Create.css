@@ -10,7 +10,14 @@
 .information-container {
 
 }
-
+.create-heading {
+    opacity: .6;
+    cursor: pointer;
+}
+.create-heading:hover {
+    opacity: .8;
+    text-shadow: 0px 2px 2px 0px black;
+}
 .create-label {
     color: white
 }

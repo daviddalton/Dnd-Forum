@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import React from "react";
+import { useAuth } from "../userContext";
 
 
 
@@ -19,6 +20,7 @@ function Header() {
     const theme = useTheme();
     const [width, setWidth] = useState(window.innerWidth)
     const auth = getAuth()
+    const user = useAuth()
     const handleClickWiki = () => {
         navigate('/wiki')
         setOpen(true)
@@ -26,17 +28,6 @@ function Header() {
 
     const handleClickCreate = () => {
         navigate('/create/character-select')
-    }
-
-    const [user, setUser] = useState<User>()
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const emailChanged = (event: any) => {
-        setEmail(event.target.value);
-    };
-    const passwordChanged = (event: any) => {
-        setPassword(event.target.value);
     }
     const handleMouseEnter = (e: any) => {
         e.target.style.opacity = ".9"
@@ -127,11 +118,11 @@ function Header() {
                         </div>
                         
                         <div className="heading-login-container">
-                            {auth.currentUser ? (
+                            {user.user ? (
                                 <div 
                                     onClick={() => signOut(auth)}
                                     style={{ paddingRight: '10px'}}>
-                                    Logout
+                                    {user.user.email} Logout
                                 </div>
                             ):(
                                 <>
@@ -147,88 +138,12 @@ function Header() {
 
 
                         </div>
-
                 </div>
         </AppBar>
         <HeaderDrawer 
             open={open}
             setOpen={setOpen}
             handleDrawerClose={handleDrawerClose}/>
-    {/* <AppBar style={{
-        backgroundColor: '#000000',
-        display: 'grid',
-        gridTemplateAreas: "m c1 c2 c3 c4 c5 c6",
-        gridTemplateColumns: '500px repeat(7, 140px)',
-        gridTemplateRows: '90px'
-    }}>
-        <h1 style={{
-            marginTop: '20px',
-            marginBottom: '15px',
-            fontFamily: 'Metal Mania',
-            fontWeight: 'lighter',
-            fontSize: '45px',
-            paddingLeft: '250px'
-
-        }}>
-        DND FORUM
-        </h1>
-
-        <button style={{
-            backgroundColor: '#B70B0B',
-            color: '#FFFFFF',
-            fontFamily: 'Buenard',
-            fontSize: '25px',
-            fontWeight: 'lighter',
-            marginTop: '20px',
-            height: '50px',
-            width: '130px',
-            cursor: 'pointer',
-        }}
-        className='button'
-        onClick={handleClickWiki}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        >
-            Wiki   
-        </button>
-
-        <button style={{
-            backgroundColor: '#B70B0B',
-            color: '#FFFFFF',
-            fontFamily: 'Buenard',
-            fontSize: '25px',
-            fontWeight: 'lighter',
-            marginTop: '20px',
-            height: '50px',
-            width: '130px',
-            cursor: 'pointer',
-        }}
-        className='button'
-        onClick={handleClickCreate}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        >
-            Create
-        </button>
-
-        <p>{user?.email}</p>
-        {!user ? <input type={"text"} onChange={emailChanged} placeholder={"email"}
-        style={{
-        }}/> : null}
-        {!user ? <input type={"text"} onChange={passwordChanged} placeholder={"password"}
-        style={{
-        }}/> : null}
-        {!user ? <Button onClick={() => {login(setUser, email, password)}}
-        style={{
-        }}>Sign In</Button> : null }
-    </AppBar>
-    <AppBar style={{
-        backgroundColor: '#B70B0B',
-        height: '5px',
-        marginTop: '85px'
-
-    }}>
-    </AppBar> */}
     </>
 }
 

@@ -32,7 +32,7 @@ function CharacterCard({character}: IProps) {
         <div className="character-select-indv-card-container"
             onClick={() => handleClickCharacter(character.id)}>
                 <div className="character-select-indv-title-text">
-                        {character.characterName} - Level: {character.level}
+                        {character.characterName} - Level: {character.level} {character.uid}
                 </div>
                 <div className="character-select-indv-info-container">
                         <div>

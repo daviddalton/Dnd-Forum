@@ -30,7 +30,7 @@ function AppBarCreate(props: any) {
                         style={{
                            paddingLeft: '20px',
                         }}>
-                            <h2
+                            <h2 
                                 style={{
                                     cursor: 'pointer',
                                     boxShadow: sec === props.currentPage ? ('"2px 2px black"'):("0px 0px black"),

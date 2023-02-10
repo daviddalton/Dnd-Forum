@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './styles/login.css'
 import { Error, Facebook, GitHub, Google } from '@mui/icons-material'
-import { firestore } from '../firebase-config'
+import { useAuth } from './userContext'
 
 
 function LoginPage() {
@@ -14,6 +14,8 @@ function LoginPage() {
     const auth = getAuth();
     const [authing, setAuthing] = useState(false);
     const navigate = useNavigate()
+    const test = useAuth()
+
    
     const signInWithGoogle = async () => {
         setAuthing(true);
@@ -43,6 +45,7 @@ function LoginPage() {
             const user = userCredential.user;
             setUser(user)
             setError(false)
+            console.log(test.user)
             navigate('/create/character-select')
         })
         .catch((error) => {
