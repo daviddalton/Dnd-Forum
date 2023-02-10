@@ -4,19 +4,17 @@ import RacesData from "../../../api/RacesData";
 import Race from "../../../model/Character/Races/race.interface";
 import RaceModal from "./RaceModal";
 import '../../styles/raceCreate.css'
-import { PropsFor } from "@mui/system";
-import SelectedRacePage from "./SelectedRacePage";
-import { Opacity } from "@mui/icons-material";
 
 const racesData = new RacesData()
 
 function RaceCard(props: any) {
-    const [prop, setProp] = useState<string | undefined>()
+    const [raceSlug, setRaceSlug] = useState<string | undefined>()
     const [clicked, setClicked] = useState(false)
     const { data, status } = useQuery(['races'], racesData.fetchRaces)
 
     const handleClick = (race: Race) => {
-        setProp(race.slug)
+        console.log(race)
+        setRaceSlug(race.slug)
         setClicked(true)
     }
 
@@ -38,31 +36,27 @@ function RaceCard(props: any) {
                         margin: '5px',
                         width: '75%'
                     }}>
-                        {data?.results.map((res: Race) => (
-                            <IndvRace res={res} handleClick={handleClick}/>
+                        {data?.results.map((res: Race, index: number) => (
+                            <div key={index}
+                                className="indv-race-container"
+                                onClick={() => handleClick(res)}>
+                                    <div className="indv-race-box">
+                                    </div>
+                                    <div className="indv-row-container">
+                                            <div className="indv-race-title">
+                                                    {res.name}
+                                            </div>
+                                            <div className="indv-race-arrow">
+                                                    {">"}
+                                            </div>
+                                    </div>
+                            </div>
                         ))}
                 </div>
+                <RaceModal raceSlug={raceSlug} clicked={clicked} setClicked={setClicked} handleClose={handleClose}/>
        </div>
     )
 }
 
-function IndvRace(props: any) {
-    return (
-        <div
-            className="indv-race-container"
-            onClick={props.handleClick(props.res.slug)}>
-                <div className="indv-race-box">
-                </div>
-                <div className="indv-row-container">
-                        <div className="indv-race-title">
-                                {props.res.name}
-                        </div>
-                        <div className="indv-race-arrow">
-                                {">"}
-                        </div>
-                </div>
-    </div>
-    )
-}
 
 export default RaceCard

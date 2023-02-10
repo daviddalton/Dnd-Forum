@@ -1,15 +1,10 @@
-import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer, { DrawerProps } from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import TopicMenu from '../TopicMenu/TopicMenu';
 import { useNavigate } from 'react-router-dom';
 import { ImportContacts, Person } from '@mui/icons-material';
@@ -44,9 +39,6 @@ const Drawer = styled ((props: DrawerProps) => (
 ))(({ theme }) => ({
   // width: '250px'
 }))
-
-
-
 
 function DrawerHeader(props: any) {
   const user = useAuth()
@@ -181,7 +173,6 @@ function DrawerHeader(props: any) {
             }}
             open={props.open}>
         </Main>
-
         </Box>
       );
 }

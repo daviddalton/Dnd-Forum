@@ -42,7 +42,7 @@ class score {
 
 function CharCreation() {
     const user = useAuth()
-    const uid = user.user!.uid
+    const uid = user.user?.uid
     const [id, setId] = useState("")
     const [img, setImg] = useState("")
     const [level, setLevel] = useState("1")
@@ -164,7 +164,6 @@ function CharCreation() {
         navigate("/create")
     }
 
-    console.log(currentPage)
     return (
         <div style={{
             color: 'white',
@@ -179,7 +178,6 @@ function CharCreation() {
         }}>
             <div
                 style={{
-                    border: '1px white solid',
                     minWidth: '320px',
                     maxWidth: '780px',
                     width: '100%',

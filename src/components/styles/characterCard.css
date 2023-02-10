@@ -1,12 +1,15 @@
 .character-select-indv-card-container {
     margin: 5px;
-width: 320px;
-height: 320px;
-display: flex;
-flex-direction: column;
-background: #393E46;
-opacity: .6;
-cursor: pointer
+    width: 320px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    background: #393E46;
+    opacity: .6;
+    cursor: pointer
+}
+.character-select-indv-card-container:hover {
+    opacity: .8;
 }
 .character-select-indv-title-text {
     display: flex;

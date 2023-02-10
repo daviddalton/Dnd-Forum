@@ -7,7 +7,6 @@ import fetch from "../../../api/fetch";
 import Race from "../../../model/Character/Races/race.interface";
 import { Link } from "react-router-dom"
 import '../../styles/raceCreate.css'
-import { removeData } from "jquery";
 class Trait {
     name: string;
     clicked: boolean;
@@ -100,7 +99,7 @@ function RaceModal(props: any) {
                     </div>
                     <div className="race-modal-header-x">
                         <h1
-                            onClick={handleClose}
+                            onClick={props.handleClose}
                         >X</h1>
                     </div>
                 </div>

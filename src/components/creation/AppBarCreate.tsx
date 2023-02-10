@@ -25,8 +25,8 @@ function AppBarCreate(props: any) {
                 justifyContent: "center",
                 background: 'rgba(118, 30, 33, .6)',
             }}>
-                {sections.map((sec: string) => (
-                    <div
+                {sections.map((sec: string, index: number) => (
+                    <div key={index}
                         style={{
                            paddingLeft: '20px',
                         }}>

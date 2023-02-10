@@ -46,7 +46,7 @@ function CharacterSelection() {
     const handleClickNewCharacter = () => {
         navigate(`/create/character-select/new-character/character-creator`)
     }
-   console.log(auth.currentUser)
+
     return (
         <div className='character-select-screen-container'>
                 <div className='character-select-content-container'>
@@ -59,8 +59,8 @@ function CharacterSelection() {
                                         <div className='character-select-indv-info-container'>
                                                 <div>
                                                         <div className='character-select-image-ability-scores-container'>
-                                                                {Ascores.map((s: AbilityScore) => (
-                                                                    <div className='character-select-indv-ability-scores'>
+                                                                {Ascores.map((s: AbilityScore, index: number) => (
+                                                                    <div key={index} className='character-select-indv-ability-scores'>
                                                                             {s.scoreName}: {s.total}
                                                                     </div>
                                                                 ))}
@@ -78,8 +78,8 @@ function CharacterSelection() {
                                                 </div>
                                         </div>
                                 </div>    
-                                {filteredCharacters.map((character: CreatedChar) => (
-                                    <CharacterCard character={character}/>
+                                {filteredCharacters.map((character: CreatedChar, index: number) => (
+                                    <CharacterCard key={index} character={character}/>
                                 ))}
                         </div>
                 </div>
