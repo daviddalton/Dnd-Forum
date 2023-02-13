@@ -169,7 +169,6 @@ function CharCreation() {
             color: 'white',
             width: '100%',
             background: '#222831',
-            border: '1px white solid',
             marginTop: '80px',
             display: 'flex',
             flexDirection: "column",

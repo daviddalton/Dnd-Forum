@@ -7,30 +7,34 @@ import fetch from "../../../api/fetch";
 import Race from "../../../model/Character/Races/race.interface";
 import { Link } from "react-router-dom"
 import '../../styles/raceCreate.css'
-class Trait {
-    name: string;
-    clicked: boolean;
-    handleClick(trait: Trait) {
-        if (this.clicked) {
-            this.clicked = false
-        } else {
-            this.clicked = true
-            console.log('working')
-        }
-    }
-    constructor(name: string, clicked: boolean) {
-        this.name = name
-        this.clicked = clicked
-    }
+import React from "react";
+
+class RaceDesc {
+    title!: string;
+    desc: string[] = []
+}
+class AstrickTrait {
+    title!: string;
+    desc: string[] = []
+}
+class MultiAstrickTrait {
+    astrickTraits: AstrickTrait[] = []
 }
 const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
+    maxWidth: '780px',
+    minWidth: '320px',
+    width: '100%',
+    height: 'fit-content',
     transform: 'translate(-50%, -40%)',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
+    background: '#393E46',
+    padding: '10px',
+    borderRadius: '10px',
   };
   const Accordion = styled((props: AccordionProps) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -45,42 +49,77 @@ const style = {
   }));
 
 function RaceModal(props: any) { 
+    var raceDesc = new RaceDesc()
+    var raceAlignment = new AstrickTrait()
+    var raceAge = new AstrickTrait()
+    var raceAsiDesc = new AstrickTrait()
+    var raceLanguages = new AstrickTrait()
+    var raceSize = new AstrickTrait()
+    var raceSpeedDesc = new AstrickTrait()
+    var raceTraits = new MultiAstrickTrait()
+    const [width, setWidth] = useState(window.innerWidth)
+    var traits = [raceAlignment, raceAge, raceAsiDesc, raceLanguages, raceSize, raceSpeedDesc]
     const {data , status} = useQuery(['races', props.raceSlug], FetchRace)
     const [open, setOpen] = useState(false);
+
     const handleOpen = () => setOpen(props.clicked);
     const handleClose = () => {
         props.setClicked(false)
         
     }
-    const [asiDesc, setAsiDesc] = useState(new Trait(
-        'Ability Score Increase', false
-    ))
-    const [ageData, setAgeData] = useState(new Trait(
-        'Age', false
-    ))
-    const [alignmentData, setAlignmentData] = useState(new Trait(
-        'Alignment', false
-    ))
-    const [languagesData, setLanguages] = useState(new Trait(
-        'Languages', false
-    ))
-    const [visionData, setVisionData] = useState(new Trait(
-        'Vision', false
-    ))
-    const [traits, setTraits] = useState([asiDesc, ageData, alignmentData, languagesData, visionData])
+    React.useEffect(() => {
+        window.addEventListener("resize", handleResize );
+        return () => window.removeEventListener("resize", handleResize)
+    })
+    function handleResize() {
+        setWidth(window.innerWidth)
+    }
+
     function FetchRace(): Promise<Race> {
         return fetch(`https://api.open5e.com/races/${props.raceSlug}`)
     }
+    function createAstrickTrait(traitDesc: string | undefined, raceTrait: AstrickTrait) {
+        var splitDesc = traitDesc!.split('._**')
+        raceTrait.title = splitDesc[0].replaceAll('**_','').trim()
+        raceTrait.desc.push(splitDesc[1].trim())
+        return raceTrait
+    }
+    function createRaceDesc(desc: string | undefined, raceDesc: RaceDesc) {
+        var splitDesc = desc!.split('\n')
+        raceDesc.title = splitDesc[0].replaceAll('#','').trim()
+        raceDesc.desc.push(splitDesc[1].trim())
+        return raceDesc
+    }
+    function handleMultiAstrickTraits(traitDesc: string | undefined, multiAstrickTrait: MultiAstrickTrait) {
 
-    const handleAccordion = (trait: Trait)=> {
-        
-        trait.handleClick(trait)
-        for (let t of traits) {
-            if (t.name !== trait.name) {
-                t.clicked = false
+        var splitDesc = traitDesc!.split('**_')
+        splitDesc.forEach(element => {
+            let tempAstrickTrait = new AstrickTrait()
+            let tempArr = element.split('._**')
+            console.log(tempArr)
+            if (tempArr[0] !== '') {
+                tempAstrickTrait.title = tempArr[0].trim()
+                tempAstrickTrait.desc.push(tempArr[1].trim())
+                multiAstrickTrait.astrickTraits.push(tempAstrickTrait)
             }
+        });
+        console.log(multiAstrickTrait)
+    }
+    if (data !== undefined && props.raceSlug !== undefined) {
+        
+        buildRaceData(data)
+    }
+   function buildRaceData(data: Race) {
+    if (data !== undefined) {
+        raceDesc = createRaceDesc(data.desc, raceDesc)
+        raceAlignment = createAstrickTrait(data.alignment, raceAlignment)
+        raceAge = createAstrickTrait(data.age, raceAge)
+        raceAsiDesc = createAstrickTrait(data.asi_desc, raceAsiDesc)
+        raceLanguages = createAstrickTrait(data.languages, raceLanguages)
+        raceSize = createAstrickTrait(data.size, raceSize)
+        raceSpeedDesc = createAstrickTrait(data.speed_desc, raceSpeedDesc)
+        handleMultiAstrickTraits(data.traits, raceTraits)
         }
-        setTraits([asiDesc, ageData, alignmentData, languagesData, visionData])
     }
   
     return (
@@ -92,182 +131,96 @@ function RaceModal(props: any) {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <div className="race-modal-container">
-                <div className="race-modal-header-container">
-                    <div className="race-modal-header-confirm">
-                        Confirm Race
-                    </div>
-                    <div className="race-modal-header-x">
-                        <h1
-                            onClick={props.handleClose}
-                        >X</h1>
-                    </div>
-                </div>
-                    <div className="race-modal-body-container">
-                        <div className="race-modal-body-flexrow">
-                            <div className="race-modal-body-flexcolumn">
-                                <div className="race-modal-name">
-                                    {data?.name}
-                                </div>
-                                <div className="race-modal-info">
-                                    {data?.desc}
-                                </div>
-                                <div className="race-modal-racial-trait-title">
-                                    Racial Traits:
-                                </div>
+            <div className="race-modal-content-container">
+                    <RaceTitle name={data?.name} handleClose={handleClose} raceDesc={raceDesc} width={width}/>
+                    <CreateRaceDesc raceDesc={raceDesc} />
+                    <div className="race-modal-accordion-link-container">
+                            <div className="race-modal-link-container">
+                                    <Link 
+                                        className="race-modal-link"
+                                        to={`/wiki/races/${props.raceSlug}`}>
+                                            {data?.name} Details Page
+                                    </Link>
                             </div>
-                            <div className="race-modal-image">
-                                    
+                            <div className="race-modal-accordion-container">
+                                    <ShowTraits traits={traits} />
+                                    <ShowRaceTrait raceTraits={raceTraits} />
                             </div>
-                        </div>
-                        <div className="race-modal-race-buttton-container">
-                            <Link to={`/races/${props.raceSlug}`}>
-                                <button className="race-modal-race-button">
-                                    {data?.name} Details
-                                </button>
-                            </Link>
-                        </div>
-                                <Accordion 
-                                    expanded={asiDesc.clicked}
-                                    onChange={() => handleAccordion(asiDesc)}
-                                    style={{
-                                        marginLeft: '10px',
-                                        marginTop: '10px',
-                                        marginRight: '10px',
-                                        background: '#3A3A3A',
-                                        border: '1px #C7C7C7 solid'
-                                    }}>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMore style={{
-                                            color: '#E6E6E6'
-                                        }}/>}>
-                                        <Typography
-                                            style={{color: 'white'}}>
-                                            {asiDesc.name}
-                                        </Typography>
-                                    </AccordionSummary>
-                                    <div className="race-modal-accordion-text-container">
-                                        <span className="race-modal-span-container">
-                                            {data?.asi_desc}
-                                        </span>
-                                    </div>
-                                </Accordion>
-                                <Accordion 
-                                    expanded={ageData.clicked}
-                                    onChange={() => handleAccordion(ageData)}
-                                    style={{
-                                        marginLeft: '10px',
-                                        marginTop: '10px',
-                                        marginRight: '10px',
-                                        background: '#3A3A3A',
-                                        border: '1px #C7C7C7 solid'
-                                    }}>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMore style={{
-                                            color: '#E6E6E6'
-                                        }}/>}>
-                                        <Typography
-                                            style={{color: 'white'}}>
-                                            {ageData.name}
-                                        </Typography>
-                                    </AccordionSummary>
-                                    <div className="race-modal-accordion-text-container">
-                                        <span className="race-modal-span-container">
-                                            {data?.age}
-                                        </span>
-                                    </div>
-                                </Accordion>
-                                <Accordion 
-                                    expanded={alignmentData.clicked}
-                                    onChange={() => handleAccordion(alignmentData)}
-                                    style={{
-                                        marginLeft: '10px',
-                                        marginTop: '10px',
-                                        marginRight: '10px',
-                                        background: '#3A3A3A',
-                                        border: '1px #C7C7C7 solid'
-                                    }}>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMore style={{
-                                            color: '#E6E6E6'
-                                        }}/>}>
-                                        <Typography
-                                            style={{color: 'white'}}>
-                                            {alignmentData.name}
-                                        </Typography>
-                                    </AccordionSummary>
-                                    <div className="race-modal-accordion-text-container">
-                                        <span className="race-modal-span-container">
-                                            {data?.alignment}
-                                        </span>
-                                    </div>
-                                </Accordion>
-                                <Accordion 
-                                    expanded={languagesData.clicked}
-                                    onChange={() => handleAccordion(languagesData)}
-                                    style={{
-                                        marginLeft: '10px',
-                                        marginTop: '10px',
-                                        marginRight: '10px',
-                                        background: '#3A3A3A',
-                                        border: '1px #C7C7C7 solid'
-                                    }}>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMore style={{
-                                            color: '#E6E6E6'
-                                        }}/>}>
-                                        <Typography
-                                            style={{color: 'white'}}>
-                                            {languagesData.name}
-                                        </Typography>
-                                    </AccordionSummary>
-                                    <div className="race-modal-accordion-text-container">
-                                        <span className="race-modal-span-container">
-                                            {data?.languages}
-                                        </span>
-                                    </div>
-                                </Accordion>
-                                <Accordion 
-                                    expanded={visionData.clicked}
-                                    onChange={() => handleAccordion(visionData)}
-                                    style={{
-                                        marginLeft: '10px',
-                                        marginTop: '10px',
-                                        marginRight: '10px',
-                                        background: '#3A3A3A',
-                                        border: '1px #C7C7C7 solid'
-                                    }}>
-                                    <AccordionSummary
-                                        expandIcon={<ExpandMore style={{
-                                            color: '#E6E6E6'
-                                        }}/>}>
-                                        <Typography
-                                            style={{color: 'white'}}>
-                                            {visionData.name}
-                                        </Typography>
-                                    </AccordionSummary>
-                                    <div className="race-modal-accordion-text-container">
-                                        <span className="race-modal-span-container">
-                                            {data?.vision}
-                                        </span>
-                                    </div>
-                                </Accordion>
-                        <br />
-                        <br />
-
                     </div>
-                    <div className="race-modal-button-container">
-                        <button 
-                            className="race-modal-confirm-button"
-                            onClick={() => props.setRace(data?.name)}>
-                            Confirm
-                        </button>
+                    <div className="race-modal-confirm-button-container">
+                            <button className="race-modal-confirm-button">
+                                    Confirm
+                            </button>
                     </div>
-                </div>
+            </div>
           </Box>
         </Modal>
       </div>
     );
   }
 
+  function RaceTitle(props: any) {
+    return (
+        <div className="race-modal-title-container">
+            <div className="race-modal-text">
+                    <h2>{props.name}</h2>
+            </div>
+    </div>
+    )
+  }
+  function ShowRaceTrait(props: any) {
+    return (
+        <Accordion style={{ opacity: '.6' }}>
+            <AccordionSummary 
+                sx={{background: '#444a54', color: 'white'}}
+                expandIcon={<ExpandMore style={{ color: 'white'}}/>}>
+                <Typography>
+                    Race Traits
+                </Typography>
+            </AccordionSummary>
+            {props.raceTraits?.astrickTraits.map((trait: AstrickTrait, index: number) => (
+                <div className="race-modal-race-traits-container">
+                <div className="race-modal-race-traits-title"
+                    key={index}>
+                    <div>{trait.title}</div>
+                </div>
+                <div className="race-modal-race-traits-desc">
+                    {trait.desc}
+                </div>
+                </div>
+            ))}
+        </Accordion>
+    )
+  }
+  function ShowTraits(props: any) {
+    return (
+        <>
+        {props.traits.map((raceTrait: AstrickTrait, index: number) => (
+            <Accordion key={index} style={{ opacity: '.6'}}>
+                <AccordionSummary 
+                    style={{background: '#444a54', color: 'white'}}
+                    expandIcon={<ExpandMore style={{ color: 'white'}}/>}>
+                    <Typography>
+                        {raceTrait.title}
+                    </Typography>
+                </AccordionSummary>
+                <div className="race-modal-show-traits-accordion">
+                    {raceTrait.desc}
+                </div>
+            </Accordion>
+        ))}
+        </>
+    )
+  }
+  function CreateRaceDesc(props: any) {
+    return (
+        <div className="race-modal-desc-container">
+            {props.raceDesc?.desc.map((s: string, index: number) => (
+                <div key={index}>
+                    {s}
+                </div>
+            ))}
+    </div>
+    )
+  }
 export default RaceModal
