@@ -7,7 +7,6 @@ import CharacterCard from '../CharacterCard';
 import { AbilityScore } from '../../../model/Character/AbilityScore';
 import '../../styles/characterSelect.css'
 import '../../styles/characterCard.css'
-import { FirebaseError } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '../../userContext';
 

@@ -48,19 +48,6 @@
     font-weight: bolder;
     padding-right: 10px
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 .raceCard-container {
     background: #454545;
     display: flex;
@@ -147,6 +134,7 @@
 .race-modal-accordion-container {
     margin: 5px;
     height: 330px;
+    padding-bottom: 10px;
     overflow-y: scroll
 }
 .race-modal-confirm-button-container {
@@ -180,10 +168,10 @@
     justify-content: center
 }
 .race-modal-race-traits-container {
-    background: #505762;
-    color: white;
     padding: 10px;
-    border: 1px white solid
+    background: rgb(76, 81, 88);
+    color: white;
+
 }
 .race-modal-race-traits-title {
     background: rgb(118, 30, 33);
@@ -205,4 +193,11 @@
     color: white;
     padding: 10px;
     opacity: .6
+}
+.selected-race-accordion-summary-div {
+    padding: 10px;
+    background: rgb(76, 81, 88);
+    color: white;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px
 }

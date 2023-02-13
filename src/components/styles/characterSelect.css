@@ -20,5 +20,6 @@ opacity: .6
 }
 .character-cards-container {
     margin: 5px;
-display: flex
+    display: flex;
+    flex-wrap: wrap;
 }

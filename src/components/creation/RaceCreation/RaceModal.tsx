@@ -57,24 +57,24 @@ function RaceModal(props: any) {
     var raceSize = new AstrickTrait()
     var raceSpeedDesc = new AstrickTrait()
     var raceTraits = new MultiAstrickTrait()
-    const [width, setWidth] = useState(window.innerWidth)
     var traits = [raceAlignment, raceAge, raceAsiDesc, raceLanguages, raceSize, raceSpeedDesc]
+
+    const [width, setWidth] = useState(window.innerWidth)
     const {data , status} = useQuery(['races', props.raceSlug], FetchRace)
     const [open, setOpen] = useState(false);
-
     const handleOpen = () => setOpen(props.clicked);
     const handleClose = () => {
         props.setClicked(false)
-        
     }
+
     React.useEffect(() => {
         window.addEventListener("resize", handleResize );
         return () => window.removeEventListener("resize", handleResize)
     })
+
     function handleResize() {
         setWidth(window.innerWidth)
     }
-
     function FetchRace(): Promise<Race> {
         return fetch(`https://api.open5e.com/races/${props.raceSlug}`)
     }
@@ -91,24 +91,21 @@ function RaceModal(props: any) {
         return raceDesc
     }
     function handleMultiAstrickTraits(traitDesc: string | undefined, multiAstrickTrait: MultiAstrickTrait) {
-
         var splitDesc = traitDesc!.split('**_')
         splitDesc.forEach(element => {
             let tempAstrickTrait = new AstrickTrait()
             let tempArr = element.split('._**')
-            console.log(tempArr)
             if (tempArr[0] !== '') {
                 tempAstrickTrait.title = tempArr[0].trim()
                 tempAstrickTrait.desc.push(tempArr[1].trim())
                 multiAstrickTrait.astrickTraits.push(tempAstrickTrait)
             }
         });
-        console.log(multiAstrickTrait)
     }
     if (data !== undefined && props.raceSlug !== undefined) {
-        
         buildRaceData(data)
     }
+
    function buildRaceData(data: Race) {
     if (data !== undefined) {
         raceDesc = createRaceDesc(data.desc, raceDesc)
@@ -120,6 +117,12 @@ function RaceModal(props: any) {
         raceSpeedDesc = createAstrickTrait(data.speed_desc, raceSpeedDesc)
         handleMultiAstrickTraits(data.traits, raceTraits)
         }
+    }
+    function handleSetRace() {
+        props.setRace(props.raceSlug)
+        props.handleClose()
+        props.setRaceData(traits)
+        props.setRaceDesc(raceDesc)
     }
   
     return (
@@ -148,7 +151,9 @@ function RaceModal(props: any) {
                             </div>
                     </div>
                     <div className="race-modal-confirm-button-container">
-                            <button className="race-modal-confirm-button">
+                            <button 
+                                className="race-modal-confirm-button"
+                                onClick={handleSetRace}>
                                     Confirm
                             </button>
                     </div>
@@ -168,50 +173,75 @@ function RaceModal(props: any) {
     </div>
     )
   }
-  function ShowRaceTrait(props: any) {
+
+  export function ShowRaceTrait(props: any) {
     return (
-        <Accordion style={{ opacity: '.6' }}>
+        <Accordion className="race-selected-indv-trait-accordion"
+            sx={{
+                background: '#761e21'
+            }}>
             <AccordionSummary 
-                sx={{background: '#444a54', color: 'white'}}
+                style={{
+                    borderRadius: '10px',
+                    color: 'white',
+                }}
                 expandIcon={<ExpandMore style={{ color: 'white'}}/>}>
-                <Typography>
+                <Typography style={{ fontFamily: 'buenard' }}>
                     Race Traits
                 </Typography>
             </AccordionSummary>
-            {props.raceTraits?.astrickTraits.map((trait: AstrickTrait, index: number) => (
-                <div className="race-modal-race-traits-container">
-                <div className="race-modal-race-traits-title"
-                    key={index}>
-                    <div>{trait.title}</div>
-                </div>
-                <div className="race-modal-race-traits-desc">
-                    {trait.desc}
-                </div>
-                </div>
-            ))}
+            <div
+                style={{
+                    borderBottomRightRadius: '10px',
+                    borderBottomLeftRadius: '10px'
+                }}>
+                {props.raceTraits?.astrickTraits.map((trait: AstrickTrait, index: number) => (
+                    <div className="race-modal-race-traits-container">
+                        <div className="race-modal-race-traits-title"
+                            key={index}>
+                            <div>{trait.title}</div>
+                        </div>
+                        <div className="race-modal-race-traits-desc">
+                            {trait.desc}
+                        </div>
+                    </div>
+                ))}
+            </div>
+
         </Accordion>
     )
   }
+
   function ShowTraits(props: any) {
     return (
         <>
-        {props.traits.map((raceTrait: AstrickTrait, index: number) => (
-            <Accordion key={index} style={{ opacity: '.6'}}>
-                <AccordionSummary 
-                    style={{background: '#444a54', color: 'white'}}
-                    expandIcon={<ExpandMore style={{ color: 'white'}}/>}>
-                    <Typography>
-                        {raceTrait.title}
-                    </Typography>
-                </AccordionSummary>
-                <div className="race-modal-show-traits-accordion">
-                    {raceTrait.desc}
-                </div>
-            </Accordion>
-        ))}
+                    {props.traits.map((trait: AstrickTrait, index: number) => (
+                        <>
+                            <Accordion 
+                                className="race-selected-indv-trait-accordion"
+                                sx={{
+                                    background: '#761e21'
+                                }}
+                                key={index}>
+                                <AccordionSummary
+                                    style={{
+                                        borderRadius: '10px',
+                                        color: 'white',
+                                    }}>
+                                    <Typography style={{fontFamily: 'buenard'}}>
+                                        {trait.title}
+                                    </Typography>
+                                </AccordionSummary>
+                                <div className="selected-race-accordion-summary-div">
+                                        {trait.desc}
+                                </div>
+                            </Accordion>
+                        </>
+                    ))}
         </>
     )
   }
+
   function CreateRaceDesc(props: any) {
     return (
         <div className="race-modal-desc-container">

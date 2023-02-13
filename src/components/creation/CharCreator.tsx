@@ -40,6 +40,7 @@ class score {
     }
 }
 
+
 function CharCreation() {
     const user = useAuth()
     const uid = user.user?.uid
@@ -51,6 +52,7 @@ function CharCreation() {
     const [hitPointType, setHitPointType] = useState("Fixed")
     const [characterClass, setCharacterClass] = useState("")
     const [race, setRace] = useState("")
+    const [raceSlug, setRaceSlug] = useState("")
     const [background, setBackground] = useState("")
     const [alignment, setAlignment] = useState("")
     const [currentPage, setCurrentPage] = useState('Settings')
@@ -160,10 +162,8 @@ function CharCreation() {
             aScoreCharisma
             
         });
-        console.log("Successfully add a new character");
         navigate("/create")
     }
-
     return (
         <div style={{
             color: 'white',
@@ -206,7 +206,8 @@ function CharCreation() {
                             <RaceCard 
                                 race={race}
                                 setRace={setRace}
-                                setCurrentPage={setCurrentPage}
+                                raceSlug={raceSlug}
+                                setRaceSlug={setRaceSlug}
                             />
                         </div>
                     </>

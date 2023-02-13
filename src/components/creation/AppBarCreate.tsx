@@ -34,7 +34,8 @@ function AppBarCreate(props: any) {
                                 style={{
                                     cursor: 'pointer',
                                     boxShadow: sec === props.currentPage ? ('"2px 2px black"'):("0px 0px black"),
-                                    opacity: sec === props.currentPage ? ('.8'):('.6')
+                                    opacity: sec === props.currentPage ? ('.8'):('.6'),
+                                    fontFamily: 'buenard'
                                 }}
                                 onMouseEnter={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}
