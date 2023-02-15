@@ -43,7 +43,6 @@ const Drawer = styled ((props: DrawerProps) => (
 function DrawerHeader(props: any) {
   const user = useAuth()
   const navigation = useNavigate()
-
   const handleNav = (text: string) => {
     if (text === 'Create') {
       navigation('/create')
@@ -165,6 +164,37 @@ function DrawerHeader(props: any) {
                 </div>
                 </div>
             </div>
+            {user.user ? (
+            <div
+            style={{
+              margin: '5px',
+              display: 'flex',
+              color: 'white',
+              justifyContent: 'center',
+              opacity: '.6'
+            }}>
+              <div
+                style={{
+                  display: 'flex',
+                }}>
+              <div
+                style={{
+                  margin: '5px'
+                }}>
+                  Current User: 
+              </div>
+              <div
+                style={{
+                  margin: '5px'
+                }}>
+                  {user.user?.displayName}
+              </div>
+              </div>
+          </div>
+            ):(
+              <div></div>
+            )}
+
             </Box>
           </Drawer>
         <Main 

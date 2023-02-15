@@ -116,7 +116,45 @@ function Header() {
                                 <div 
                                     onClick={() => signOut(auth)}
                                     style={{ paddingRight: '10px'}}>
-                                    {user.user.email} Logout
+                                        {width > 920 ? (
+                                            <div
+                                                style={{
+                                                    display: 'flex'
+                                                }}>
+                                                <div
+                                                style={{
+                                                    background: '#761e21',
+                                                    padding: '5px',
+                                                    borderRadius: '10px',
+                                                    opacity: '.6'
+                                                }}>
+                                                    {user.user.email}
+                                                </div>
+                                                <div
+                                                    style={{
+                                                        padding: '5px',
+                                                        marginLeft: '10px',
+                                                        border: '1px white solid',
+                                                        borderRadius: '10px',
+                                                        cursor: 'pointer'
+                                                    }}>
+                                                    Logout
+                                                </div>
+                                            </div>
+                                            
+                                        ):(
+                                            <div
+                                            style={{
+                                                padding: '5px',
+                                                marginLeft: '10px',
+                                                border: '1px white solid',
+                                                borderRadius: '10px',
+                                                cursor: 'pointer'
+                                            }}>
+                                                Logout
+                                            </div>
+                                        )}
+                                    
                                 </div>
                             ):(
                                 <>
