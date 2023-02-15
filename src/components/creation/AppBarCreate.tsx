@@ -24,6 +24,8 @@ function AppBarCreate(props: any) {
                 flexWrap: 'wrap',
                 justifyContent: "center",
                 background: 'rgba(118, 30, 33, .6)',
+                borderTopRightRadius: '10px',
+                borderTopLeftRadius: '10px'
             }}>
                 {sections.map((sec: string, index: number) => (
                     <div key={index}

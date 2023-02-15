@@ -1,0 +1,7 @@
+.main-background { background: rgba(57,62,70,.6)}
+.title-heading-background { background: rgba(118, 30, 33, .6)}
+.accordion-background { background:rgb(118, 30, 33); opacity: .6}
+.accordion-background:hover { opacity: .8}
+.accordion-secondary-background { background: #393E46; opacity: .6}
+.accordion-secondary-background:hover { opacity: .8 }
+.main-text-color { color: white}

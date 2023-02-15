@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { AbilityScore } from "../../model/Character/AbilityScore";
 import { CreatedChar } from "../../model/Character/CreatedChar.interface"
+import { scoreTitles } from "../../util/constants";
 import { deleteCharacter } from "../controller";
 import '../styles/characterCard.css'
 interface IProps {
@@ -8,10 +9,10 @@ interface IProps {
 }
 
 function CharacterCard({character}: IProps) {
-    const scoreTitles = ['Str', 'Dex', 'Con', 'Intl', 'Wis', 'Cha'];
-    const scoreTotals = [character.aScoreStrength, character.aScoreDexterity, character.aScoreCon, character.aScoreIntel, character.aScoreWis, character.aScoreCharisma];
+
     var Ascores : AbilityScore[] = []
 
+    const scoreTotals = [character.aScoreStrength, character.aScoreDexterity, character.aScoreCon, character.aScoreIntel, character.aScoreWis, character.aScoreCharisma];
     const navigate = useNavigate();
     const handleClickCharacter = (id: string | undefined) => {
         navigate(`/create/character-select/${id}`)
@@ -34,13 +35,13 @@ function CharacterCard({character}: IProps) {
                 </div>
                 <div className="character-select-indv-info-container">
                         <div>
-                                <div className="character-select-image-ability-scores-container">
-                                        {Ascores.map((s: AbilityScore, index: number) => (
-                                            <div key={index} className="character-select-indv-ability-scores">
-                                                    {s.scoreName}: {s.total}
-                                            </div>
-                                        ))}
-                                </div>
+                            <div className="character-select-image-ability-scores-container">
+                                    {Ascores.map((s: AbilityScore, index: number) => (
+                                        <div key={index} className="character-select-indv-ability-scores">
+                                                {s.scoreName}: {s.total}
+                                        </div>
+                                    ))}
+                            </div>
                         </div>
                         <div className="character-select-class-container">
                                 Class: {character.characterClass}

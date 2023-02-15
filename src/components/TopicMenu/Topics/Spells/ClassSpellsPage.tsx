@@ -87,7 +87,8 @@ function ClassSpellsPage() {
     const spellCategories = [cantrips, firstLevelSpells, secondLevelSpells, thirdLevelSpells, fourthLevelSpells, fifthLevelSpells]
 
     return <>
-        <div className="spells-category-container">
+        <div 
+            className="spells-category-container">
                 {spellCategories.map((category: Category) => (
                 <div className="idv-spell-category">
                     <Accordion className="spell-category-accordion">
