@@ -3,7 +3,8 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import '../components/styles/signUp.css'
 import { Error, Facebook, GitHub, Google } from '@mui/icons-material'
-
+import { CSSTransition } from 'react-transition-group'
+import '../components/styles/SectionAnimations.css'
 
 
 function SignUpPage() {
@@ -50,6 +51,12 @@ function SignUpPage() {
         setRetypePassword(e.target.value)
     };
     return(
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade"
+        unmountOnExit={true}>
         <div className="sign-up-screen">
                 <div className="sign-up-content-container">
                         <SignUp error={error}/>
@@ -61,6 +68,7 @@ function SignUpPage() {
                         <AlreadyHaveAccount />
                 </div>
         </div>
+        </CSSTransition>
     )
 }
 

@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './styles/login.css'
 import { Error, Facebook, GitHub, Google } from '@mui/icons-material'
+import { CSSTransition } from 'react-transition-group'
+import '../components/styles/SectionAnimations.css'
 
 function LoginPage() {
     const [email, setEmail] = useState('')
@@ -40,6 +42,12 @@ function LoginPage() {
     }
 
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade"
+        unmountOnExit={true}>
         <div className='login-screen-container'>
                 <div className='login-content-container'>
                         <SignInText error={error}/>
@@ -50,7 +58,7 @@ function LoginPage() {
                         <CreateAccount />
                 </div>
         </div>
-        
+        </CSSTransition>
     )
 }
 

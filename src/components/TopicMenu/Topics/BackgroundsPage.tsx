@@ -1,4 +1,3 @@
-import { flexbox } from "@mui/system"
 import { SubSection } from "../../../model/Character/SubSection.class"
 import { TopicSection } from "../../../model/Character/TopicSection.class"
 import buildSectionDesc from "../../../util/buildSectionDesc"

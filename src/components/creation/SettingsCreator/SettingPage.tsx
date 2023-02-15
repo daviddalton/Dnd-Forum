@@ -2,6 +2,8 @@ import { ExpandMore } from "@mui/icons-material"
 import { Accordion, AccordionSummary, Typography } from "@mui/material"
 import { useState } from "react"
 import '../../styles/settingsPage.css'
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 
 function SettingsPage(props: any): JSX.Element {

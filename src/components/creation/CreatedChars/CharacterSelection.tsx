@@ -9,6 +9,8 @@ import '../../styles/characterSelect.css'
 import '../../styles/characterCard.css'
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '../../userContext';
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 
 function CharacterSelection() {
@@ -47,6 +49,11 @@ function CharacterSelection() {
     }
 
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className='character-select-screen-container'>
                 <div className='character-select-content-container'>
                         <div className='character-cards-container'>
@@ -83,6 +90,7 @@ function CharacterSelection() {
                         </div>
                 </div>
         </div>
+        </CSSTransition>
     )
 }
 

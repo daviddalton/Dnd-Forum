@@ -3,18 +3,16 @@ import { useState } from "react"
 import { TopicSection } from "../../../model/Character/TopicSection.class"
 import astrickSubSection from "../../../util/astrickSubSection"
 import buildSectionDesc from "../../../util/buildSectionDesc"
-import buildSubsections from "../../../util/buildSubSection"
 import buildTable from "../../../util/buildTable"
 import GeneralSubsectionContainer from "../../../util/GeneralSubsectionContainer"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
 
-
 function MountsVehiclesPage(props: any) {
     var tempSection = new TopicSection()
 
     const [width, setWidth] = useState(window.innerWidth)
-    console.log(width)
+    
     React.useEffect(() => {
         window.addEventListener("resize", handleResize );
         return () => window.removeEventListener("resize", handleResize)

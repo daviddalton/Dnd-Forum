@@ -1,9 +1,7 @@
-import { Card, CardContent, CardMedia, Popover, Typography } from "@mui/material"
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import CharacterClassData from "../../../api/CharacterClassData"
 import CharacterClass from "../../../model/Character/Character/CharacterClass.interface"
-import ClassPopoverContent from "./ClassModal"
 import '../../styles/classCreate.css'
 import ClassModal from "./ClassModal"
 
@@ -99,39 +97,6 @@ function ClassCard(props: any) {
                         setClicked={setClicked}/>
 
         </div>
-        // <div>
-        //     {data?.results.map((res) => (
-        //         <Card
-        //             className="elementCard"
-        //             sx={{
-        //                 backgroundColor: '#292929',
-        //                 color: 'white'
-        //             }}
-        //             key={res.slug}
-        //             onClick={() => handleClick(res)} 
-        //         >
-        //             <CardContent className="createCard-content">
-        //             <CardMedia
-        //                 component="img"
-        //                 image="/DndCard.png"
-        //                 style={{ width: '70px' }} />
-        //                 <Typography style={{ paddingLeft: '10px' }}>
-        //                     {res.name}
-        //                 </Typography>
-        //             </CardContent>
-        //         </Card>
-        //     ))}
-        //     <Popover 
-        //     open={clicked}
-        //     onClose={handleClose}
-        //     anchorOrigin={{
-        //         vertical: 'center',
-        //         horizontal: 'center'
-        //     }}   
-        //     >
-        //         <ClassPopoverContent classSlug={prop}/>
-        //     </Popover>
-        // </div>
     )
 }
 

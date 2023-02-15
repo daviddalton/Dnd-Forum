@@ -8,6 +8,8 @@ import AppBarCreate from "./AppBarCreate";
 import ClassCard from "./ClassCreator/ClassCard";
 import RaceCard from "./RaceCreation/RaceCard";
 import SettingsPage from "./SettingsCreator/SettingPage";
+import { CSSTransition } from 'react-transition-group'
+import '../styles/SectionAnimations.css'
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
