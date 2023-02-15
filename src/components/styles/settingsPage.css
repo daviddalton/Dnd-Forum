@@ -3,7 +3,6 @@
 max-width: 780px;
 width: 100%;
 background: #393E46;
-opacity: .6;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -11,7 +10,8 @@ align-items: center;
 .settings-title-container {
     width: 100%;
     display: flex;
-    justify-content: center
+    justify-content: center;
+    opacity: .6
 }
 .character-settings-content {
     margin: '5px'
@@ -19,7 +19,8 @@ align-items: center;
 .character-name-container {
     margin: 5px;
     display: flex;
-    justify-content: center
+    justify-content: center;
+    opacity: .6
 }
 .character-name-text-container {
     margin: 5px
@@ -38,7 +39,8 @@ align-items: center;
     margin: 5px;
     max-width: 200px;
     min-width: 50px;
-    width: 100%
+    width: 100%;
+    opacity: .6
 }
 .advancement-type-accordion-container {
     min-width: 50px;
@@ -46,24 +48,29 @@ align-items: center;
     width: 100%;
     margin: 5px;
     display: flex;
-    align-items: center
+    align-items: center;
+    opacity: .6
+}
+.advancement-type-accordion-container:hover {
+    opacity: .8
 }
 .advancement-type-milestone {
-    border: 1px black solid;
-    padding-left: 15px;
-    background: #393E46
+    padding: 10px;
+    background: rgba(76,81,88);
+    cursor: pointer;
 }
 .advancement-type-xp {
-    border: 1px black solid;
-    padding-left: 15px;
-    background: #393E46
+    padding: 10px;
+    background: rgba(76,81,88);
+    cursor: pointer;
 }
 .hit-point-container {
     margin: 5px;
     display: flex
 }
 .hit-point-text-container {
-    margin: 5px
+    margin: 5px;
+    opacity: .6;
 }
 .hit-point-accordion-container {
     display: flex;
@@ -71,13 +78,19 @@ align-items: center;
     margin: 5px;
     min-width: 50px;
     max-width: 170px;
-    width: 100%
+    width: 100%;
+    opacity: .6;
+}
+.hit-point-accordion-container:hover {
+    opacity: .8;
 }
 .hit-point-fixed {
-    padding-left: 15px;
-    background: #393E46
+    padding: 10px;
+    background: #393E46;
+    cursor: pointer;
 }
 .hit-point-manual {
-    padding-left: 15px;
-    background: #393E46
+    padding: 10px;
+    background: #393E46;
+    cursor: pointer;
 }

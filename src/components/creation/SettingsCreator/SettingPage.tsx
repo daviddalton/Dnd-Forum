@@ -2,7 +2,6 @@ import { ExpandMore } from "@mui/icons-material"
 import { Accordion, AccordionSummary, Typography } from "@mui/material"
 import { useState } from "react"
 import '../../styles/settingsPage.css'
-import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
 
 
@@ -22,7 +21,7 @@ function SettingsPage(props: any): JSX.Element {
                 </div>
                 <div style={{ border: '1px black solid', width: '50%', boxShadow: '0px 1px 1px 0px black'}}></div>
                 <div className="character-settings-content">
-                        <CharacterName tempName={tempName} handleNameChange={handleNameChange}/>
+                        <CharacterName characterName={props.characterName} handleNameChange={handleNameChange}/>
                         <AdvancementType advancementType={props.advancementType} setAdvancementType={props.setAdvancementType} />
                         <HitPointType hitPointType={props.hitPointType} setHitPointType={props.setHitPointType} />
                 </div>
@@ -40,7 +39,7 @@ function CharacterName(props: any) {
                     <input 
                         type="text" 
                         placeholder="Enter a name" 
-                        value={props.tempName} 
+                        value={props.characterName} 
                         onChange={(e) => props.handleNameChange(e)}/>
             </div>
     </div>
@@ -56,7 +55,7 @@ function AdvancementType(props: any) {
                         <Accordion
                             style={{
                                 width: '100%',
-                                background: '#761e21',
+                                background: 'rgba(118,30,33)',
                                 color: "white"
                             }}>
                             <AccordionSummary

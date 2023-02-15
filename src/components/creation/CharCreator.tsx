@@ -10,17 +10,6 @@ import RaceCard from "./RaceCreation/RaceCard";
 import SettingsPage from "./SettingsCreator/SettingPage";
 import { CSSTransition } from 'react-transition-group'
 import '../styles/SectionAnimations.css'
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'left',
-    color: theme.palette.text.secondary,
-    width: '290px',
-    margin: '10px',
-    background: '#292929'
-  }));
   class AbilityScore {
     scoreName: string;
     total: string
@@ -41,7 +30,6 @@ class score {
         this.disabled = disabled
     }
 }
-
 
 function CharCreation() {
     const user = useAuth()
@@ -164,7 +152,7 @@ function CharCreation() {
             aScoreCharisma
             
         });
-        navigate("/create")
+        navigate('/create/character-select')
     }
     return (
         <div style={{
@@ -195,8 +183,8 @@ function CharCreation() {
                 {currentPage === 'Settings' ? (
                     <SettingsPage 
                         setCharacterName={setCharacterName} 
+                        characterName={characterName}
                         setAdvancementType={setAdvancementType}
-                        nameSlug={characterName}
                         advancementType={advancementType}
                         setHitPointType={setHitPointType}
                         hitPointType={hitPointType}
