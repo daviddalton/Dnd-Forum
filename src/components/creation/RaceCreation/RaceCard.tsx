@@ -43,12 +43,13 @@ function RaceCard(props: any) {
        <div>
                <h1
                    style={{
-                       opacity: '.6'
+                       opacity: '.6',
+                       fontFamily: 'buenard'
                    }}>
                    Choose a Race
                </h1>
        </div>
-       <div style={{ border: '1px black solid', width: '50%', margin: '5px'}}></div>
+       <div style={{ borderTop: '1px black solid', width: '50%', margin: '5px'}} />
        <div
            style={{
                margin: '5px',

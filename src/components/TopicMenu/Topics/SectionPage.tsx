@@ -25,12 +25,14 @@ import PoisonsPage from './PoisonsPage'
 import TrapsPage from './TrapsPage'
 import SpellCastingPage from './SpellCastingPage'
 import PantheonsPage from './PantheonsPage'
-import { CSSTransition } from 'react-transition-group'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
+import { useState } from 'react'
 
 function SectionPage() {
     const { sectionSlug } = useParams()
     const { data, status } = useQuery(['sections', sectionSlug], FetchSection)
+    const [ name, setName] = useState<string | undefined>()
     var splitDesc: string[] | undefined = [] 
     
     
@@ -45,9 +47,17 @@ function SectionPage() {
 
     if (data !== undefined) {
         modifyData()
+        
+       
     }
-    
+
     return<>
+                  
+                  <CSSTransition
+                          in={true}
+                          appear={true}
+                          timeout={1000}
+                          classNames="fade">
         <div
             style={{
                 width: '100%',
@@ -59,185 +69,99 @@ function SectionPage() {
             }}>
 
                 {data?.name === 'Alignment' ? (
-                    <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+
                         <AlignmentPage name={data?.name} splitDesc={splitDesc}/>
-                    </CSSTransition>
+                    
                 ): data?.name === 'Backgrounds' ? (
-                    <CSSTransition
-                        in={true}
-                        appear={true}
-                        timeout={1000}
-                        classNames="fade">
+
                         <BackgroundsPage name={data?.name} splitDesc={splitDesc}/>
-                    </CSSTransition>
+
                 ): data?.name === 'Inspiration' ? (
-                    <CSSTransition
-                        in={true}
-                        appear={true}
-                        timeout={1000}
-                        classNames="fade">
+                    
                         <InspirationPage name={data?.name} splitDesc={splitDesc}/>
-                    </CSSTransition>
+                    
                 ): data?.name === 'Languages' ? (
-                    <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                    
                     <LanguagesPage name={data?.name} splitDesc={splitDesc}/>
-                    </CSSTransition>
+                    
                 ) : data?.name === 'Adventuring Gear' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <AdventuringGearPage name={data?.name} splitDesc={splitDesc}/>
-                    </CSSTransition>
+                    
                 ) : data?.name === 'Armor' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <ArmorPage name={data?.name} splitDesc={splitDesc}/>
-                    </CSSTransition>
+                    
                 ) : data?.name === 'Equipment' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <EquipmentPage name={data?.name} splitDesc={splitDesc} />
-                    </CSSTransition>
+                    
                 ) : data?.name === 'Equipment Packs' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <EquipmentPacksPage name={data?.name} splitDesc={splitDesc} />
-                    </CSSTransition>
+                    
                 ) : data?.name === 'Expenses' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <ExpensesPage name={data?.name} splitDesc={splitDesc} />
-                    </CSSTransition>
+                    
                 ) : data?.name === 'Mounts and Vehicles' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <MountsVehiclesPage name={data?.name} splitDesc={splitDesc} />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Selling Treasure' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <SellingTreasurePage name={data?.name} splitDesc={splitDesc} />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Tools' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <ToolsPage name={data?.name} splitDesc={splitDesc} />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Trade Goods' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <TradeGoodsPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Weapons' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <WeaponsPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Conditions' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <ConditionsPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Diseases' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <DiseasesPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Madness' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <MadnessPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Objects' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <ObjectsPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Poisons' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <PoisonsPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Traps' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <TrapsPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Spellcasting' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <SpellCastingPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): data?.name === 'Pantheons' ? (
-                                        <CSSTransition
-                    in={true}
-                    appear={true}
-                    timeout={1000}
-                    classNames="fade">
+                                        
                     <PantheonsPage name={data?.name} splitDesc={splitDesc}  />
-                    </CSSTransition>
+                    
                 ): (
                     <div></div>
                 )}
+                
         </div>
+        </CSSTransition>
     </>
 }
 

@@ -134,9 +134,10 @@ function Header() {
                                                     style={{
                                                         padding: '5px',
                                                         marginLeft: '10px',
-                                                        border: '1px white solid',
                                                         borderRadius: '10px',
-                                                        cursor: 'pointer'
+                                                        cursor: 'pointer',
+                                                        background: '#761e21',
+                                                        opacity: '.6'
                                                     }}>
                                                     Logout
                                                 </div>

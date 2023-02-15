@@ -43,7 +43,10 @@ function ClassCard(props: any) {
     return (
         <div
             className="classCard-container">
-                <h1>Choose a Class</h1>
+                <div className="classCard-title-text">
+                    <h1>Choose a Class</h1>
+                </div>
+                <div style={{ borderTop: '1px black solid', width: '50%', margin: '5px'}}/>
                 <div className="class-search-bar-container">
                         <input
                             className="class-search-input"
@@ -54,7 +57,7 @@ function ClassCard(props: any) {
                             autoCorrect="true">
                         </input>
                 </div>
-                <div className="class-scrollable-div">
+                <div className="classCard-classes-container">
                     {classes?.map((res) => (
                         <div 
                             key={res.slug}
@@ -64,14 +67,13 @@ function ClassCard(props: any) {
                             </div>
                             <div className="class-content-container">
                                 <div className="class-text-container">
-                                    <h1 style={{ marginLeft: '10px'}}>
+                                    <p style={{ marginLeft: '10px'}}>
                                         {res.name}
-                                    </h1>
+                                    </p>
                                 </div>
                                 <div className="class-arrow-container">
-                                    <h1 className="class-arrow">
+                                    
                                         {">"}
-                                    </h1>
                                 </div>
                             </div>
                         </div>

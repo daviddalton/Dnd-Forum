@@ -19,7 +19,7 @@ function SettingsPage(props: any): JSX.Element {
                 <div className="settings-title-container">
                        <h1>Character Settings</h1>
                 </div>
-                <div style={{ border: '1px black solid', width: '50%', boxShadow: '0px 1px 1px 0px black'}}></div>
+                <div style={{ borderTop: '1px black solid', width: '50%', boxShadow: '0px 1px 1px 0px black'}}/>
                 <div className="character-settings-content">
                         <CharacterName characterName={props.characterName} handleNameChange={handleNameChange}/>
                         <AdvancementType advancementType={props.advancementType} setAdvancementType={props.setAdvancementType} />
