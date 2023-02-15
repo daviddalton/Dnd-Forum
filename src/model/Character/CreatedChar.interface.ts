@@ -1,5 +1,6 @@
 export interface CreatedChar {
     id?: string;
+    uid?: string;
     img?: string;
     characterClass?: string;
     advancementType?: string;

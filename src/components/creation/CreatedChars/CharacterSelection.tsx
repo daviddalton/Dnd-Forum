@@ -7,13 +7,16 @@ import CharacterCard from '../CharacterCard';
 import { AbilityScore } from '../../../model/Character/AbilityScore';
 import '../../styles/characterSelect.css'
 import '../../styles/characterCard.css'
-import { FirebaseError } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { useAuth } from '../../userContext';
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 
 function CharacterSelection() {
-
+    const user = useAuth()
     const [characters, setCharacters] = useState<CreatedChar[]>([])
+    const filteredCharacters = characters.filter((char: CreatedChar) => char.uid?.includes(user.user!.uid))
     const auth = getAuth()
     const scoreTitles = ['Str', 'Dex', 'Con', 'Intl', 'Wis', 'Cha'];
 
@@ -44,8 +47,13 @@ function CharacterSelection() {
     const handleClickNewCharacter = () => {
         navigate(`/create/character-select/new-character/character-creator`)
     }
-   console.log(auth.currentUser)
+
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className='character-select-screen-container'>
                 <div className='character-select-content-container'>
                         <div className='character-cards-container'>
@@ -57,8 +65,8 @@ function CharacterSelection() {
                                         <div className='character-select-indv-info-container'>
                                                 <div>
                                                         <div className='character-select-image-ability-scores-container'>
-                                                                {Ascores.map((s: AbilityScore) => (
-                                                                    <div className='character-select-indv-ability-scores'>
+                                                                {Ascores.map((s: AbilityScore, index: number) => (
+                                                                    <div key={index} className='character-select-indv-ability-scores'>
                                                                             {s.scoreName}: {s.total}
                                                                     </div>
                                                                 ))}
@@ -76,12 +84,13 @@ function CharacterSelection() {
                                                 </div>
                                         </div>
                                 </div>    
-                                {characters.map((character: CreatedChar) => (
-                                    <CharacterCard character={character}/>
+                                {filteredCharacters.map((character: CreatedChar, index: number) => (
+                                    <CharacterCard key={index} character={character}/>
                                 ))}
                         </div>
                 </div>
         </div>
+        </CSSTransition>
     )
 }
 

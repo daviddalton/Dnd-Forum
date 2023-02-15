@@ -71,11 +71,11 @@
 }
 .customizing-a-background {
     margin: 10px;
-opacity: .6;
-min-width: 320px;
-max-width: 1340px;
-display: flex;
-flex-direction: column;
-box-shadow: 0px 2px 2px 0px black;
-height: 380px
+    opacity: .6;
+    min-width: 320px;
+    max-width: 1340px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 2px 2px 0px black;
+    height: 380px
 }

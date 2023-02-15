@@ -1,47 +1,35 @@
-import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, User } from 'firebase/auth'
+import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './styles/login.css'
 import { Error, Facebook, GitHub, Google } from '@mui/icons-material'
-import { firestore } from '../firebase-config'
-
+import { CSSTransition } from 'react-transition-group'
+import '../components/styles/SectionAnimations.css'
 
 function LoginPage() {
-    const [user, setUser] = useState<User>()
     const [email, setEmail] = useState('')
     const [error, setError] = useState(false)
     const [password, setPassword] = useState('')
-    const auth = getAuth();
-    const [authing, setAuthing] = useState(false);
-    const navigate = useNavigate()
-   
-    const signInWithGoogle = async () => {
-        setAuthing(true);
 
+    const navigate = useNavigate()
+    const auth = getAuth();
+
+    const signInWithGoogle = async () => {
         signInWithPopup(auth, new GoogleAuthProvider())
         .then(response => {
-            
-            console.log(response.user.uid);
             navigate('/create/character-select');
         })
-        .catch(error => {
-            console.log(error)
-            setAuthing(false)
-        })
-    }
-
+    };
     const emailChanged = (e: any) => {
         setEmail(e.target.value)
     };
     const passwordChanged = (e: any) => {
         setPassword(e.target.value)
-    }
+    };
     const handleClickLogin = async () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
-            const user = userCredential.user;
-            setUser(user)
             setError(false)
             navigate('/create/character-select')
         })
@@ -51,10 +39,15 @@ function LoginPage() {
                 setError(true)
             }
         });
-
     }
 
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade"
+        unmountOnExit={true}>
         <div className='login-screen-container'>
                 <div className='login-content-container'>
                         <SignInText error={error}/>
@@ -65,7 +58,7 @@ function LoginPage() {
                         <CreateAccount />
                 </div>
         </div>
-        
+        </CSSTransition>
     )
 }
 
@@ -87,11 +80,10 @@ function SignInText(props: any) {
                 ):(
                     <div></div>
                 )}
-
-
         </div>
     )
 }
+
 function EmailInput(props: any) {
     return (
         <div className='login-input-container'>
@@ -103,6 +95,7 @@ function EmailInput(props: any) {
         </div>
     )
 }
+
 function PasswordInput(props: any) {
     return (
         <div className='login-input-container'>
@@ -114,6 +107,7 @@ function PasswordInput(props: any) {
         </div>
     )
 }
+
 function SignInButton(props: any) {
     return (
         <div className='login-sign-in-button-container'>
@@ -145,6 +139,7 @@ function AlternateSignInMethods(props: any) {
         </div>
     )
 }
+
 function CreateAccount() {
     return (
         <div className='login-create-account-container'>

@@ -50,7 +50,6 @@ function MadnessPage(props: any) {
             }
             tempSection.subSections.push(tempSubsection)
         })
-        console.log(tempSection)
     }
     function buildMadnessTables(splitDesc: string[]) {
         var tableData = splitDesc.filter((s: string) => s.includes('(table)'))
@@ -66,11 +65,9 @@ function MadnessPage(props: any) {
             var tempTable = new Table()
             var headingOne = new Heading()
             var headingTwo = new Heading()
-            // console.log('working with: ' + s)
             tempTable.title = s.replaceAll('*','').replaceAll('(table)','').trim()
             for (let i = splitTableData.indexOf(s) + 1; i < splitTableData.length; i++) {
                 let currentElement = splitTableData[i]
-                // console.log('working with: ' + currentElement)
                 if (currentElement.includes('*') && i > 0) {
                     break
                 } else if (i === 1 || i === 14 || i === 29) {
@@ -89,7 +86,6 @@ function MadnessPage(props: any) {
             tempTable.headings.push(headingTwo)
             tempSection.subSections[1].subSections[i].table = tempTable
         }
-        console.log(tempSection)
     }
 
     handleMadness(props.splitDesc)

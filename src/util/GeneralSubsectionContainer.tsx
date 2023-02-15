@@ -5,7 +5,6 @@ import React, { useState } from "react";
 
 
 function GeneralSubsectionContainer(props: any) {
-    console.log(props)
     const [width, setWidth] = useState(window.innerWidth)
     
     React.useEffect(() => {

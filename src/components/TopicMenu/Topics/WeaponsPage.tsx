@@ -26,7 +26,6 @@ function WeaponsPage(props: any) {
         buildSectionDesc(tempSection, splitDesc, '#', '')
         buildSubsections(splitDesc, tempSection)
         buildTable(splitDesc, tempSection, 2)
-        console.log(tempSection)
     }
 
     handleWeapons(props.splitDesc)

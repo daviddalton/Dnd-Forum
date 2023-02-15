@@ -1,6 +1,3 @@
-import { ExpandMore } from '@mui/icons-material'
-import { Accordion, AccordionSummary, Typography } from '@mui/material'
-import { fontSize } from '@mui/system'
 import { SubSection } from '../../../model/Character/SubSection.class'
 import { TopicSection } from '../../../model/Character/TopicSection.class'
 import recursiveCleaning from '../../../util/recursiveCleaning'
