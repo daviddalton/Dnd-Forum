@@ -70,15 +70,15 @@ function SectionPage() {
 
                 {data?.name === 'Alignment' ? (
 
-                        <AlignmentPage name={data?.name} splitDesc={splitDesc}/>
+                    <AlignmentPage name={data?.name} splitDesc={splitDesc}/>
                     
                 ): data?.name === 'Backgrounds' ? (
 
-                        <BackgroundsPage name={data?.name} splitDesc={splitDesc}/>
+                    <BackgroundsPage name={data?.name} splitDesc={splitDesc}/>
 
                 ): data?.name === 'Inspiration' ? (
                     
-                        <InspirationPage name={data?.name} splitDesc={splitDesc}/>
+                    <InspirationPage name={data?.name} splitDesc={splitDesc}/>
                     
                 ): data?.name === 'Languages' ? (
                     

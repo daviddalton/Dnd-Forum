@@ -8,12 +8,12 @@ function Wiki() {
     <div
         style={{
             width: '100%',
+            display: "flex",
             marginTop: '60px',
-            background: '#222831'
+            background: '#222831',
+            justifyContent: "center"
             
         }}>
-
-                   
             <Outlet />
         
     </div>

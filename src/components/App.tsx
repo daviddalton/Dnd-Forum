@@ -18,12 +18,11 @@ import LoginPage from './LoginPage';
 import Home from './Home';
 import WikiDesc from './TopicMenu/Topics/WikiDesc';
 import MagicItemsPage from './TopicMenu/Topics/MagicItemsPage';
-import LanguagesPage from './TopicMenu/Topics/LanguagesPage';
 import AuthRoute from './AuthRoute';
 import SignUpPage from './SignUpPage';
 import CreateLayout from './creation/CreateLayout';
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import './styles/SectionAnimations.css'
+import Search from './TopicMenu/Topics/SearchPage';
 
 const queryClient = new QueryClient();
 
@@ -43,11 +42,10 @@ function App() {
                   <Route path="magicitems" element={<MagicItemsPage />} />
                   <Route path="monsters" element={<MonstersPage/>}/>
                   <Route path="races/:raceSlug" element={<RacePage/>}/>
-                  <Route path="sections/:sectionSlug" element={
-                            <SectionPage />
-                  }/>
+                  <Route path="sections/:sectionSlug" element={<SectionPage />}/>
                   <Route path="spells" element={<SpellsPage/>}/>
                   <Route path="spells/:clazzSlug" element={<ClassSpellsPage/>}/>
+                  <Route path="search/:searchSlug" element={<Search/>}/>
                   <Route path='*' element={<NoPage/>}/>
                 </Route>
                 

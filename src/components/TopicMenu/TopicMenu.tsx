@@ -6,6 +6,7 @@ import TopicAccordion from './TopicAccordions/TopicAccordion';
 import CharacterClassData from '../../api/CharacterClassData';
 import RacesData from '../../api/RacesData';
 import SpellData from '../../api/SpellData';
+import { useNavigate } from 'react-router-dom';
 
 const sectionsData = new SectionData()
 const classesData = new CharacterClassData()
@@ -44,6 +45,7 @@ function TopicMenu(props: any){
   const racesData = GetRacesData()
   const [search, setSearch] = useState(" ");
   const spellClasses = ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Wizard", "Warlock"]
+  const navigate = useNavigate()
   const handleInput = (event: { target: { value: any; }; }) => {
     setSearch(event.target.value);
 }
@@ -113,15 +115,18 @@ function TopicMenu(props: any){
   }
 
   const topics = [characters, classes, equipment, magicItems, races, rules, spells, spellcasting, appendixes]
-
+  console.log(search)
   return (
     <>
     <div className='topic-menu-main-container'>
         <div className='topic-menu-input-accordion-container'>
+          <form
+            onSubmit={() => navigate(`wiki/search/${search}`)}>
             <input className='topic-menu-search-input'
-              onChange={handleInput} 
+              onChange={handleInput}
               placeholder="  Search:"
               />
+            </form>
         </div>
         {topics.map((topic: Topic) => (
           <TopicAccordion key={topic.name} topic={topic} handleDrawerClose={props.handleDrawerClose}/>
