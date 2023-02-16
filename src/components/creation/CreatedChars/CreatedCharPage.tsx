@@ -1,7 +1,6 @@
 import { AppBar, Box, Card, Paper, Stack, styled } from "@mui/material";
 import { display } from "@mui/system";
 import { collection, doc, DocumentData, getDoc, getDocs, query, where } from "firebase/firestore";
-import { data } from "jquery";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firestore } from "../../../firebase-config";
