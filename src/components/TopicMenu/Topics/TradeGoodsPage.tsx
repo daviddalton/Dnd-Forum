@@ -10,7 +10,6 @@ function TradeGoodsPage(props: any) {
     function handleTradeGoods(splitDesc: string[]) {
         buildSectionDesc(tempSection, splitDesc, '*', '')
         buildTable(splitDesc, tempSection, 2)
-        console.log(tempSection)
     }
 
     handleTradeGoods(props.splitDesc)

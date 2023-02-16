@@ -50,7 +50,6 @@ function RacesPage() {
     function buildMultiAstrickSubsection(tempSection: TopicSection, data: string | undefined, title?: string) {
         var parentSubsection = new SubSection()
         var tempData = data?.split('**_')
-        console.log(tempData)
         parentSubsection.title = title
         tempData?.forEach((s: string) => {
             if (s !== '') {

@@ -22,6 +22,8 @@ import LanguagesPage from './TopicMenu/Topics/LanguagesPage';
 import AuthRoute from './AuthRoute';
 import SignUpPage from './SignUpPage';
 import CreateLayout from './creation/CreateLayout';
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import './styles/SectionAnimations.css'
 
 const queryClient = new QueryClient();
 
@@ -37,13 +39,13 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/wiki" element={<Wiki/>}>
                   <Route index element={<WikiDesc />} />
-                  <Route path="backgrounds" element={<BackgroundsPage/>}/>
                   <Route path="classes/:classSlug" element={<ClassPage/>} />
-                  <Route path="languages" element={<LanguagesPage/>}/>
                   <Route path="magicitems" element={<MagicItemsPage />} />
                   <Route path="monsters" element={<MonstersPage/>}/>
                   <Route path="races/:raceSlug" element={<RacePage/>}/>
-                  <Route path="sections/:sectionSlug" element={<SectionPage />}/>
+                  <Route path="sections/:sectionSlug" element={
+                            <SectionPage />
+                  }/>
                   <Route path="spells" element={<SpellsPage/>}/>
                   <Route path="spells/:clazzSlug" element={<ClassSpellsPage/>}/>
                   <Route path='*' element={<NoPage/>}/>

@@ -82,7 +82,6 @@ function ClassPopoverContent(props: any) {
 
             }
         }
-        console.log(cleanedData)
         return cleanedData
     }
 
@@ -131,8 +130,6 @@ function ClassPopoverContent(props: any) {
         var test: (string | undefined)[] = []
         var splitData = cleanData()
         createTraitDirectory(splitData)
-        console.log(traitDirectory)
-    
     }
     
     return(

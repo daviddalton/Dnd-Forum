@@ -1,33 +1,32 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { AbilityScore } from "../../model/Character/AbilityScore";
 import { CreatedChar } from "../../model/Character/CreatedChar.interface"
+import { scoreTitles } from "../../util/constants";
 import { deleteCharacter } from "../controller";
 import '../styles/characterCard.css'
-
-
 interface IProps {
     character: CreatedChar
 }
 
-
 function CharacterCard({character}: IProps) {
 
+    var Ascores : AbilityScore[] = []
 
+    const scoreTotals = [character.aScoreStrength, character.aScoreDexterity, character.aScoreCon, character.aScoreIntel, character.aScoreWis, character.aScoreCharisma];
     const navigate = useNavigate();
     const handleClickCharacter = (id: string | undefined) => {
         navigate(`/create/character-select/${id}`)
     }
-
-    const scoreTitles = ['Str', 'Dex', 'Con', 'Intl', 'Wis', 'Cha'];
-    const scoreTotals = [character.aScoreStrength, character.aScoreDexterity, character.aScoreCon, character.aScoreIntel, character.aScoreWis, character.aScoreCharisma];
-    var Ascores : AbilityScore[] = []
+    
     function createAScores() {
         for (let i = 0; i < scoreTitles.length; i++) {
             let abilityScore = new AbilityScore(scoreTitles[i], scoreTotals[i]!, [])
             Ascores.push(abilityScore)
         }
     }
+
     createAScores()
+
     return (
         <div className="character-select-indv-card-container"
             onClick={() => handleClickCharacter(character.id)}>
@@ -36,13 +35,13 @@ function CharacterCard({character}: IProps) {
                 </div>
                 <div className="character-select-indv-info-container">
                         <div>
-                                <div className="character-select-image-ability-scores-container">
-                                        {Ascores.map((s: AbilityScore) => (
-                                            <div className="character-select-indv-ability-scores">
-                                                    {s.scoreName}: {s.total}
-                                            </div>
-                                        ))}
-                                </div>
+                            <div className="character-select-image-ability-scores-container">
+                                    {Ascores.map((s: AbilityScore, index: number) => (
+                                        <div key={index} className="character-select-indv-ability-scores">
+                                                {s.scoreName}: {s.total}
+                                        </div>
+                                    ))}
+                            </div>
                         </div>
                         <div className="character-select-class-container">
                                 Class: {character.characterClass}
@@ -56,8 +55,6 @@ function CharacterCard({character}: IProps) {
                                         Delete
                                 </div>
                         </div>
-
-
                 </div>
         </div>
     )

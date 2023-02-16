@@ -25,27 +25,39 @@ import PoisonsPage from './PoisonsPage'
 import TrapsPage from './TrapsPage'
 import SpellCastingPage from './SpellCastingPage'
 import PantheonsPage from './PantheonsPage'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
+import { useState } from 'react'
 
 function SectionPage() {
     const { sectionSlug } = useParams()
     const { data, status } = useQuery(['sections', sectionSlug], FetchSection)
+    const [ name, setName] = useState<string | undefined>()
     var splitDesc: string[] | undefined = [] 
-
+    
+    
     function FetchSection(): Promise<Section> {
         return fetch(`https://api.open5e.com/sections/${sectionSlug}`)
     }
     function modifyData() {
         if (data !== undefined) {
             splitDesc = data?.desc.split('\n\n')
-            console.log(splitDesc)
         }
     }
 
     if (data !== undefined) {
         modifyData()
+        
+       
     }
-    
+
     return<>
+                  
+                  <CSSTransition
+                          in={true}
+                          appear={true}
+                          timeout={1000}
+                          classNames="fade">
         <div
             style={{
                 width: '100%',
@@ -57,53 +69,99 @@ function SectionPage() {
             }}>
 
                 {data?.name === 'Alignment' ? (
-                    <AlignmentPage name={data?.name} splitDesc={splitDesc}/>
+
+                        <AlignmentPage name={data?.name} splitDesc={splitDesc}/>
+                    
                 ): data?.name === 'Backgrounds' ? (
-                    <BackgroundsPage name={data?.name} splitDesc={splitDesc}/>
+
+                        <BackgroundsPage name={data?.name} splitDesc={splitDesc}/>
+
                 ): data?.name === 'Inspiration' ? (
-                    <InspirationPage name={data?.name} splitDesc={splitDesc}/>
+                    
+                        <InspirationPage name={data?.name} splitDesc={splitDesc}/>
+                    
                 ): data?.name === 'Languages' ? (
+                    
                     <LanguagesPage name={data?.name} splitDesc={splitDesc}/>
+                    
                 ) : data?.name === 'Adventuring Gear' ? (
+                                        
                     <AdventuringGearPage name={data?.name} splitDesc={splitDesc}/>
+                    
                 ) : data?.name === 'Armor' ? (
+                                        
                     <ArmorPage name={data?.name} splitDesc={splitDesc}/>
+                    
                 ) : data?.name === 'Equipment' ? (
+                                        
                     <EquipmentPage name={data?.name} splitDesc={splitDesc} />
+                    
                 ) : data?.name === 'Equipment Packs' ? (
+                                        
                     <EquipmentPacksPage name={data?.name} splitDesc={splitDesc} />
+                    
                 ) : data?.name === 'Expenses' ? (
+                                        
                     <ExpensesPage name={data?.name} splitDesc={splitDesc} />
+                    
                 ) : data?.name === 'Mounts and Vehicles' ? (
+                                        
                     <MountsVehiclesPage name={data?.name} splitDesc={splitDesc} />
+                    
                 ): data?.name === 'Selling Treasure' ? (
+                                        
                     <SellingTreasurePage name={data?.name} splitDesc={splitDesc} />
+                    
                 ): data?.name === 'Tools' ? (
+                                        
                     <ToolsPage name={data?.name} splitDesc={splitDesc} />
+                    
                 ): data?.name === 'Trade Goods' ? (
+                                        
                     <TradeGoodsPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): data?.name === 'Weapons' ? (
+                                        
                     <WeaponsPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): data?.name === 'Conditions' ? (
+                                        
                     <ConditionsPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): data?.name === 'Diseases' ? (
+                                        
                     <DiseasesPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): data?.name === 'Madness' ? (
+                                        
                     <MadnessPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): data?.name === 'Objects' ? (
+                                        
                     <ObjectsPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): data?.name === 'Poisons' ? (
+                                        
                     <PoisonsPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): data?.name === 'Traps' ? (
+                                        
                     <TrapsPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): data?.name === 'Spellcasting' ? (
+                                        
                     <SpellCastingPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): data?.name === 'Pantheons' ? (
+                                        
                     <PantheonsPage name={data?.name} splitDesc={splitDesc}  />
+                    
                 ): (
                     <div></div>
                 )}
+                
         </div>
+        </CSSTransition>
     </>
 }
 

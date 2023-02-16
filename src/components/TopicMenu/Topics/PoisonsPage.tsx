@@ -8,8 +8,6 @@ import recursiveCleaning from "../../../util/recursiveCleaning"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
 
-
-
 function PoisonsPage(props: any) {
     var tempSection = new TopicSection()
     const [width, setWidth] = useState(window.innerWidth)

@@ -1,133 +1,156 @@
 import {  AccordionSummary, styled, Typography } from "@mui/material"
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
-import '../../styles/raceCreate.css'
+import { useQuery } from "@tanstack/react-query";
+import Race from "../../../model/Character/Races/race.interface";
+import '../../styles/selectedRace.css'
+import fetch from "../../../api/fetch";
+import { ShowRaceTrait } from "./RaceModal";
+import { ExpandMore } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
+class RaceDesc {
+    title!: string;
+    desc: string[] = []
+}
+class AstrickTrait {
+    title!: string;
+    desc: string[] = []
+}
+class MultiAstrickTrait {
+    astrickTraits: AstrickTrait[] = []
+}
 
+const Accordion = styled((props: AccordionProps) => (
+    <MuiAccordion disableGutters elevation={0} square {...props} />
+  ))(({ theme }) => ({
+    border: `1px solid ${theme.palette.divider}`,
+    '&:not(:last-child)': {
+      borderBottom: 0,
+    },
+    '&:before': {
+      display: 'none',
+    },
+  }));
 
-function SelectedRacePage() {
+function SelectedRacePage(props: any) {
+    var raceDesc = new RaceDesc()
+    var raceAlignment = new AstrickTrait()
+    var raceAge = new AstrickTrait()
+    var raceAsiDesc = new AstrickTrait()
+    var raceLanguages = new AstrickTrait()
+    var raceSize = new AstrickTrait()
+    var raceSpeedDesc = new AstrickTrait()
+    var raceTraits = new MultiAstrickTrait()
+    var traits = [raceAlignment, raceAge, raceAsiDesc, raceLanguages, raceSize, raceSpeedDesc]
+    const {data , status} = useQuery(['races', props.raceSlug], FetchRace)
+    const navigate = useNavigate()
 
-    const Accordion = styled((props: AccordionProps) => (
-        <MuiAccordion disableGutters elevation={0} square {...props} />
-      ))(({ theme }) => ({
-        border: `1px solid ${theme.palette.divider}`,
-        '&:not(:last-child)': {
-          borderBottom: 0,
-        },
-        '&:before': {
-          display: 'none',
-        },
-      }));
+    const handleToRaceClick = () => {
+        navigate(`/wiki/races/${props.raceSlug}`)
+    }
+    function handleChangeRace() {
+        props.setRace("")
+    }
+    function FetchRace(): Promise<Race> {
+        return fetch(`https://api.open5e.com/races/${props.raceSlug}`)
+    }
+    function createAstrickTrait(traitDesc: string | undefined, raceTrait: AstrickTrait) {
+        var splitDesc = traitDesc!.split('._**')
+        raceTrait.title = splitDesc[0].replaceAll('**_','').trim()
+        raceTrait.desc.push(splitDesc[1].trim())
+        return raceTrait
+    }
+    function createRaceDesc(desc: string | undefined, raceDesc: RaceDesc) {
+        var splitDesc = desc!.split('\n')
+        raceDesc.title = splitDesc[0].replaceAll('#','').trim()
+        raceDesc.desc.push(splitDesc[1].trim())
+        return raceDesc
+    }
+    function handleMultiAstrickTraits(traitDesc: string | undefined, multiAstrickTrait: MultiAstrickTrait) {
+        var splitDesc = traitDesc!.split('**_')
+        splitDesc.forEach(element => {
+            let tempAstrickTrait = new AstrickTrait()
+            let tempArr = element.split('._**')
+            if (tempArr[0] !== '') {
+                tempAstrickTrait.title = tempArr[0].trim()
+                tempAstrickTrait.desc.push(tempArr[1].trim())
+                multiAstrickTrait.astrickTraits.push(tempAstrickTrait)
+            }
+        });
+    }
+    if (data !== undefined && props.raceSlug !== undefined) {
+        buildRaceData(data)
+    }
 
-    const fakeData = [1,1,1,1,1,1,1]
-
+   function buildRaceData(data: Race) {
+    if (data !== undefined) {
+        raceDesc = createRaceDesc(data.desc, raceDesc)
+        raceAlignment = createAstrickTrait(data.alignment, raceAlignment)
+        raceAge = createAstrickTrait(data.age, raceAge)
+        raceAsiDesc = createAstrickTrait(data.asi_desc, raceAsiDesc)
+        raceLanguages = createAstrickTrait(data.languages, raceLanguages)
+        raceSize = createAstrickTrait(data.size, raceSize)
+        raceSpeedDesc = createAstrickTrait(data.speed_desc, raceSpeedDesc)
+        handleMultiAstrickTraits(data.traits, raceTraits)
+        }
+    }
     return(
-        <div style={{
-            background: '#454545',
-            border: '1px white solid',
-            display: 'flex',
-            flexDirection: 'column',
-            width: '686px',
-            height: '755px'
-        }}>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginTop: '15px',
-                    marginLeft: '5px',
-                    border: '1px white solid',
-                    height: '150px',
-                    width: '676px'
-                }}>
-                    <div
-                        style={{
-                            marginTop: '5px',
-                            marginLeft: '5px',
-                            border: '1px white solid',
-                            height: '140px',
-                            width: '140px'
-                        }}>
+        <div className="selected-race-container">
+            <div className="selected-race-image-desc-container">
+                    <div className="selected-race-image">
                             image
                     </div>
-                    <div
-                        style={{
-                            marginTop: '5px',
-                            marginLeft: '5px',
-                            border: '1px white solid',
-                            height: '140px',
-                            width: '515px'
-                        }}>
-                            Description
+                    <div>
+                        <div className="selected-race-desc">
+                           <p>You've chosen the race: <strong>{data?.name}</strong></p>
+                        </div>
+                        <div className="selected-race-desc">
+                                {raceDesc.desc}
+                        </div>
                     </div>
-            </div>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginTop: '5px',
-                    marginLeft: '5px',
-                    border: '1px white solid',
-                    height: '150px',
-                    width: '676px'
-                }}>
-                    <div
-                        style={{
-                            marginTop: '5px',
-                            marginLeft: '5px',
-                            border: '1px white solid',
-                            height: '40px',
-                            width: '140px'
-                        }}>
-                            <button
-                                style={{
-                                    width: '140px',
-                                    height: '40px',
-                                    background: '#B70B0B',
-                                    color: 'white',
-                                    fontSize: '25px',
-                                    fontFamily: 'buenard',
-                                    borderStyle: 'none',
-                                    cursor: 'pointer'
-                                }}>
-                                    To race
-                            </button>
-                    </div>
-            </div>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginTop: '5px',
-                    marginLeft: '5px',
-                    border: '1px white solid',
-                    height: '420px',
-                    width: '676px'
-                }}>
 
-                    {fakeData.map((data) => (
-                        <><div
-                            style={{
-                                border: '1px white solid',
-                                height: '50px',
-                                width: '90%'
-                            }}>
-                            <Accordion
-                                expanded={true}>
-                                <AccordionSummary>
-                                    <Typography>
-                                        {data}
+            </div>
+            <div className="selected-race-button-container">
+                            <button 
+                                className="selected-race-button"
+                                onClick={handleToRaceClick}>
+                                    To Race
+                            </button>
+                            <button className="selected-race-button"
+                                onClick={handleChangeRace}>
+                                    Change Race
+                            </button>
+            </div>
+            <div className="selected-race-accordion-container">
+
+                    {traits.map((trait: AstrickTrait, index: number) => (
+                        <>
+                            <Accordion 
+                                className="race-selected-indv-trait-accordion"
+                                sx={{
+                                    background: '#761e21'
+                                }}
+                                key={index}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMore style={{ color: 'white'}} />}
+                                    style={{
+                                        borderRadius: '10px',
+                                        color: 'white',
+                                        
+                                    }}>
+                                    <Typography style={{ fontFamily: 'buenard'}}>
+                                        {trait.title}
                                     </Typography>
                                 </AccordionSummary>
+                                <div className="selected-race-accordion-summary-div">
+                                        {trait.desc}
+                                </div>
                             </Accordion>
-                        </div></>
+                        </>
                     ))}
-                    
-            </div>
+                    <ShowRaceTrait raceTraits={raceTraits}/>
 
+            </div>
         </div>
     )
 }

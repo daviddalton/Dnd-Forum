@@ -1,6 +1,5 @@
 import { TopicSection } from "../../../model/Character/TopicSection.class"
 import hashSubsections from "../../../util/hashSubsections"
-import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
 
 
 function SpellCastingPage(props: any) {

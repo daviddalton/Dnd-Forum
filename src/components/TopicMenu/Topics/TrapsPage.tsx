@@ -26,14 +26,8 @@ function TrapsPage(props: any) {
         hashSubsections(splitDesc, tempSection)
     }
 
-    // function buildTrapSubsections(splitDesc: string[], tempSection: TopicSection) {
-    //     for (let i = 2; i < splitDesc.length; i++) {
-    //         let currentElement = splitDesc[i]
-    //         if (currentElement )
-    //     }
-    // }
-
     handleTraps(props.splitDesc)
+    
     return (
         <div
             style={{

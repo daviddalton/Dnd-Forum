@@ -2,22 +2,14 @@ import { Paper, Stack, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addCharacter } from "../controller";
+import { useAuth } from "../userContext";
 import AbilityCreator from "./AbilityCreator/AbilityCreator";
 import AppBarCreate from "./AppBarCreate";
 import ClassCard from "./ClassCreator/ClassCard";
 import RaceCard from "./RaceCreation/RaceCard";
 import SettingsPage from "./SettingsCreator/SettingPage";
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'left',
-    color: theme.palette.text.secondary,
-    width: '290px',
-    margin: '10px',
-    background: '#292929'
-  }));
+import { CSSTransition } from 'react-transition-group'
+import '../styles/SectionAnimations.css'
   class AbilityScore {
     scoreName: string;
     total: string
@@ -40,6 +32,8 @@ class score {
 }
 
 function CharCreation() {
+    const user = useAuth()
+    const uid = user.user?.uid
     const [id, setId] = useState("")
     const [img, setImg] = useState("")
     const [level, setLevel] = useState("1")
@@ -48,6 +42,7 @@ function CharCreation() {
     const [hitPointType, setHitPointType] = useState("Fixed")
     const [characterClass, setCharacterClass] = useState("")
     const [race, setRace] = useState("")
+    const [raceSlug, setRaceSlug] = useState("")
     const [background, setBackground] = useState("")
     const [alignment, setAlignment] = useState("")
     const [currentPage, setCurrentPage] = useState('Settings')
@@ -139,6 +134,8 @@ function CharCreation() {
     const addNewCharacter = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         addCharacter({
+            id,
+            uid,
             characterName,
             advancementType,
             hitPointType,
@@ -155,17 +152,13 @@ function CharCreation() {
             aScoreCharisma
             
         });
-        console.log("Successfully add a new character");
-        navigate("/create")
+        navigate('/create/character-select')
     }
-
-    console.log(currentPage)
     return (
         <div style={{
             color: 'white',
             width: '100%',
             background: '#222831',
-            border: '1px white solid',
             marginTop: '80px',
             display: 'flex',
             flexDirection: "column",
@@ -174,7 +167,6 @@ function CharCreation() {
         }}>
             <div
                 style={{
-                    border: '1px white solid',
                     minWidth: '320px',
                     maxWidth: '780px',
                     width: '100%',
@@ -191,8 +183,8 @@ function CharCreation() {
                 {currentPage === 'Settings' ? (
                     <SettingsPage 
                         setCharacterName={setCharacterName} 
+                        characterName={characterName}
                         setAdvancementType={setAdvancementType}
-                        nameSlug={characterName}
                         advancementType={advancementType}
                         setHitPointType={setHitPointType}
                         hitPointType={hitPointType}
@@ -204,7 +196,8 @@ function CharCreation() {
                             <RaceCard 
                                 race={race}
                                 setRace={setRace}
-                                setCurrentPage={setCurrentPage}
+                                raceSlug={raceSlug}
+                                setRaceSlug={setRaceSlug}
                             />
                         </div>
                     </>
@@ -256,7 +249,7 @@ function CharCreation() {
 
 
 
-                    {/* <button>Add Character</button> */}
+                    <button>Add Character</button>
                 </form>
             </div>
         </div>

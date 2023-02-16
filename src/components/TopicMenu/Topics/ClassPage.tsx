@@ -15,6 +15,8 @@ import { SubSection } from "../../../model/Character/SubSection.class";
 import buildTable from "../../../util/buildTable";
 import TopicSectionTable from "../../../util/TopicSectionTable";
 import '../../styles/characterClass.css'
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 function ClassPage() {
     var tempClassDesc = new classDesc()
@@ -140,11 +142,14 @@ function ClassPage() {
         buildProficiency(tempSection, data.prof_tools, 'Tool Proficiencies:')
         buildProficiency(tempSection, data.prof_weapons, 'Weapon Proficiencies:')
         buildTable(splitTableData, tempSection, 2)
-        console.log(tempSection)
-        console.log(splitTableData)
     }
 
     return<>
+        <CSSTransition
+                        in={true}
+                        appear={true}
+                        timeout={1000}
+                        classNames="fade">
         <div className="class-page-main-container">
                 <div className="class-page-title-container">
                         <div className="class-page-title-text">
@@ -167,6 +172,7 @@ function ClassPage() {
                         </div>
                 </div>
         </div>
+        </CSSTransition>
     </>
 }
 

@@ -1,9 +1,7 @@
-import { Card, CardContent, CardMedia, Popover, Typography } from "@mui/material"
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import CharacterClassData from "../../../api/CharacterClassData"
 import CharacterClass from "../../../model/Character/Character/CharacterClass.interface"
-import ClassPopoverContent from "./ClassModal"
 import '../../styles/classCreate.css'
 import ClassModal from "./ClassModal"
 
@@ -45,7 +43,10 @@ function ClassCard(props: any) {
     return (
         <div
             className="classCard-container">
-                <h1>Choose a Class</h1>
+                <div className="classCard-title-text">
+                    <h1>Choose a Class</h1>
+                </div>
+                <div style={{ borderTop: '1px black solid', width: '50%', margin: '5px'}}/>
                 <div className="class-search-bar-container">
                         <input
                             className="class-search-input"
@@ -56,7 +57,7 @@ function ClassCard(props: any) {
                             autoCorrect="true">
                         </input>
                 </div>
-                <div className="class-scrollable-div">
+                <div className="classCard-classes-container">
                     {classes?.map((res) => (
                         <div 
                             key={res.slug}
@@ -66,14 +67,13 @@ function ClassCard(props: any) {
                             </div>
                             <div className="class-content-container">
                                 <div className="class-text-container">
-                                    <h1 style={{ marginLeft: '10px'}}>
+                                    <p style={{ marginLeft: '10px'}}>
                                         {res.name}
-                                    </h1>
+                                    </p>
                                 </div>
                                 <div className="class-arrow-container">
-                                    <h1 className="class-arrow">
+                                    
                                         {">"}
-                                    </h1>
                                 </div>
                             </div>
                         </div>
@@ -99,39 +99,6 @@ function ClassCard(props: any) {
                         setClicked={setClicked}/>
 
         </div>
-        // <div>
-        //     {data?.results.map((res) => (
-        //         <Card
-        //             className="elementCard"
-        //             sx={{
-        //                 backgroundColor: '#292929',
-        //                 color: 'white'
-        //             }}
-        //             key={res.slug}
-        //             onClick={() => handleClick(res)} 
-        //         >
-        //             <CardContent className="createCard-content">
-        //             <CardMedia
-        //                 component="img"
-        //                 image="/DndCard.png"
-        //                 style={{ width: '70px' }} />
-        //                 <Typography style={{ paddingLeft: '10px' }}>
-        //                     {res.name}
-        //                 </Typography>
-        //             </CardContent>
-        //         </Card>
-        //     ))}
-        //     <Popover 
-        //     open={clicked}
-        //     onClose={handleClose}
-        //     anchorOrigin={{
-        //         vertical: 'center',
-        //         horizontal: 'center'
-        //     }}   
-        //     >
-        //         <ClassPopoverContent classSlug={prop}/>
-        //     </Popover>
-        // </div>
     )
 }
 
