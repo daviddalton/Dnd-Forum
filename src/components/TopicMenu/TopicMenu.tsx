@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query';
 import TopicAccordion from './TopicAccordions/TopicAccordion';
 import CharacterClassData from '../../api/CharacterClassData';
 import RacesData from '../../api/RacesData';
-import SpellData from '../../api/SpellData';
 import { useNavigate } from 'react-router-dom';
 
 const sectionsData = new SectionData()
@@ -73,7 +72,7 @@ function TopicMenu(props: any){
       let parentTopic = topic.parent
       if (parentTopic === 'Equipment') {
         equipment.subTopics.push(topic)
-      } else if (parentTopic === 'Characters') {
+      } else if (parentTopic === 'Characters' || parentTopic === 'Character Advancement') {
         characters.subTopics.push(topic)
       } else if (parentTopic === 'Rules') {
         rules.subTopics.push(topic)

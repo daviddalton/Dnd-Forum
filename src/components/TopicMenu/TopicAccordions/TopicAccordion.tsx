@@ -16,6 +16,7 @@ class Topic {
 function TopicAccordion(props: any) {
     const routing = useNavigate()
     const [open, setOpen] = useState(false)
+    const [expanded, setExpanded] = useState(true)
     const [currentUrl, setCurrentUrl] = useState(``)
     
     function handleRouting(slug: string, parentName: string) {
@@ -36,7 +37,7 @@ function TopicAccordion(props: any) {
         }
     }
 
-    const [expanded, setExpanded] = useState(true)
+
     return (
         <div>
         <Accordion 

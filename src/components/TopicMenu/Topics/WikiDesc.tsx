@@ -7,7 +7,7 @@ function WikiDesc() {
             style={{
                 
                 display: "flex",
-                backgroundImage: 'url(/DnDArtwork.png)',
+
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 width: '100%',

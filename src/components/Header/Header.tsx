@@ -62,113 +62,9 @@ function Header() {
             sx={{ zIndex: (theme) => theme.zIndex.drawer + 1}}
             style={{background: '#222831'}}>
                 <div className="heading-appbar-item-container">
-                    <div className="heading-appbar-menu-icon-container">
-                        {open ? (
-                            <IconButton onClick={handleDrawerClose}>
-                                      {theme.direction === 'ltr' ? <ChevronLeftIcon style={{color: 'white', marginTop: '10px', marginLeft: '10px'}}/> : <ChevronRightIcon />}
-                                    </IconButton>
-                        ) : (
-                            <Toolbar>
-                            <IconButton
-                                color="inherit"
-                                aria-label="open drawer"
-                                onClick={handleDrawerOpen}
-                                edge="start"
-                                sx={{ mr: 2 }}>
-                                <MenuIcon />
-                            </IconButton>
-                        </Toolbar>
-                        )}
-                    </div>
-                    <div className="header-center-screen-container">
-                        <div className="header-center-screen-title"
-                            onClick={navToHome}>
-                                DND FORUM
-                        </div>
-                        {width > 400 ? (
-                        <>
-                        <div className="header-center-screen-wiki">
-                            <button className='wiki-button'
-                                onClick={handleClickWiki}
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
-                            >
-                                Wiki
-                            </button>
-                        </div>
-                            <div className="header-center-screen-create">
-                                <button className='create-button'
-                                    onClick={handleClickCreate}
-                                    onMouseEnter={handleMouseEnter}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    Create
-                                </button>
-                            </div>
-                        </>
-                        ): (
-                            <div></div>
-                        )}
-
-                        </div>
-                        <div className="heading-login-container">
-                            {user.user ? (
-                                <div 
-                                    onClick={() => signOut(auth)}
-                                    style={{ paddingRight: '10px'}}>
-                                        {width > 920 ? (
-                                            <div
-                                                style={{
-                                                    display: 'flex'
-                                                }}>
-                                                <div
-                                                style={{
-                                                    background: '#761e21',
-                                                    padding: '5px',
-                                                    borderRadius: '10px',
-                                                    opacity: '.6'
-                                                }}>
-                                                    {user.user.email}
-                                                </div>
-                                                <div
-                                                    style={{
-                                                        padding: '5px',
-                                                        marginLeft: '10px',
-                                                        borderRadius: '10px',
-                                                        cursor: 'pointer',
-                                                        background: '#761e21',
-                                                        opacity: '.6'
-                                                    }}>
-                                                    Logout
-                                                </div>
-                                            </div>
-                                            
-                                        ):(
-                                            <div
-                                            style={{
-                                                padding: '5px',
-                                                marginLeft: '10px',
-                                                border: '1px white solid',
-                                                borderRadius: '10px',
-                                                cursor: 'pointer'
-                                            }}>
-                                                Logout
-                                            </div>
-                                        )}
-                                    
-                                </div>
-                            ):(
-                                <>
-                                <div className="heading-login-text-container">
-                                    Login
-                                </div>
-                                <Link to={"/login"}>
-                                    <div className="heading-login-square">
-                                    </div>
-                                </Link>
-                                </>
-                            )}
-                        </div>
+                    <ShowMenuIcon open={open} handleDrawerClose={handleDrawerClose} theme={theme} handleDrawerOpen={handleDrawerOpen}/>
+                    <TitleAndButtons handleClickWiki={handleClickWiki} handleClickCreate={handleClickCreate} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} width={width} navToHome={navToHome}/>
+                    <LoginLogoutDisplayName user={user} width={width} auth={auth}/>
                 </div>
         </AppBar>
         <HeaderDrawer 
@@ -178,4 +74,106 @@ function Header() {
     </>
 }
 
+function ShowMenuIcon(props: any) {
+    return (
+        <div className="heading-appbar-menu-icon-container">
+        {props.open ? (
+            <IconButton onClick={props.handleDrawerClose}>
+                      {props.theme.direction === 'ltr' ? <ChevronLeftIcon style={{color: 'white', marginTop: '10px', marginLeft: '10px'}}/> : <ChevronRightIcon />}
+                    </IconButton>
+        ) : (
+            <Toolbar  sx={{ paddingRight: '0px' }}>
+            <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={props.handleDrawerOpen}
+                edge="start"
+                sx={{ mr: 2 }}>
+                <MenuIcon/>
+            </IconButton>
+        </Toolbar>
+        )}
+    </div>
+    )
+}
+
+function TitleAndButtons(props: any) {
+    return (
+        <div className="header-center-screen-container">
+        <div className="header-center-screen-title"
+            onClick={props.navToHome}>
+                DND FORUM
+        </div>
+        {props.width > 400 ? (
+        <>
+        <div className="header-center-screen-wiki"
+            >
+            <button className='wiki-button'
+                onClick={props.handleClickWiki}
+                onMouseEnter={props.handleMouseEnter}
+                onMouseLeave={props.handleMouseLeave}
+            >
+                Wiki
+            </button>
+        </div>
+            <div className="header-center-screen-create">
+                <button className='create-button'
+                    onClick={props.handleClickCreate}
+                    onMouseEnter={props.handleMouseEnter}
+                    onMouseLeave={props.handleMouseLeave}
+                >
+                    Create
+                </button>
+            </div>
+        </>
+        ): (
+            <div/>
+        )}
+
+    </div>
+    )
+} 
+
+function LoginLogoutDisplayName(props: any) {
+    const auth = getAuth()
+    return (
+        <div className="heading-login-container">
+        {props.user.user ? (
+            <div 
+                style={{ paddingRight: '10px'}}>
+                    {props.width > 920 ? (
+                        <div
+                            style={{
+                                display: 'flex'
+                            }}>
+                            <div className="header-display-name-text">
+                                {props.user.user.displayName}
+                            </div>
+                            <div className="header-display-logout-text"
+                                onClick={() => signOut(auth)}>
+                                Logout
+                            </div>
+                        </div>  
+                    ):(
+                        <div 
+                            className="header-display-logout-text"
+                            onClick={() => signOut(auth)}>
+                            Logout
+                        </div>
+                    )}
+            </div>
+        ):(
+            <>
+            <div className="heading-login-text-container">
+                Login
+            </div>
+            <Link to={"/login"}>
+                <div className="heading-login-square">
+                </div>
+            </Link>
+            </>
+        )}
+    </div>
+    )
+}
 export default Header

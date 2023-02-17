@@ -9,8 +9,10 @@ function buildSectionDesc(tempSection: TopicSection, splicedData: string[], char
             if (subString.includes(charToStopAt)) { break } 
             else { tempSection.desc.push(subString.replaceAll(replacementChar, '').replaceAll('*','').replaceAll('_','')) }
         } else {
-            if (subString.includes(charToStopAt) || subString.includes('|')) { break } 
-            else { tempSection.desc.push(subString.replaceAll('*','').replaceAll('_','')) }
+            if (subString.includes(charToStopAt) || subString.includes('|')) {  console.log(subString); break } 
+            else { 
+                console.log(subString)
+                tempSection.desc.push(subString.replaceAll('*','').replaceAll('_','')) }
         }
 
     }

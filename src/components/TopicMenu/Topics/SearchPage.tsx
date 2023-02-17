@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import fetch from "../../../api/fetch"
 import Search from "../../../model/Character/Search"
 import '../../styles/searchPage.css'
@@ -13,10 +13,14 @@ import { useState } from "react"
 function SearchPage() {
     const { searchSlug } = useParams()
     const [search, setSearch] = useState()
+    const navigate = useNavigate()
     const { data, status } = useQuery([search ? (search):(searchSlug)], fetchSearch)
 
     const handleInput = (event: { target: { value: any; }; }) => {
         setSearch(event.target.value)
+    }
+    const handleClick = (route: string, slug: string) => {
+        navigate(`/wiki/${route}${slug}`)
     }
     
     function fetchSearch(): Promise<Search> {
@@ -26,11 +30,9 @@ function SearchPage() {
 
     return (
         <div className="search-container">
-                
-                
                     <div className="search-slug-container">
                         <div>
-                           <h1>Search Results:                             
+                           <h1>Search Results:                        
                             <input
                                 onChange={handleInput}
                                 value={search} 
@@ -53,7 +55,9 @@ function SearchPage() {
                 
                 <div className="search-results-container">
                         {data?.results.map((res: SearchResults) => (
-                            <div className="search-indv-result-container"
+                            <div 
+                                className="search-indv-result-container"
+                                onClick={() => handleClick(res.route, res.slug)}
                                 key={res.slug}>
                                     <div className="search-indv-result-name">
                                             {res.name}

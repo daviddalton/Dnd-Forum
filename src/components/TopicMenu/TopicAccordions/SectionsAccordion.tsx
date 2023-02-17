@@ -8,14 +8,8 @@ const sectionsData= new SectionData()
 
 export default function CharacterAccordion() {
 
-    const [expanded, setExpanded] = React.useState<string | false>('panel1');
-
-    const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-      setExpanded(newExpanded ? panel : false);
-    };
-
     const { data, status } = useQuery(['sections'], sectionsData.fetchSections)
+    
     return<>
       <ul style={{
           color:'#E6E6E6'

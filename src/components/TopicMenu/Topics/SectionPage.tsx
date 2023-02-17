@@ -28,6 +28,7 @@ import PantheonsPage from './PantheonsPage'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
 import { useState } from 'react'
+import LevelingUpPage from './LevelingUp'
 
 function SectionPage() {
     const { sectionSlug } = useParams()
@@ -156,7 +157,11 @@ function SectionPage() {
                                         
                     <PantheonsPage name={data?.name} splitDesc={splitDesc}  />
                     
-                ): (
+                ): data?.name === 'Leveling Up' ? (
+                                        
+                    <LevelingUpPage name={data?.name} splitDesc={splitDesc}  />
+                    
+                ):(
                     <div></div>
                 )}
                 

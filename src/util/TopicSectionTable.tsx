@@ -1,6 +1,7 @@
 import { Heading } from "../model/Character/Heading.class";
 import { Table } from "../model/Character/Table.class";
 import '../components/styles/generalTable.css'
+import { width } from "@mui/system";
 
 function TopicSectionTable(props: any) {
     return (
@@ -15,7 +16,9 @@ function TopicSectionTable(props: any) {
                     }}>
                         <div className="generalTable-indv-table-title"
                             style={{
-                                width: '100%'
+                                width: '100%',
+                                
+                                
                             }}>
                                 {table.title}
                         </div>
@@ -26,7 +29,11 @@ function TopicSectionTable(props: any) {
                         <div className="generalTable-table-headings-container">
                             {table.headings.map((heading: Heading) => (
                                 <div className="generalTable-table-heading-data">
-                                    <div className="generalTable-table-indv-heading">
+                                    <div 
+                                        className="generalTable-table-indv-heading"
+                                        style={{
+                                            fontSize: props.tableChangeWidth > props.width ? ('10px'):('15px')
+                                        }}>
                                             {heading.title}
                                     </div>
                                     {heading.data.map((dat: string) => (
