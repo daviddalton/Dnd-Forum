@@ -22,9 +22,6 @@ function LevelingUpPage(props: any) {
     function handleResize() {
         setWidth(window.innerWidth)
     }
-    console.log(props.splitDesc)
-
-    
     function handleLevelUp(splitDesc: string[]) {
        buildLevelUpDesc(splitDesc)
        buildTable(splitDesc, tempSection, 3)
@@ -38,7 +35,6 @@ function LevelingUpPage(props: any) {
     }
     
     handleLevelUp(props.splitDesc)
-    console.log(tempSection)
     return (
         <div
             style={{
