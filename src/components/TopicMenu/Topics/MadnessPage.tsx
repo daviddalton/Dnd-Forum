@@ -6,22 +6,14 @@ import { TopicSection } from "../../../model/Character/TopicSection.class";
 import buildSectionDesc from "../../../util/buildSectionDesc";
 import SectionTitleDesc from "../../../util/SectionTitleDesc";
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection";
+import { useWidth } from "../../WidthContext";
 
 
 
 function MadnessPage(props: any) {
     var tempSection = new TopicSection()
+    const width = useWidth()
 
-    const [width, setWidth] = useState(window.innerWidth)
-    
-    React.useEffect(() => {
-        window.addEventListener("resize", handleResize );
-        return () => window.removeEventListener("resize", handleResize)
-    })
-
-    function handleResize() {
-        setWidth(window.innerWidth)
-    }
     function handleMadness(splitDesc: string[]) {
         buildSectionDesc(tempSection, splitDesc, '#', '')
         buildMadnessSubsections(splitDesc, tempSection)
@@ -97,8 +89,8 @@ function MadnessPage(props: any) {
                 alignItems: 'center',
                 fontFamily: 'buenard'
             }}>
-                <SectionTitleDesc name={props.name} tempSection={tempSection} width={width}/>
-                <SubSectionsWithSubSections tempSection={tempSection} width={width} />
+                <SectionTitleDesc name={props.name} tempSection={tempSection} width={width.width!}/>
+                <SubSectionsWithSubSections tempSection={tempSection} width={width.width!} />
 
 
         </div>

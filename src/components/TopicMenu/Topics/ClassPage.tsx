@@ -17,6 +17,7 @@ import TopicSectionTable from "../../../util/TopicSectionTable";
 import '../../styles/characterClass.css'
 import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
+import { useWidth } from "../../WidthContext";
 
 function ClassPage() {
     var tempClassDesc = new classDesc()
@@ -25,16 +26,7 @@ function ClassPage() {
 
     const { classSlug } = useParams()
     const { data, status } = useQuery(['class', classSlug], FetchClass)
-    const [width, setWidth] = useState(window.innerWidth)
-    
-    React.useEffect(() => {
-        window.addEventListener("resize", handleResize );
-        return () => window.removeEventListener("resize", handleResize)
-    })
-
-    function handleResize() {
-        setWidth(window.innerWidth)
-    }
+    const width = useWidth()
 
     function FetchClass(): Promise<CharacterClass> {
         return fetch(`https://api.open5e.com/classes/${classSlug}`)
@@ -146,10 +138,10 @@ function ClassPage() {
 
     return<>
         <CSSTransition
-                        in={true}
-                        appear={true}
-                        timeout={1000}
-                        classNames="fade">
+            in={true}
+            appear={true}
+            timeout={1000}
+            classNames="fade">
         <div className="class-page-main-container">
                 <div className="class-page-title-container">
                         <div className="class-page-title-text">
@@ -157,7 +149,7 @@ function ClassPage() {
                         </div>
                 </div>
                 <div className="class-page-content-container">
-                        <CharacterData width={width} tempSection={tempSection} />
+                        <CharacterData width={width.width!} tempSection={tempSection} />
                         <div className="class-page-proficiency-container">
                                 <Proficiencies tempSection={tempSection} />
                         </div>

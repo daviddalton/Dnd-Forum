@@ -7,8 +7,6 @@ import GeneralSubsectionContainer from "../../../util/GeneralSubsectionContainer
 import recursiveCleaning from "../../../util/recursiveCleaning"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 
-
-
 function MulticlassingPage(props: any) {
 
     const tempSection = new TopicSection()

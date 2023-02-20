@@ -1,7 +1,5 @@
 import { ExpandMore } from "@mui/icons-material"
 import { Accordion, AccordionSummary, Typography } from "@mui/material"
-import React from "react"
-import { useState } from "react"
 import { SubSection } from "../../../model/Character/SubSection.class"
 import { TopicSection } from "../../../model/Character/TopicSection.class"
 import astrickSubSection from "../../../util/astrickSubSection"
@@ -9,20 +7,11 @@ import buildSectionDesc from "../../../util/buildSectionDesc"
 import buildTable from "../../../util/buildTable"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
+import { useWidth } from "../../WidthContext"
 
 function ToolsPage(props: any) {
     var tempSection = new TopicSection()
-
-    const [width, setWidth] = useState(window.innerWidth)
-    
-    React.useEffect(() => {
-        window.addEventListener("resize", handleResize );
-        return () => window.removeEventListener("resize", handleResize)
-    })
-
-    function handleResize() {
-        setWidth(window.innerWidth)
-    }
+    const width = useWidth()
 
     function handleTools(splitDesc: string[]) {
         buildSectionDesc(tempSection, splitDesc, '*', '')
@@ -31,7 +20,7 @@ function ToolsPage(props: any) {
     }
 
     handleTools(props.splitDesc)
-    
+
     return (
         <div className="tools-content-container"
             style={{
@@ -46,12 +35,12 @@ function ToolsPage(props: any) {
                     style={{ 
                         display: "flex",
                         justifyContent: 'center',
-                        flexDirection: width > 800 ? ('row'):('column'),
-                        alignItems: width < 800 ? 'center' : 'normal',
+                        flexDirection: width.width! > 800 ? ('row'):('column'),
+                        alignItems: width.width! < 800 ? 'center' : 'normal',
                         
                         }}>
                         <div className="tools-accordion-container"
-                            style={{ width: width < 800 ? ('100%'):('400px') }}>
+                            style={{ width: width.width! < 800 ? ('100%'):('400px') }}>
                             {tempSection.subSections.map((subSec: SubSection) => (
                                 <Accordion
                                     style={{ opacity: '.6', marginTop: '5px'}}>

@@ -9,13 +9,14 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import React from "react";
 import { useAuth } from "../userContext";
+import { useWidth } from "../WidthContext";
 
 
 
 function Header() {
-    const [width, setWidth] = useState(window.innerWidth)
+   
     const [open, setOpen] = useState(false);
-
+    const width = useWidth()
     const navigate = useNavigate();
     const theme = useTheme();
     const auth = getAuth()
@@ -49,15 +50,6 @@ function Header() {
         navigate('/login')
     }
 
-    function handleResize() {
-        handleDrawerClose()
-        setWidth(window.innerWidth)
-    } 
-
-    React.useEffect(() => {
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize)
-    })
 
     return<>
         <AppBar className="heading-appbar"
@@ -65,8 +57,8 @@ function Header() {
             style={{background: '#222831'}}>
                 <div className="heading-appbar-item-container">
                     <ShowMenuIcon open={open} handleDrawerClose={handleDrawerClose} theme={theme} handleDrawerOpen={handleDrawerOpen}/>
-                    <TitleAndButtons handleClickWiki={handleClickWiki} handleClickCreate={handleClickCreate} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} width={width} navToHome={navToHome}/>
-                    <LoginLogoutDisplayName user={user} width={width} auth={auth} handleLoginClick={handleLoginClick} currentURL={currentURL}/>
+                    <TitleAndButtons handleClickWiki={handleClickWiki} handleClickCreate={handleClickCreate} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} width={width.width!} navToHome={navToHome}/>
+                    <LoginLogoutDisplayName user={user} width={width.width!} auth={auth} handleLoginClick={handleLoginClick} currentURL={currentURL}/>
                 </div>
         </AppBar>
         <HeaderDrawer 

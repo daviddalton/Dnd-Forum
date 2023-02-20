@@ -7,7 +7,6 @@ function PantheonsPage(props: any) {
 
     function handlePantheon(splitDesc: string[]) {
         buildSectionDesc(tempSection, splitDesc, '#')
-        console.log(tempSection)
     }
 
     handlePantheon(props.splitDesc)

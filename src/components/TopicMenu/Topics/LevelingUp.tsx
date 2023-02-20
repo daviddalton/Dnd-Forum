@@ -1,30 +1,18 @@
-import React, { useState } from "react"
 import { TopicSection } from "../../../model/Character/TopicSection.class"
 import buildTable from "../../../util/buildTable"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
+import { useWidth } from "../../WidthContext"
 
 function LevelingUpPage(props: any) {
-
     var tempSection = new TopicSection()
-
-    const [width, setWidth] = useState(window.innerWidth)
+    const width = useWidth()
     const tableChangeWidth = 360
-    
-    React.useEffect(() => {
-        window.addEventListener("resize", handleResize );
-        return () => window.removeEventListener("resize", handleResize)
-    })
-    
-    function handleResize() {
-        setWidth(window.innerWidth)
-    }
 
     function handleLevelUp(splitDesc: string[]) {
        buildLevelUpDesc(splitDesc)
        buildTable(splitDesc, tempSection, 3)
     }
-
     function buildLevelUpDesc(splitDesc: string[]) {
         for(let i = 0; i < splitDesc.length; i++) {
             if (i < 5) {
@@ -34,6 +22,7 @@ function LevelingUpPage(props: any) {
     }
     
     handleLevelUp(props.splitDesc)
+    
     return (
         <div
             style={{
@@ -42,8 +31,8 @@ function LevelingUpPage(props: any) {
                 alignItems: 'center',
                 flexDirection: 'column'
             }}>
-                <SectionTitleDesc tempSection={tempSection} name={props.name} width={width}/>
-                <TopicSectionTable tempSection={tempSection} width={width} tableChangeWidth={tableChangeWidth}/>
+                <SectionTitleDesc tempSection={tempSection} name={props.name} width={width.width!}/>
+                <TopicSectionTable tempSection={tempSection} width={width.width!} tableChangeWidth={tableChangeWidth}/>
         </div>
     )
 }
