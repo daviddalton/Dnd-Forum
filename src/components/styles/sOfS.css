@@ -18,6 +18,7 @@
 }
 .s-title {
     background: rgb(118, 30, 33);
+    opacity: .6;
     height: fit-content;
     padding-left: 10px;
     display: flex;
@@ -51,15 +52,15 @@
     color: white
 }
 .s-of-s-table-container {
-    width: 100%
+    width: 100%;
 }
 .s-of-s-table-title {
     display: flex;
     justify-content: center;
-    background: rgb(118, 30, 33)
+    background: rgb(118, 30, 33);
+    opacity: .6
 }
 .s-of-s-heading-row {
-    border: 1px white solid;
     display: flex
 }
 .s-of-s-column {
@@ -70,7 +71,9 @@
     display: flex;
     justify-content: center;
     background: rgb(118, 30, 33);
-    border: 1px white solid
+    opacity: .6;
+    border: 1px white solid;
+    padding: 5px
 }
 .s-of-s-table-heading-data {
     display: flex;
@@ -78,5 +81,7 @@
     border: 1px white solid;
     padding: 5px;
     height: 70px;
-    background: #222831
+    background: #393E46;
+    justify-content: center;
+    opacity: .6
 }

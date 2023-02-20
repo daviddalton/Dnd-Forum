@@ -21,7 +21,8 @@ function Header() {
     const theme = useTheme();
     const auth = getAuth()
     const user = useAuth()
-
+    const currentURL = window.location.href
+    console.log(currentURL)
     const handleClickWiki = () => {
         navigate('/wiki')
         setOpen(true)
@@ -46,6 +47,9 @@ function Header() {
     const handleDrawerClose = () => {
       setOpen(false);
     };
+    const handleLoginClick = () => {
+        navigate('/login')
+    }
 
     function handleResize() {
         handleDrawerClose()
@@ -64,7 +68,7 @@ function Header() {
                 <div className="heading-appbar-item-container">
                     <ShowMenuIcon open={open} handleDrawerClose={handleDrawerClose} theme={theme} handleDrawerOpen={handleDrawerOpen}/>
                     <TitleAndButtons handleClickWiki={handleClickWiki} handleClickCreate={handleClickCreate} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} width={width} navToHome={navToHome}/>
-                    <LoginLogoutDisplayName user={user} width={width} auth={auth}/>
+                    <LoginLogoutDisplayName user={user} width={width} auth={auth} handleLoginClick={handleLoginClick} currentURL={currentURL}/>
                 </div>
         </AppBar>
         <HeaderDrawer 
@@ -164,12 +168,25 @@ function LoginLogoutDisplayName(props: any) {
             </div>
         ):(
             <>
-            <div className="heading-login-text-container">
-                Login
-            </div>
+            {props.currentURL !== 'http://localhost:3000/login' ? (
+            <div
+            style={{
+                
+                marginRight: '15px',
+                padding: '5px',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                background: '#761e21',
+                opacity: '.6'
+            }}
+            onClick={props.handleLoginClick}>
+            Login
+        </div>
+            ):(
+                <div></div>
+            )}
+
             <Link to={"/login"}>
-                <div className="heading-login-square">
-                </div>
             </Link>
             </>
         )}

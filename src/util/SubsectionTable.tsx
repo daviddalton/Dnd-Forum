@@ -1,10 +1,10 @@
 import { Heading } from "../model/Character/Heading.class";
+import '../components/styles/sOfS.css'
 
 
 
 
 function SubsectionTable(props: any) {
-    console.log(props)
     return (
         <>
             <div
@@ -17,7 +17,8 @@ function SubsectionTable(props: any) {
                 <div
                     style={{
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        background: '#393E46'
                     }}>
                         {props.subSection.table.headings.map((heading: Heading) => (
                         <div className="s-of-s-column">

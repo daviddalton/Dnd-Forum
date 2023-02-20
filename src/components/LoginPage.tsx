@@ -36,6 +36,7 @@ function LoginPage() {
         .catch((error) => {
             console.log(error.message)
             if (error.message === 'Firebase: Error (auth/invalid-email).') {
+                alert('login failed')
                 setError(true)
             }
         });

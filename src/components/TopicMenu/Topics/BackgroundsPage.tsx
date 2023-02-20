@@ -12,8 +12,15 @@ function BackgroundSubsecDesc(props: any) {
     return (
         <>
         {props.subSec?.desc?.map((des: string) => (
-            <div className="backgrounds-subsection-desc-container">
-                <div className="backgrounds-subsection-desc">
+            <div className="backgrounds-subsection-desc-container"
+                style={{
+                    borderBottomLeftRadius: '10px',
+                    borderBottomRightRadius: '10px',
+                }}>
+                <div className="backgrounds-subsection-desc"
+                    style={{
+                        borderRadius: '10px'
+                    }}>
                     {des}
                 </div>
             </div>
@@ -29,7 +36,11 @@ function CustomizingABackground(props: any) {
                     <h2>{props.subSec.title}</h2>
                 </div>
                 {props.subSec?.desc?.map((des: string) => (
-                    <div className="backgrounds-subsection-desc-container">
+                    <div className="backgrounds-subsection-desc-container"
+                        style={{
+                            borderBottomLeftRadius: '10px',
+                            borderBottomRightRadius: '10px'
+                        }}>
                         <div className="backgrounds-subsection-desc">
                             {des}
                         </div>
@@ -56,11 +67,18 @@ function BackgroundsPage(props: any) {
         <div className="backgrounds-content-container">
             <SectionTitleDesc name={props.name} tempSection={tempSection}/>
                 <div className="backgrounds-subsections-container">
-                        {tempSection?.subSections.map((subSec: SubSection) => {
-                            return (
+                        {tempSection?.subSections.map((subSec: SubSection) => (
                                 subSec.title !== 'Customizing a Background' ? (
-                                    <div className="backgrounds-indv-subsection">
-                                        <div className="backgrounds-subsection-titles">
+                                    <div 
+                                        className="backgrounds-indv-subsection"
+                                        style={{
+                                            borderBottomLeftRadius: '10px',
+                                            borderBottomRightRadius: '10px'
+                                        }}>
+                                        <div className="backgrounds-subsection-titles"
+                                                                                style={{
+                                                                                    borderTopLeftRadius: '10px'
+                                                                                }}>
                                             <h2>{subSec.title}</h2>
                                         </div>
                                         <BackgroundSubsecDesc subSec={subSec}/>
@@ -69,7 +87,7 @@ function BackgroundsPage(props: any) {
                                     <CustomizingABackground subSec={subSec}/>
                                 )
                             )
-                        })}
+                        )}
                 </div>
         </div>
     </>

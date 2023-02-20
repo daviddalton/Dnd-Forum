@@ -29,6 +29,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
 import { useState } from 'react'
 import LevelingUpPage from './LevelingUp'
+import MulticlassingPage from './Multiclassing'
 
 function SectionPage() {
     const { sectionSlug } = useParams()
@@ -160,6 +161,10 @@ function SectionPage() {
                 ): data?.name === 'Leveling Up' ? (
                                         
                     <LevelingUpPage name={data?.name} splitDesc={splitDesc}  />
+                    
+                ): data?.name === 'Multiclassing' ? (
+                                        
+                    <MulticlassingPage name={data?.name} splitDesc={splitDesc}  />
                     
                 ):(
                     <div></div>

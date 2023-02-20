@@ -4,10 +4,6 @@ import buildTable from "../../../util/buildTable"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
 
-
-
-
-
 function LevelingUpPage(props: any) {
 
     var tempSection = new TopicSection()
@@ -19,13 +15,16 @@ function LevelingUpPage(props: any) {
         window.addEventListener("resize", handleResize );
         return () => window.removeEventListener("resize", handleResize)
     })
+    
     function handleResize() {
         setWidth(window.innerWidth)
     }
+
     function handleLevelUp(splitDesc: string[]) {
        buildLevelUpDesc(splitDesc)
        buildTable(splitDesc, tempSection, 3)
     }
+
     function buildLevelUpDesc(splitDesc: string[]) {
         for(let i = 0; i < splitDesc.length; i++) {
             if (i < 5) {

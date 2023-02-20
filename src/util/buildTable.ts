@@ -1,5 +1,6 @@
 
 import { Heading } from "../model/Character/Heading.class"
+import { SubSection } from "../model/Character/SubSection.class"
 import { Table } from "../model/Character/Table.class"
 import { TopicSection } from "../model/Character/TopicSection.class"
 import recursiveCleaning from "./recursiveCleaning"

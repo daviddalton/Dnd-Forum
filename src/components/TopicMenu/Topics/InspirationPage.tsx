@@ -10,7 +10,11 @@ function InspirationSubsecDesc(props: any) {
     return (
         <>
         {props.subSec?.desc?.map((des: string) => (
-            <div className="backgrounds-subsection-desc-container">
+            <div className="backgrounds-subsection-desc-container"
+                style={{
+                    borderBottomRightRadius: '10px',
+                    borderBottomLeftRadius: '10px'
+                }}>
                 <div className="backgrounds-subsection-desc">
                     {des}
                 </div>
@@ -42,7 +46,10 @@ function InspirationPage(props: any) {
                             return (
                                 subSec.title !== 'Customizing a Background' ? (
                                     <div className="backgrounds-indv-subsection">
-                                        <div className="backgrounds-subsection-titles">
+                                        <div className="backgrounds-subsection-titles"
+                                            style={{
+                                                borderTopLeftRadius: '10px'
+                                            }}>
                                             <h2>{subSec.title}</h2>
                                         </div>
                                         <InspirationSubsecDesc subSec={subSec}/>

@@ -45,6 +45,7 @@ function TopicMenu(props: any){
   const [search, setSearch] = useState(" ");
   const spellClasses = ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Wizard", "Warlock"]
   const navigate = useNavigate()
+  
   const handleInput = (event: { target: { value: any; }; }) => {
     setSearch(event.target.value);
 }
@@ -114,7 +115,6 @@ function TopicMenu(props: any){
   }
 
   const topics = [characters, classes, equipment, magicItems, races, rules, spells, spellcasting, appendixes]
-  console.log(search)
   return (
     <>
     <div className='topic-menu-main-container'>
