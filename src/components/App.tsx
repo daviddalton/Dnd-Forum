@@ -5,7 +5,6 @@ import Header from './Header/Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Create from './creation/CreatedChars/CharacterSelection';
 import NoPage from './NoPage';
-import BackgroundsPage from './TopicMenu/Topics/BackgroundsPage';
 import SpellsPage from './TopicMenu/Topics/Spells/SpellsPage';
 import ClassSpellsPage from './TopicMenu/Topics/Spells/ClassSpellsPage';
 import ClassPage from './TopicMenu/Topics/ClassPage';

@@ -1,4 +1,4 @@
-import { AccordionSummary, Typography, styled, Accordion } from "@mui/material";
+import { AccordionSummary, Typography, Accordion } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ExpandMore } from "@mui/icons-material";

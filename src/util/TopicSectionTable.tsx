@@ -1,7 +1,6 @@
 import { Heading } from "../model/Character/Heading.class";
 import { Table } from "../model/Character/Table.class";
 import '../components/styles/generalTable.css'
-import { width } from "@mui/system";
 
 function TopicSectionTable(props: any) {
     return (

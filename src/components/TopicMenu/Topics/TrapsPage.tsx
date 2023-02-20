@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { SubSection } from "../../../model/Character/SubSection.class"
 import { TopicSection } from "../../../model/Character/TopicSection.class"
 import buildSectionDesc from "../../../util/buildSectionDesc"
 import hashSubsections from "../../../util/hashSubsections"

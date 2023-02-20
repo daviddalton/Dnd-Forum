@@ -1,6 +1,5 @@
 import { AccordionSummary, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import { Link } from "react-router-dom";
 import SectionData from "../../../api/SectionData";
 

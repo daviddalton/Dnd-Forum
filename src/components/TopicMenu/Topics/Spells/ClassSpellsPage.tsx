@@ -1,5 +1,5 @@
 import { ExpandMore } from "@mui/icons-material";
-import { Accordion, AccordionSummary, dividerClasses, Typography } from "@mui/material";
+import { Accordion, AccordionSummary, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import SpellData from "../../../../api/SpellData";

@@ -16,9 +16,6 @@ class AstrickTrait {
     title!: string;
     desc: string[] = []
 }
-class MultiAstrickTrait {
-    astrickTraits: AstrickTrait[] = []
-}
 
 function RaceCard(props: any) {
     const [raceSlug, setRaceSlug] = useState<string | undefined>()

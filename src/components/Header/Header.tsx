@@ -1,4 +1,3 @@
-
 import { Link, useNavigate } from "react-router-dom"
 import { AppBar, IconButton, Toolbar, useTheme } from "@mui/material"
 import { getAuth, signOut } from "firebase/auth";

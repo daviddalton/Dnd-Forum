@@ -1,4 +1,3 @@
-import { Paper, Stack, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addCharacter } from "../controller";
@@ -8,7 +7,6 @@ import AppBarCreate from "./AppBarCreate";
 import ClassCard from "./ClassCreator/ClassCard";
 import RaceCard from "./RaceCreation/RaceCard";
 import SettingsPage from "./SettingsCreator/SettingPage";
-import { CSSTransition } from 'react-transition-group'
 import '../styles/SectionAnimations.css'
   class AbilityScore {
     scoreName: string;
