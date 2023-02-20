@@ -7,10 +7,7 @@ import Monsters from "../../../model/Character/Monsters.interface"
 function MonstersPage() {
 
     const { data, status } = UseQueryMonsters()
-
     const [ URL, setURL ] = useState('https://api.open5e.com/monsters/')
-
-   
 
     function FetchMonsters(): Promise<Monsters> {
         return fetch(URL)

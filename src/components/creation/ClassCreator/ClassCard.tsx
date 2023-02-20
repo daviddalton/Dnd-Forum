@@ -5,7 +5,6 @@ import CharacterClass from "../../../model/Character/Character/CharacterClass.in
 import '../../styles/classCreate.css'
 import ClassModal from "./ClassModal"
 
-
 const classesData = new CharacterClassData()
 
 function ClassCard(props: any) {
@@ -97,7 +96,6 @@ function ClassCard(props: any) {
                         clicked={clicked}
                         classSlug={prop}
                         setClicked={setClicked}/>
-
         </div>
     )
 }

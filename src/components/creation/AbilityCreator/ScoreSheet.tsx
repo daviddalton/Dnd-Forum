@@ -1,18 +1,8 @@
 import { AbilityScoreCard } from "./abilityScoreCard"
 import '../../styles/scoreSheet.css'
-
-
-class score {
-    name: string;
-    value!: string | undefined;
-
-    constructor(name: string) {
-        this.name = name
-    } 
-}
+import { ScoreSheetScore } from "../../../model/Character/Score"
 
 function ScoreSheet(props: any) {
-
     return(
         <div className="score-sheet-abilities-container">
         {props.abilityScores.map((data: AbilityScoreCard) => (
@@ -20,7 +10,7 @@ function ScoreSheet(props: any) {
             <div className="score-sheet-name-container">
                     {data.name}
             </div>
-            {data.scores.map((score: score) => (
+            {data.scores.map((score: ScoreSheetScore) => (
                 <div className="score-sheet-indvScore-column-container">
                         <div className="score-sheet-indvScore-row-container">
                             <div className="indvScore-name">

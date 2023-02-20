@@ -1,6 +1,3 @@
-
-
-
 interface Monster {
     slug: string;
     name: string;

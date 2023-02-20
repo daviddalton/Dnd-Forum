@@ -6,18 +6,12 @@ import TopicAccordion from './TopicAccordions/TopicAccordion';
 import CharacterClassData from '../../api/CharacterClassData';
 import RacesData from '../../api/RacesData';
 import { useNavigate } from 'react-router-dom';
+import { TopicMenuTopic } from '../../model/Character/TopicMenuTopic';
 
 const sectionsData = new SectionData()
 const classesData = new CharacterClassData()
 const racesData = new RacesData()
-class Topic {
-  name!: string;
-  subPath!: string;
-  url!: string;
-  slug!: string;
-  subTopics: any[] = []
-  data!: any;
-}
+
 
 function GetSectionsData() {
   var returnData: any
@@ -49,23 +43,23 @@ function TopicMenu(props: any){
   const handleInput = (event: { target: { value: any; }; }) => {
     setSearch(event.target.value);
 }
-  var characters = new Topic()
+  var characters = new TopicMenuTopic()
     characters.name = 'Characters'
-  var equipment = new Topic()
+  var equipment = new TopicMenuTopic()
     equipment.name = 'Equipment'
-  var rules = new Topic()
+  var rules = new TopicMenuTopic()
     rules.name = 'Rules'
-  var appendixes = new Topic()
+  var appendixes = new TopicMenuTopic()
     appendixes.name = 'Appendix'
-  var spellcasting = new Topic()
+  var spellcasting = new TopicMenuTopic()
     spellcasting.name = 'Spellcasting'
-  var classes = new Topic()
+  var classes = new TopicMenuTopic()
     classes.name = 'Classes'
-  var races = new Topic()
+  var races = new TopicMenuTopic()
     races.name = 'Races'
-  var magicItems = new Topic()
+  var magicItems = new TopicMenuTopic()
     magicItems.name = 'Magic Items'
-  var spells = new Topic()
+  var spells = new TopicMenuTopic()
     spells.name = 'Spells'
 
   function sortSectionsData() {
@@ -100,7 +94,7 @@ function TopicMenu(props: any){
   }
   function createSpellSubTopics() {
       for (let clazz of spellClasses) {
-        var tempVar = new Topic()
+        var tempVar = new TopicMenuTopic()
         tempVar.name = clazz
         tempVar.slug = clazz
         spells.subTopics.push(tempVar)
@@ -127,7 +121,7 @@ function TopicMenu(props: any){
               />
             </form>
         </div>
-        {topics.map((topic: Topic) => (
+        {topics.map((topic: TopicMenuTopic) => (
           <TopicAccordion key={topic.name} topic={topic} handleDrawerClose={props.handleDrawerClose}/>
         ))}  
     </div>

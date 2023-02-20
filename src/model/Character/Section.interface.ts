@@ -1,6 +1,3 @@
-
-
-
 interface Section {
     slug: string,
     name: string,

@@ -5,17 +5,13 @@ function WikiDesc() {
     return (
         <div
             style={{
-                
                 display: "flex",
-
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 width: '100%',
                 overflow: 'auto',
                 backgroundRepeat: 'no-repeat',
             }}>
-
-        
         <div
         style={{
             marginTop: '20px',

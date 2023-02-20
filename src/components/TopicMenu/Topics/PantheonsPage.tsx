@@ -2,9 +2,6 @@ import { TopicSection } from "../../../model/Character/TopicSection.class"
 import buildSectionDesc from "../../../util/buildSectionDesc"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 
-
-
-
 function PantheonsPage(props: any) {
     var tempSection = new TopicSection()
 
@@ -13,7 +10,6 @@ function PantheonsPage(props: any) {
         console.log(tempSection)
     }
 
-    console.log(props.splitDesc[4])
     handlePantheon(props.splitDesc)
     return (
         <div

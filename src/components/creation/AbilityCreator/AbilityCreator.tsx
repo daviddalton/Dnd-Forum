@@ -2,26 +2,10 @@ import { useState } from "react";
 import { AbilityScoreCard } from "./abilityScoreCard";
 import ManualRolledArray from "./ManualRolledArray";
 import StandardArray from "./StandardArray";
-import {  AccordionSummary, styled, Typography } from "@mui/material"
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
+import {  AccordionSummary, Typography } from "@mui/material"
 import { ExpandMore } from "@mui/icons-material";
 import ScoreSheet from "./ScoreSheet";
-
-
-
-
-const Accordion = styled((props: AccordionProps) => (
-    <MuiAccordion disableGutters elevation={0} square {...props} />
-  ))(({ theme }) => ({
-    border: `1px solid ${theme.palette.divider}`,
-    '&:not(:last-child)': {
-      borderBottom: 0,
-    },
-    '&:before': {
-      display: 'none',
-    },
-  }));
-
+import { Accordion } from "../../../util/Constants";
 
 function AbilityCreator(props: any) {
     
@@ -37,7 +21,6 @@ function AbilityCreator(props: any) {
         e.target.style.background = "#C7C7C7"
         e.target.style.color = "black"
     }
-
 
     const strength = new AbilityScoreCard()
         strength.name = "Strength"

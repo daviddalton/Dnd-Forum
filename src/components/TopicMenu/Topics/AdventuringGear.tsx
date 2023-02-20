@@ -5,8 +5,6 @@ import SectionTitleDesc from '../../../util/SectionTitleDesc'
 import SubSectionAccordion from '../../../util/SubSectionAccordion'
 import '../../styles/adventuringGear.css'
 
-
-
 function AdventuringGearPage(props: any) {
     var tempSection = new TopicSection()
 

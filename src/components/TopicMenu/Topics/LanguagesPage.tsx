@@ -6,10 +6,6 @@ import recursiveCleaning from "../../../util/recursiveCleaning"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import "../../styles/languages.css"
 
-
-
-
-
 function LanguagesPage(props: any) {
     var tempSection = new TopicSection()
 
@@ -89,7 +85,6 @@ function LanguagesPage(props: any) {
             return table
         }
     }
-
     topicSectionCreate(props.splitDesc)
 
     return (

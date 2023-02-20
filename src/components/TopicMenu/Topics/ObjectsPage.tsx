@@ -85,6 +85,7 @@ function ObjectsPage(props: any) {
      }
 
     handleObjects(props.splitDesc)
+    
     return (
         <div
             style={{

@@ -3,13 +3,10 @@ import { Accordion, AccordionSummary, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import SpellData from "../../../../api/SpellData";
+import { SpellCategory } from "../../../../model/Character/SpellCategory";
 import Spell from "../../../../model/Character/Spells/spell";
 import '../../../styles/spells.css'
 
-class Category {
-    name!: string
-    spellList!: Spell[]
-}
 
 const classSpellData = new SpellData()
 
@@ -50,12 +47,12 @@ function ClassSpellsPage() {
                     pageElevenData, pageTwelveData, pageThirteenData, pageFourteenData,
                     pageFifteenData, pageSixteenData, pageSeventeenData
                 ]
-    var cantrips = new Category()
-    var firstLevelSpells = new Category()
-    var secondLevelSpells = new Category()
-    var thirdLevelSpells = new Category()
-    var fourthLevelSpells = new Category()
-    var fifthLevelSpells = new Category()
+    var cantrips = new SpellCategory()
+    var firstLevelSpells = new SpellCategory()
+    var secondLevelSpells = new SpellCategory()
+    var thirdLevelSpells = new SpellCategory()
+    var fourthLevelSpells = new SpellCategory()
+    var fifthLevelSpells = new SpellCategory()
     function buildTotaldata() {
         for (let page of pages) {
             if(page !== undefined) {
@@ -89,7 +86,7 @@ function ClassSpellsPage() {
     return <>
         <div 
             className="spells-category-container">
-                {spellCategories.map((category: Category) => (
+                {spellCategories.map((category: SpellCategory) => (
                 <div className="idv-spell-category">
                     <Accordion className="spell-category-accordion">
                         <AccordionSummary 

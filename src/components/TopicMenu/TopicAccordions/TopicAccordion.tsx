@@ -15,9 +15,6 @@ class Topic {
 
 function TopicAccordion(props: any) {
     const routing = useNavigate()
-    const [open, setOpen] = useState(false)
-    const [expanded, setExpanded] = useState(true)
-    const [currentUrl, setCurrentUrl] = useState(``)
     
     function handleRouting(slug: string, parentName: string) {
         let sections = ['Characters', 'Equipment', 'Rules', 'Appendix', 'Spellcasting']

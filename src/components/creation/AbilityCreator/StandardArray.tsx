@@ -1,47 +1,12 @@
 import { AccordionSummary, InputLabel, Typography } from "@mui/material";
 import { useState } from "react";
-import {  styled } from "@mui/material"
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import { ExpandMore } from "@mui/icons-material";
-
-class AbilityScore {
-    scoreName: string;
-    total: string
-    availableScores: score[]
-
-    constructor(scoreName: string, total: string, availableScores: score[]) {
-        this.scoreName = scoreName
-        this.total = total
-        this.availableScores = availableScores
-    }
-}
-class score {
-    value: string;
-    disabled: boolean
-
-    constructor(value: string, disabled: boolean) {
-        this.value = value
-        this.disabled = disabled
-    }
-}
-
-const Accordion = styled((props: AccordionProps) => (
-    <MuiAccordion disableGutters elevation={0} square {...props} />
-  ))(({ theme }) => ({
-    border: `1px solid ${theme.palette.divider}`,
-    '&:not(:last-child)': {
-      borderBottom: 0,
-    },
-    '&:before': {
-      display: 'none',
-    },
-  }));
+import { AbilityScore, Score } from "../../../model/Character/AbilityScore";
+import { Accordion } from "../../../util/Constants";
 
 function StandardArray(props: any) {
-    
-
-
     const [abilityScores, setAbilityScores] = useState([props.strength, props.dexterity, props.constitution, props.intelligence, props.wisdom, props.charisma])
+
     function unDisableValues(ability: AbilityScore) {
         var unDisableIndex = ability.availableScores.findIndex((sco) => sco.value === ability.total)
         abilityScores.forEach((sco) => sco.availableScores[unDisableIndex].disabled = false)
@@ -52,6 +17,7 @@ function StandardArray(props: any) {
             abilityScores.forEach((sco) => sco.availableScores[disableIndex].disabled = true)
         }
     }
+    
     const handleScoreChange = (ability: AbilityScore, valueClicked: string) => {
         unDisableValues(ability)
         ability.total = valueClicked
@@ -124,7 +90,7 @@ function StandardArray(props: any) {
                                 {aScore.total}
                             </Typography>
                         </AccordionSummary>
-                        {aScore.availableScores.map((selScore: score) => (
+                        {aScore.availableScores.map((selScore: Score) => (
                             <Accordion
                                 key={selScore.value}
                                 defaultValue={selScore.value}

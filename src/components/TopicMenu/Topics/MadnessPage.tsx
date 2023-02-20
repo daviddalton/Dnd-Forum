@@ -38,7 +38,6 @@ function MadnessPage(props: any) {
                 if (currentElement.includes('#') && !currentElement.includes('(table)')) {
                     break
                 } else if (currentElement.includes('*') && !currentElement.includes('(table)**') && !currentElement.includes('*.*')) {
-                    
                     let childSubsection = new SubSection()
                     var tempMadness = currentElement.split('**')
                     childSubsection.title = tempMadness[1]

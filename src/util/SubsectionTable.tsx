@@ -1,9 +1,6 @@
 import { Heading } from "../model/Character/Heading.class";
 import '../components/styles/sOfS.css'
 
-
-
-
 function SubsectionTable(props: any) {
     return (
         <>

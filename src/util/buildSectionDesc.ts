@@ -1,8 +1,5 @@
 import { TopicSection } from "../model/Character/TopicSection.class"
 
-
-
-
 function buildSectionDesc(tempSection: TopicSection, splicedData: string[], charToStopAt: string, replacementChar?: string) {
     for (let subString of splicedData) {
         if (replacementChar !== undefined) {

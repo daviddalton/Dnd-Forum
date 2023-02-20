@@ -4,8 +4,6 @@ import buildSectionDesc from "../../../util/buildSectionDesc"
 import buildSubsections from "../../../util/buildSubSection"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 
-
-
 function InspirationSubsecDesc(props: any) {
     return (
         <>
@@ -33,12 +31,8 @@ function InspirationPage(props: any) {
             buildSubsections(splitDesc, tempSection)
         }
     }
-
-
     handleInspiration(props.splitDesc)
-    
     return<>
-        
         <div className="backgrounds-content-container">
             <SectionTitleDesc name={props.name} tempSection={tempSection}/>
                 <div className="backgrounds-subsections-container">

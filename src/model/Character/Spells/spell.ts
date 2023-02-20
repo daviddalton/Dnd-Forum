@@ -1,5 +1,3 @@
-
-
 interface Spell {
     slug: string;
     name: string;

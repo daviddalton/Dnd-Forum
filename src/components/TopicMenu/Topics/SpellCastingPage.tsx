@@ -6,7 +6,6 @@ function SpellCastingPage(props: any) {
     var tempSection = new TopicSection()
     function handleSpellCastingPage(splitDesc: string[]) {
         hashSubsections(splitDesc, tempSection)
-        console.log(tempSection)
     }
 
     handleSpellCastingPage(props.splitDesc)

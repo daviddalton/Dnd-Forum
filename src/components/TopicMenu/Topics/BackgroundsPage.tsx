@@ -5,9 +5,6 @@ import buildSubsections from "../../../util/buildSubSection"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import '../../styles/backgrounds.css'
 
-
-
-
 function BackgroundSubsecDesc(props: any) {
     return (
         <>
@@ -63,7 +60,6 @@ function BackgroundsPage(props: any) {
     handleBackgrounds(props.splitDesc)
     
     return<>
-        
         <div className="backgrounds-content-container">
             <SectionTitleDesc name={props.name} tempSection={tempSection}/>
                 <div className="backgrounds-subsections-container">

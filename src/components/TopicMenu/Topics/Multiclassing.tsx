@@ -13,11 +13,9 @@ function MulticlassingPage(props: any) {
 
     const tempSection = new TopicSection()
     const spellCastingSubsection = new SubSection()
-    console.log(props.splitDesc)
 
     function handleMulticlassingPage(splitDesc: string[]) {
         buildSectionDesc(tempSection, splitDesc, '#')
-       
         buildPrerequisites(splitDesc)
         buildTitleAndOneDesc(7, 9, splitDesc)
         buildTitleAndOneDesc(12, 14, splitDesc)
@@ -40,7 +38,6 @@ function MulticlassingPage(props: any) {
             } else if (i === 5 && i+1 === 6) {
                 buildTable(splitDesc, tempSubSection, 2)
             }
-             
         }
         tempSection.subSections.push(tempSubSection)
     }
@@ -75,19 +72,6 @@ function MulticlassingPage(props: any) {
             if (i === start) {
                 tempSubsection.title = splitDesc[i].replaceAll('#','').trim()
             } else if (i === end - 1) {
-                tempSubsection.desc.push(splitDesc[i])
-            }
-        }
-        tempSection.subSections.push(tempSubsection)
-    }
-    function buildAstrickSubsection(start: number, end: number, splitDesc: string[]){
-        var tempSubsection = new SubSection()
-        for (let i = start; i < end; i++) {
-            if (i === start) {
-                var tempArr = splitDesc[i].split('._**')
-                tempSubsection.title = tempArr[0].replaceAll('**_','').trim()
-                tempSubsection.desc.push(tempArr[1].trim())
-            } else if (i === end -1) {
                 tempSubsection.desc.push(splitDesc[i])
             }
         }
@@ -131,7 +115,6 @@ function MulticlassingPage(props: any) {
                 }
             }
         }
-        console.log(spellCastingSubsection)
     }
     function buildTable(splitDesc: string[], tempSubSection: SubSection, index: number) {
         var tempArr = splitDesc.filter((s: string) => s.includes('|'))
@@ -172,7 +155,6 @@ function MulticlassingPage(props: any) {
         }
     }
     handleMulticlassingPage(props.splitDesc)
-    console.log(tempSection)
     return (
         <div
             style={{

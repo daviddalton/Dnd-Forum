@@ -1,57 +1,14 @@
 import CharacterClass from "../../../model/Character/Character/CharacterClass.interface"
 import { Typography } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
-import {  AccordionSummary, Box, Modal, styled} from "@mui/material"
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
+import {  AccordionSummary, Box, Modal } from "@mui/material"
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link } from "react-router-dom"
 import fetch from "../../../api/fetch";
-class ChildTrait {
-    id: number;
-    name: string;
-    desc: string[] = []
-
-    constructor(id: number, name: string, desc: string[]){
-        this.id = id
-        this.name = name
-        this.desc = desc
-    }
-}
-class ParentTrait {
-    id: number;
-    name: string;
-    desc: string[] = [];
-    childrenTraits: ChildTrait[] = [];
-
-    constructor(id: number, name: string, desc: string[], childrenTraits: ChildTrait[]) {
-        this.id = id
-        this.name = name
-        this.desc = desc
-        this.childrenTraits = childrenTraits
-    }
-}
-const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -40%)',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-  };
-
-  const Accordion = styled((props: AccordionProps) => (
-    <MuiAccordion disableGutters elevation={0} square {...props} />
-  ))(({ theme }) => ({
-    border: `1px solid ${theme.palette.divider}`,
-    '&:not(:last-child)': {
-      borderBottom: 0,
-    },
-    '&:before': {
-      display: 'none',
-    },
-  }));
+import { Accordion, styleModal } from "../../../util/Constants";
+import { ChildTrait } from "../../../model/Character/ChildTrait";
+import { ParentTrait } from "../../../model/Character/ParentTrait";
 
 function ClassPopoverContent(props: any) {
 
@@ -74,7 +31,6 @@ function ClassPopoverContent(props: any) {
     var targetChildDirectory: ChildTrait
 
     function cleanData() {
-        var newData: string[] | undefined = []
         var cleanedData = data?.desc.replaceAll('×','x').replaceAll('*', '').split('\n')
         for (let i = 0; i < cleanedData!.length; i++ ) {
             if(cleanedData![i] === ' ') {
@@ -109,8 +65,6 @@ function ClassPopoverContent(props: any) {
                 break
             }
         }
-
-
     }
     function createTraitChild(id: number, descriptor: string, index: number, array: string[] | undefined) {
         var name = descriptor.replaceAll('#', '').trim()
@@ -127,7 +81,6 @@ function ClassPopoverContent(props: any) {
     }
 
     if (data?.desc !== undefined) {
-        var test: (string | undefined)[] = []
         var splitData = cleanData()
         createTraitDirectory(splitData)
     }
@@ -140,7 +93,7 @@ function ClassPopoverContent(props: any) {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={styleModal}>
                     <div className="class-modal-container">
                         <div className="class-modal-header-container">
                             <div className="class-modal-header-confirm">

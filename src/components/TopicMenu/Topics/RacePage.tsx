@@ -11,9 +11,6 @@ import { createData, createHeadings } from "../../../util/buildTable"
 import SubsectionTable from "../../../util/SubsectionTable"
 import '../../styles/racePage.css'
 
-
-
-
 function RacesPage() {
 
     const { raceSlug } = useParams()

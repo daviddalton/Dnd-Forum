@@ -10,7 +10,6 @@ import buildTable from "../../../util/buildTable"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
 
-
 function ToolsPage(props: any) {
     var tempSection = new TopicSection()
 
@@ -32,6 +31,7 @@ function ToolsPage(props: any) {
     }
 
     handleTools(props.splitDesc)
+    
     return (
         <div className="tools-content-container"
             style={{

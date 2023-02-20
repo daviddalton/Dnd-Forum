@@ -1,4 +1,3 @@
-import React, { useState } from "react"
 import { Heading } from "../../../model/Character/Heading.class"
 import { Table } from "../../../model/Character/Table.class"
 import { TopicAttribute } from "../../../model/Character/TopicAttributes"
@@ -9,18 +8,12 @@ import '../../styles/armorPage.css'
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
+import { useWidth } from "../../WidthContext"
 
 function ArmorPage(props: any) {
     var tempSection = new TopicSection()
-    const [width, setWidth] = useState(window.innerWidth)
-    
-    React.useEffect(() => {
-        window.addEventListener("resize", handleResize );
-        return () => window.removeEventListener("resize", handleResize)
-    })
-    function handleResize() {
-        setWidth(window.innerWidth)
-    }
+    const width = useWidth()
+
     function handleArmor(splitDesc: string[]) {
         buildArmorDesc(splitDesc)
         buildArmorAttributes(splitDesc)
@@ -83,7 +76,7 @@ function ArmorPage(props: any) {
                 <SectionTitleDesc name={props.name} tempSection={tempSection} width={width}/>
                 <div className='armor-subSections-container'>
                     <SubSectionsWithSubSections tempSection={tempSection} width={width}/>
-                    {width > 700 ? (
+                    {width.width! > 700 ? (
                         <TopicSectionTable tempSection={tempSection} />
                     ): (
                         <div></div>

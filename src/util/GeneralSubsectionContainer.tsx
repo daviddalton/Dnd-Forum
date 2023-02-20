@@ -3,8 +3,6 @@ import '../components/styles/generalSubtopic.css'
 import React, { useState } from "react";
 import '../components/styles/sOfS.css'
 
-
-
 function GeneralSubsectionContainer(props: any) {
     const [width, setWidth] = useState(window.innerWidth)
     

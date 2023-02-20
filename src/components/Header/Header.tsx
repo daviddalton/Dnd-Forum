@@ -21,7 +21,6 @@ function Header() {
     const auth = getAuth()
     const user = useAuth()
     const currentURL = window.location.href
-    console.log(currentURL)
     const handleClickWiki = () => {
         navigate('/wiki')
         setOpen(true)
