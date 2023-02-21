@@ -7,11 +7,9 @@ import HeaderDrawer from "./DrawerHeader";
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import React from "react";
 import { useAuth } from "../userContext";
 import { useWidth } from "../WidthContext";
-
-
+import { create, title, wiki } from "../../util/Constants";
 
 function Header() {
    
@@ -22,6 +20,7 @@ function Header() {
     const auth = getAuth()
     const user = useAuth()
     const currentURL = window.location.href
+    
     const handleClickWiki = () => {
         navigate('/wiki')
         setOpen(true)
@@ -95,8 +94,9 @@ function TitleAndButtons(props: any) {
     return (
         <div className="header-center-screen-container">
         <div className="header-center-screen-title"
+            style={{ cursor: 'pointer' }}
             onClick={props.navToHome}>
-                DND FORUM
+                {title}
         </div>
         {props.width > 400 ? (
         <>
@@ -107,7 +107,7 @@ function TitleAndButtons(props: any) {
                 onMouseEnter={props.handleMouseEnter}
                 onMouseLeave={props.handleMouseLeave}
             >
-                Wiki
+                {wiki}
             </button>
         </div>
             <div className="header-center-screen-create">
@@ -116,7 +116,7 @@ function TitleAndButtons(props: any) {
                     onMouseEnter={props.handleMouseEnter}
                     onMouseLeave={props.handleMouseLeave}
                 >
-                    Create
+                    {create}
                 </button>
             </div>
         </>

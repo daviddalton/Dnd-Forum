@@ -5,7 +5,7 @@ import DiceRollMethod from "./DiceRollMethod";
 import '../../styles/manualRolled.css'
 import { Accordion } from "../../../util/Constants";
 
-function ManualRolledArray() {
+function ManualRolledMethod() {
     const [entered, setEntered] = useState(false)
     const handleMouseEnter = (e: any) => {
         e.target.style.background = "#C7C7C7"
@@ -65,4 +65,4 @@ function ManualRolledArray() {
     )
 }
 
-export default ManualRolledArray
+export default ManualRolledMethod

@@ -10,7 +10,7 @@ import { Accordion, styleModal } from "../../../util/Constants";
 import { ChildTrait } from "../../../model/Character/ChildTrait";
 import { ParentTrait } from "../../../model/Character/ParentTrait";
 
-function ClassPopoverContent(props: any) {
+function CharacterClassModal(props: any) {
 
     const { data, status } = useQuery(['class', props.classSlug], FetchClass)
     const [showMore, setShowMore] = useState(false)
@@ -224,4 +224,4 @@ function ClassPopoverContent(props: any) {
     )
 }
 
-export default ClassPopoverContent
+export default CharacterClassModal

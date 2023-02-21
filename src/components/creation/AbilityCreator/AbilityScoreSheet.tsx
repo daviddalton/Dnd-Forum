@@ -1,8 +1,8 @@
-import { AbilityScoreCard } from "./abilityScoreCard"
+import { AbilityScoreCard } from "./abilityScoreLogic"
 import '../../styles/scoreSheet.css'
 import { ScoreSheetScore } from "../../../model/Character/Score"
 
-function ScoreSheet(props: any) {
+function AbilityScoreSheet(props: any) {
     return(
         <div className="score-sheet-abilities-container">
         {props.abilityScores.map((data: AbilityScoreCard) => (
@@ -46,4 +46,4 @@ function ScoreSheet(props: any) {
     )
 }
 
-export default ScoreSheet
+export default AbilityScoreSheet

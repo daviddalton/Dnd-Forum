@@ -3,7 +3,11 @@ import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 
 
 export const scoreTitles = ['Str', 'Dex', 'Con', 'Intl', 'Wis', 'Cha'];
-
+export const title = "DND FORUM"
+export const wiki = "Wiki"
+export const create = "Create"
+export const logout = "Logout"
+export const login = "Login"
 
 export const Accordion = styled((props: AccordionProps) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -33,3 +37,4 @@ export const Accordion = styled((props: AccordionProps) => (
     padding: '10px',
     borderRadius: '10px',
   };
+

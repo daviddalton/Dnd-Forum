@@ -4,7 +4,7 @@ import { addCharacter } from "../controller";
 import { useAuth } from "../userContext";
 import AbilityCreator from "./AbilityCreator/AbilityCreator";
 import AppBarCreate from "./AppBarCreate";
-import ClassCard from "./ClassCreator/ClassCard";
+import ClassCard from "./ClassCreator/CharacterClassSelect";
 import RaceCard from "./RaceCreation/RaceCard";
 import SettingsPage from "./SettingsCreator/SettingPage";
 import '../styles/SectionAnimations.css'

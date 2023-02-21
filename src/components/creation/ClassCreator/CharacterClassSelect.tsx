@@ -3,11 +3,11 @@ import { useState } from "react"
 import CharacterClassData from "../../../api/CharacterClassData"
 import CharacterClass from "../../../model/Character/Character/CharacterClass.interface"
 import '../../styles/classCreate.css'
-import ClassModal from "./ClassModal"
+import ClassModal from "./CharacterClassModal"
 
 const classesData = new CharacterClassData()
 
-function ClassCard(props: any) {
+function CharacterClassSelect(props: any) {
     const {data, status} = useQuery(['classes'], classesData.fetchClasses)
 
     const [prop, setProp] = useState<string | undefined>()
@@ -100,4 +100,4 @@ function ClassCard(props: any) {
     )
 }
 
-export default ClassCard
+export default CharacterClassSelect

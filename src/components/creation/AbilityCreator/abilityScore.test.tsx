@@ -1,4 +1,4 @@
-import { AbilityScoreCard } from "./abilityScoreCard"
+import { AbilityScoreCard } from "./abilityScoreLogic"
 
 
 

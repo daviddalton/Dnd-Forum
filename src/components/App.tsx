@@ -38,7 +38,7 @@ function App() {
                 <Route path="/wiki" element={<Wiki/>}>
                   <Route index element={<WikiDesc />} />
                   <Route path="classes/:classSlug" element={<ClassPage/>} />
-                  <Route path="magicitems" element={<MagicItemsPage />} />
+                  <Route path="magicitems/:letterRange" element={<MagicItemsPage />} />
                   <Route path="monsters" element={<MonstersPage/>}/>
                   <Route path="races/:raceSlug" element={<RacePage/>}/>
                   <Route path="sections/:sectionSlug" element={<SectionPage />}/>

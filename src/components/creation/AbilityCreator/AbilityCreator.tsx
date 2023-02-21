@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { AbilityScoreCard } from "./abilityScoreCard";
-import ManualRolledArray from "./ManualRolledArray";
-import StandardArray from "./StandardArray";
+import { AbilityScoreCard } from "./abilityScoreLogic";
+import ManualRolledArray from "./ManualRolledMethod";
+import StandardArray from "./StandardMethod";
 import {  AccordionSummary, Typography } from "@mui/material"
 import { ExpandMore } from "@mui/icons-material";
-import ScoreSheet from "./ScoreSheet";
+import ScoreSheet from "./AbilityScoreSheet";
 import { Accordion } from "../../../util/Constants";
 
 function AbilityCreator(props: any) {
