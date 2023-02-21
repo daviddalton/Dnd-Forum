@@ -109,7 +109,7 @@ function TopicMenu(props: any){
   }
 
   const topics = [characters, classes, equipment, magicItems, races, rules, spells, spellcasting, appendixes]
-  console.log(topics)
+
   return (
     <>
     <div className='topic-menu-main-container'>

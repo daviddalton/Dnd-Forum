@@ -18,7 +18,7 @@ export const Accordion = styled((props: AccordionProps) => (
     },
     '&:before': {
       display: 'none',
-    },
+    }
   }));
 
   export const styleModal = {

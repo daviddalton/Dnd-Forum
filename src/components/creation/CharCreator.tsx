@@ -4,9 +4,9 @@ import { addCharacter } from "../controller";
 import { useAuth } from "../userContext";
 import AbilityCreator from "./AbilityCreator/AbilityCreator";
 import AppBarCreate from "./AppBarCreate";
-import ClassCard from "./ClassCreator/CharacterClassSelect";
-import RaceCard from "./RaceCreation/RaceCard";
-import SettingsPage from "./SettingsCreator/SettingPage";
+import ClassCard from "./ClassCreation/CharacterClassSelect";
+import RaceCard from "./RaceCreation/CharacterRaceSelect";
+import SettingsPage from "./SettingsCreation/SettingPage";
 import '../styles/SectionAnimations.css'
   class AbilityScore {
     scoreName: string;

@@ -23,7 +23,7 @@ class MultiAstrickTrait {
 }
 
 
-function RaceModal(props: any) { 
+function CharacterRaceModal(props: any) { 
     var raceDesc = new RaceDesc()
     var raceAlignment = new AstrickTrait()
     var raceAge = new AstrickTrait()
@@ -230,4 +230,4 @@ function RaceModal(props: any) {
     </div>
     )
   }
-export default RaceModal
+export default CharacterRaceModal

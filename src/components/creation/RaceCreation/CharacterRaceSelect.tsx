@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import RacesData from "../../../api/RacesData";
 import Race from "../../../model/Character/Races/race.interface";
-import RaceModal from "./RaceModal";
+import RaceModal from "./CharacterRaceModal";
 import '../../styles/raceCreate.css'
 import SelectedRacePage from "./SelectedRacePage";
 
@@ -17,7 +17,7 @@ class AstrickTrait {
     desc: string[] = []
 }
 
-function RaceCard(props: any) {
+function CharacterRaceSelect(props: any) {
     const [raceSlug, setRaceSlug] = useState<string | undefined>()
     const [clicked, setClicked] = useState(false)
     const { data, status } = useQuery(['races'], racesData.fetchRaces)
@@ -94,4 +94,4 @@ function RaceCard(props: any) {
 }
 
 
-export default RaceCard
+export default CharacterRaceSelect
