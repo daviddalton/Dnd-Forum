@@ -3,7 +3,7 @@ import { AppBar, IconButton, Toolbar, useTheme } from "@mui/material"
 import { getAuth, signOut } from "firebase/auth";
 import {useState} from "react";
 import '../styles/header.css'
-import HeaderDrawer from "./DrawerHeader";
+import HeaderDrawer from "./HeaderDrawer";
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';

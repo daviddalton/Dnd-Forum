@@ -5,7 +5,7 @@ import '../../styles/settingsPage.css'
 import '../../styles/SectionAnimations.css'
 
 
-function SettingsPage(props: any): JSX.Element {
+function CharacterSettingsPage(props: any): JSX.Element {
     const [tempName, setTempName] = useState('')
     const handleNameChange = (e: { target: { value: any } }) => {
         props.setCharacterName(e.target.value)
@@ -110,7 +110,7 @@ function HitPointType(props: any) {
     )
 }
 
-export default SettingsPage
+export default CharacterSettingsPage
 
 
 

@@ -3,7 +3,7 @@ import {DocumentData, onSnapshot, QuerySnapshot} from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { characterCollection } from '../../controller';
 import { CreatedChar } from '../../../model/Character/CreatedChar.interface';
-import CharacterCard from '../CharacterCard';
+import CharacterCard from './CharacterSelectionCard';
 import { AbilityScore } from '../../../model/Character/AbilityScore';
 import '../../styles/characterSelect.css'
 import '../../styles/characterCard.css'

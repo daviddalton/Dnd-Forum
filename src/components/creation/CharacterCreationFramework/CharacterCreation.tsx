@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addCharacter } from "../controller";
-import { useAuth } from "../userContext";
-import AbilityCreator from "./AbilityCreator/AbilityCreator";
+import { addCharacter } from "../../controller";
+import { useAuth } from "../../userContext";
+import AbilityCreator from "../AbilityCreation/AbilityCreator";
 import AppBarCreate from "./AppBarCreate";
-import ClassCard from "./ClassCreation/CharacterClassSelect";
-import RaceCard from "./RaceCreation/CharacterRaceSelect";
-import SettingsPage from "./SettingsCreation/SettingPage";
-import '../styles/SectionAnimations.css'
+import ClassCard from "../ClassCreation/CharacterClassSelect";
+import RaceCard from "../RaceCreation/CharacterRaceSelect";
+import SettingsPage from "../SettingsCreation/CharacterSettingsPage";
+
+
   class AbilityScore {
     scoreName: string;
     total: string
@@ -29,7 +30,7 @@ class score {
     }
 }
 
-function CharCreation() {
+function CharacterCreation() {
     const user = useAuth()
     const uid = user.user?.uid
     const [id, setId] = useState("")
@@ -254,4 +255,4 @@ function CharCreation() {
     )
 }
 
-export default CharCreation
+export default CharacterCreation

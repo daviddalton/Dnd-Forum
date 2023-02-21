@@ -41,7 +41,7 @@ const Drawer = styled ((props: DrawerProps) => (
   // width: '250px'
 }))
 
-function DrawerHeader(props: any) {
+function HeaderDrawer(props: any) {
   const user = useAuth()
   const navigation = useNavigate()
   const handleNav = (text: string) => {
@@ -209,6 +209,6 @@ function DrawerHeader(props: any) {
 }
 
 
-export default DrawerHeader
+export default HeaderDrawer
 
 
