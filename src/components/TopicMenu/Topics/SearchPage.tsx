@@ -63,7 +63,7 @@ function SearchPage() {
                                             {res.name}
                                     </div>
                                     <div className="search-indv-result-text">
-                                            ...{res.text.substring(res.text.indexOf(searchSlug!), res.text.indexOf(searchSlug!) + 200)}...
+                                            ...{res.text.substring(res.text.indexOf(searchSlug!), res.text.indexOf(searchSlug!) + 202).replaceAll('&#39;',"'")}...
                                     </div>
                             </div>
                         ))}

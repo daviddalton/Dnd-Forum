@@ -7,6 +7,9 @@ import AppBarCreate from "./AppBarCreate";
 import ClassCard from "../ClassCreation/CharacterClassSelect";
 import RaceCard from "../RaceCreation/CharacterRaceSelect";
 import SettingsPage from "../SettingsCreation/CharacterSettingsPage";
+import CharacterClassSelect from "../ClassCreation/CharacterClassSelect";
+import CharacterRaceSelect from "../RaceCreation/CharacterRaceSelect";
+import CharacterSettingsPage from "../SettingsCreation/CharacterSettingsPage";
 
 
   class AbilityScore {
@@ -42,6 +45,7 @@ function CharacterCreation() {
     const [characterClass, setCharacterClass] = useState("")
     const [race, setRace] = useState("")
     const [raceSlug, setRaceSlug] = useState("")
+    const [classSlug, setClassSlug] = useState("")
     const [background, setBackground] = useState("")
     const [alignment, setAlignment] = useState("")
     const [currentPage, setCurrentPage] = useState('Settings')
@@ -180,7 +184,7 @@ function CharacterCreation() {
 
                     }}>
                 {currentPage === 'Settings' ? (
-                    <SettingsPage 
+                    <CharacterSettingsPage
                         setCharacterName={setCharacterName} 
                         characterName={characterName}
                         setAdvancementType={setAdvancementType}
@@ -192,7 +196,7 @@ function CharacterCreation() {
                 ) : currentPage === 'Race' ? (
                     <>
                         <div>
-                            <RaceCard 
+                            <CharacterRaceSelect
                                 race={race}
                                 setRace={setRace}
                                 raceSlug={raceSlug}
@@ -203,8 +207,11 @@ function CharacterCreation() {
                 ) : currentPage === 'Class' ? (
                     <>
                         <div>
-                            <ClassCard 
+                            <CharacterClassSelect
+                            classSlug={classSlug}
+                            setClassSlug={setClassSlug}
                             setCharacterClass={setCharacterClass}
+                            characterClass={characterClass}
                             setCurrentPage={setCurrentPage} />
                         </div>
                     </>

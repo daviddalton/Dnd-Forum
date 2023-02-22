@@ -9,6 +9,11 @@ import { WidthProvider } from './components/WidthContext';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+if (process.env.NODE_ENV === 'development') {
+  require('./mocks/browser')
+}
+
 root.render(
   <React.StrictMode>
     <AuthProvider>

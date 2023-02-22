@@ -144,7 +144,7 @@ function CharacterRaceModal(props: any) {
   function RaceTitle(props: any) {
     return (
         <div className="race-modal-title-container">
-            <div className="race-modal-text">
+            <div className="race-modal-title-text">
                     <h2>{props.name}</h2>
             </div>
     </div>
