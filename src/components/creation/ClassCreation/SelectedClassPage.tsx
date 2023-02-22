@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ChildTrait } from "../../../model/Character/ChildTrait";
 import { cleanData, createTraitDirectory } from "../../../util/cleanClassData";
 import { useNavigate } from "react-router-dom";
+import '../../styles/selectedClass.css'
 
 
 class ClassTopic {
@@ -50,16 +51,7 @@ function SelectedClassPage(props: any) {
         createTraitDirectory(splitData, traitDirectory, targetTraitDirectory!, targetChildDirectory!)
     }
     return (
-        <div
-            style={{
-                background: 'rgba(76,81,88,.6)',
-                display: 'flex',
-                flexDirection: 'column',
-                width: '100%',
-                minWidth: '320px',
-                maxWidth: '780px',
-                fontFamily: 'buenard'
-            }}>
+        <div className="selected-class-container">
                 <SelectedClassHeader topics={topics} name={data!.name}/>
                 <ClassSelectedButtons handleToClassPageClick={handleToClassPageClick} handleChangeClassClick={handleChangeClassClick}/>
                 <ClassSelectTraits traitDirectory={traitDirectory}/>
@@ -70,45 +62,14 @@ function SelectedClassPage(props: any) {
 
 function SelectedClassHeader(props: any) {
     return (
-    <div
-        style={{
-            display: 'flex',
-            flexDirection: 'row',
-            margin: '5px',
-            height: 'fit-content'
-        }}>
-            <div
-                style={{
-                    marginTop: '5px',
-                    marginLeft: '5px',
-                    border: '1px white solid',
-                    height: '140px',
-                    width: '140px'
-                }}>
-
-            </div>
+    <div className="selected-class-header-container">
+            <div className="selected-class-image"/>
             <div>
-                <div
-                    style={{
-                        margin: '5px',
-                        width: '100%',
-                        display: 'flex',
-                        padding: '10px',
-                        borderRadius: '10px',
-                        opacity: '.6'
-                    }}>
+                <div className="selected-class-name">
                         {props.name}
                 </div>
                 {props.topics.map((classTopic: ClassTopic) => (
-                    <div
-                        style={{
-                            margin: '5px',
-                            width: '100%',
-                            display: 'flex',
-                            padding: '10px',
-                            borderRadius: '10px',
-                            opacity: '.6'
-                        }}>
+                    <div className="selected-class-indv-topic">
                             {classTopic.title} {classTopic.desc}
                     </div>
                 ))}
@@ -119,33 +80,12 @@ function SelectedClassHeader(props: any) {
 
 function ClassSelectedButtons(props: any) {
     return (
-        <div
-            style={{
-                margin: '5px',
-                display: 'flex',
-                justifyContent: "center"
-            }}>
-                <div
-                    style={{
-                        margin: '5px',
-                        padding: '5px',
-                        borderRadius: '10px',
-                        background: '#761e21',
-                        opacity: '.6',
-                        cursor: 'pointer'
-                    }}
+        <div className="selected-class-button-container">
+                <div className="selected-class-button"
                     onClick={props.handleToClassPageClick}>
                         To Class Page
                 </div>
-                <div
-                    style={{
-                        margin: '5px',
-                        padding: '5px',
-                        borderRadius: '10px',
-                        background: '#761e21',
-                        opacity: '.6',
-                        cursor: 'pointer'
-                    }}
+                <div className="selected-class-button"
                     onClick={props.handleChangeClassClick}>
                         Change Class
                 </div>
@@ -155,19 +95,10 @@ function ClassSelectedButtons(props: any) {
 
 function ClassSelectTraits(props: any) {
     return (
-        <div
-            style={{
-                margin: '5px'
-            }}>
+        <div className="selected-class-traits-container">
                 {props.traitDirectory.map((parentTrait: ParentTrait) => (
-                    <Accordion 
-                        key={parentTrait.id}
-                        style={{
-                            margin: '5px',
-                            borderRadius: '10px',
-                            opacity: '.6',
-                            background: '#761e21'
-                        }}>
+                    <Accordion className="selected-class-indv-trait-accordion"
+                        key={parentTrait.id}>
                         <AccordionSummary
                             style={{
                                 borderRadius: '10px',
@@ -179,12 +110,7 @@ function ClassSelectTraits(props: any) {
                             </Typography>
                         </AccordionSummary>
                         {parentTrait.desc.map((str: string) => (
-                            <div
-                                style={{
-                                    padding: '10px',
-                                    background: 'rgb(76, 81, 88)',
-                                    color: 'white'
-                                }}>
+                            <div className="selected-class-indv-div">
                                 {str}
                             </div>
                         ))}
