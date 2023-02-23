@@ -14,7 +14,7 @@ function SearchPage() {
     const { searchSlug } = useParams()
     const [search, setSearch] = useState()
     const navigate = useNavigate()
-    const { data, status } = useQuery([search ? (search):(searchSlug)], fetchSearch)
+    const { data } = useQuery([search ? (search):(searchSlug)], fetchSearch)
 
     const handleInput = (event: { target: { value: any; }; }) => {
         setSearch(event.target.value)

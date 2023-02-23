@@ -14,7 +14,7 @@ import '../../styles/racePage.css'
 function RacesPage() {
 
     const { raceSlug } = useParams()
-    const { data, status } = useQuery(['race', raceSlug], FetchRace)
+    const { data } = useQuery(['race', raceSlug], FetchRace)
     var tempSection = new TopicSection()
 
     function FetchRace(): Promise<Race> {

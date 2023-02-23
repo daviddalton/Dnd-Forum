@@ -15,9 +15,7 @@ function TopicSectionTable(props: any) {
                     }}>
                         <div className="generalTable-indv-table-title"
                             style={{
-                                width: '100%',
-                                
-                                
+                                width: '100%'
                             }}>
                                 {table.title}
                         </div>

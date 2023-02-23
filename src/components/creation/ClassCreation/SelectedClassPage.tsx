@@ -23,7 +23,7 @@ class ClassTopic {
 
 function SelectedClassPage(props: any) {
 
-    const { data, status } = useQuery(['class', props.classSlug], FetchClass)
+    const { data } = useQuery(['class', props.classSlug], FetchClass)
     const navigate = useNavigate()
     function FetchClass(): Promise<CharacterClass> {
         return fetch(`https://api.open5e.com/classes/${props.classSlug}`)

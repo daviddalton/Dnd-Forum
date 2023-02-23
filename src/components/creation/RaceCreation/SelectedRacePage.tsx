@@ -42,7 +42,8 @@ function SelectedRacePage(props: any) {
     var raceSpeedDesc = new AstrickTrait()
     var raceTraits = new MultiAstrickTrait()
     var traits = [raceAlignment, raceAge, raceAsiDesc, raceLanguages, raceSize, raceSpeedDesc]
-    const {data , status} = useQuery(['races', props.raceSlug], FetchRace)
+    
+    const {data} = useQuery(['races', props.raceSlug], FetchRace)
     const navigate = useNavigate()
 
     const handleToRaceClick = () => {

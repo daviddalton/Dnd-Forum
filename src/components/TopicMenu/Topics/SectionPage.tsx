@@ -32,7 +32,7 @@ import MulticlassingPage from './MulticlassingPage'
 
 function SectionPage() {
     const { sectionSlug } = useParams()
-    const { data, status } = useQuery(['sections', sectionSlug], FetchSection)
+    const { data } = useQuery(['sections', sectionSlug], FetchSection)
 
     var splitDesc: string[] | undefined = [] 
     

@@ -6,7 +6,6 @@ import { classDesc } from "../../../model/Character/classDesc";
 import { skill } from "../../../model/Character/skill";
 import { Accordion, AccordionSummary, Typography } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
-import React, { useState } from "react";
 import { CharEquipment } from "../../../model/Character/CharEquipment";
 import { EquipmentOptions } from "../../../model/Character/EquipmentOption";
 import recursiveCleaning from "../../../util/recursiveCleaning";
@@ -25,7 +24,7 @@ function ClassPage() {
     var tempSection = new TopicSection()
 
     const { classSlug } = useParams()
-    const { data, status } = useQuery(['class', classSlug], FetchClass)
+    const { data } = useQuery(['class', classSlug], FetchClass)
     const width = useWidth()
 
     function FetchClass(): Promise<CharacterClass> {

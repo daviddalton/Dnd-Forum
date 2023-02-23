@@ -9,19 +9,19 @@ function LevelingUpPage(props: any) {
     const width = useWidth()
     const tableChangeWidth = 360
 
+    handleLevelUp(props.splitDesc)
+
     function handleLevelUp(splitDesc: string[]) {
        buildLevelUpDesc(splitDesc)
        buildTable(splitDesc, tempSection, 3)
     }
     function buildLevelUpDesc(splitDesc: string[]) {
-        for(let i = 0; i < splitDesc.length; i++) {
-            if (i < 5) {
+        for(let i = 0; i < 5; i++) {
                 tempSection.desc.push(splitDesc[i].replaceAll('*',''))
-            }
         }
     }
     
-    handleLevelUp(props.splitDesc)
+
     
     return (
         <div

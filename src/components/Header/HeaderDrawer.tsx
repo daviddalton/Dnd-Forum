@@ -38,12 +38,14 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open'})<{
 const Drawer = styled ((props: DrawerProps) => (
   <MuiDrawer {...props}/>
 ))(({ theme }) => ({
-  // width: '250px'
+
 }))
 
 function HeaderDrawer(props: any) {
+  
   const user = useAuth()
   const navigation = useNavigate()
+
   const handleNav = (text: string) => {
     if (text === 'Create') {
       navigation('/create')

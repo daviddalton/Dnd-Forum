@@ -3,7 +3,6 @@ import { Typography } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
 import {  AccordionSummary, Box, Modal } from "@mui/material"
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import fetch from "../../../api/fetch";
 import { Accordion, styleModal } from "../../../util/Constants";
@@ -13,17 +12,10 @@ import { cleanData, createTraitDirectory } from "../../../util/cleanClassData";
 
 function CharacterClassModal(props: any) {
 
-    const { data, status } = useQuery(['class', props.classSlug], FetchClass)
-    const [showMore, setShowMore] = useState(false)
+    const { data } = useQuery(['class', props.classSlug], FetchClass)
     const navigate = useNavigate()
     const handleClose = () => props.setClicked(false);
-    const handleShowMore = () => {
-        if (showMore) {
-            setShowMore(false)
-        } else {
-            setShowMore(true)
-        }
-    }
+
     const handleClassLinkClick = () => {
         navigate(`/wiki/classes/${data?.slug}`)
     }

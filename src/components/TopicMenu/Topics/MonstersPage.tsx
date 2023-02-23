@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query"
-import { useState } from "react"
 import fetch from "../../../api/fetch"
 import Monsters from "../../../model/Character/Monsters.interface"
 
 
 function MonstersPage() {
 
-    const { data, status } = UseQueryMonsters()
-    const [ URL, setURL ] = useState('https://api.open5e.com/monsters/')
+    const { data} = UseQueryMonsters()
+
 
     function FetchMonsters(): Promise<Monsters> {
         return fetch(URL)
@@ -24,7 +23,7 @@ function MonstersPage() {
                 <p>{res.name}</p>
                 )
             })}
-            {/* {NextMonsterPage(data?.next)} */}
+
         </div>
 
     </>

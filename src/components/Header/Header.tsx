@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { AppBar, IconButton, Toolbar, useTheme } from "@mui/material"
 import { getAuth, signOut } from "firebase/auth";
 import {useState} from "react";
@@ -57,7 +57,7 @@ function Header() {
                 <div className="heading-appbar-item-container">
                     <ShowMenuIcon open={open} handleDrawerClose={handleDrawerClose} theme={theme} handleDrawerOpen={handleDrawerOpen}/>
                     <TitleAndButtons handleClickWiki={handleClickWiki} handleClickCreate={handleClickCreate} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} width={width.width!} navToHome={navToHome}/>
-                    <LoginLogoutDisplayName user={user} width={width.width!} auth={auth} handleLoginClick={handleLoginClick} currentURL={currentURL}/>
+                    <LoggedInContainer user={user} width={width.width!} auth={auth} handleLoginClick={handleLoginClick} currentURL={currentURL}/>
                 </div>
         </AppBar>
         <HeaderDrawer 
@@ -72,8 +72,8 @@ function ShowMenuIcon(props: any) {
         <div className="heading-appbar-menu-icon-container">
         {props.open ? (
             <IconButton onClick={props.handleDrawerClose}>
-                      {props.theme.direction === 'ltr' ? <ChevronLeftIcon style={{color: 'white', marginTop: '10px', marginLeft: '10px'}}/> : <ChevronRightIcon />}
-                    </IconButton>
+                {props.theme.direction === 'ltr' ? <ChevronLeftIcon style={{color: 'white', marginTop: '10px', marginLeft: '10px'}}/> : <ChevronRightIcon />}
+            </IconButton>
         ) : (
             <Toolbar  sx={{ paddingRight: '0px' }}>
             <IconButton
@@ -128,59 +128,68 @@ function TitleAndButtons(props: any) {
     )
 } 
 
-function LoginLogoutDisplayName(props: any) {
-    const auth = getAuth()
+function LoggedInContainer(props: any) {
+    
     return (
         <div className="heading-login-container">
         {props.user.user ? (
-            <div 
-                style={{ paddingRight: '10px'}}>
-                    {props.width > 920 ? (
-                        <div
-                            style={{
-                                display: 'flex'
-                            }}>
-                            <div className="header-display-name-text">
-                                {props.user.user.displayName}
-                            </div>
-                            <div className="header-display-logout-text"
-                                onClick={() => signOut(auth)}>
-                                Logout
-                            </div>
-                        </div>  
-                    ):(
-                        <div 
-                            className="header-display-logout-text"
-                            onClick={() => signOut(auth)}>
-                            Logout
-                        </div>
-                    )}
-            </div>
+            <LogoutDisplayName width={props.width} user={props.user} />
         ):(
-            <>
-            {props.currentURL !== 'http://localhost:3000/login' ? (
-            <div
-            style={{
-                
-                marginRight: '15px',
-                padding: '5px',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                background: '#761e21',
-                opacity: '.6'
-            }}
-            onClick={props.handleLoginClick}>
-            Login
-        </div>
-            ):(
-                <div></div>
-            )}
-
-            <Link to={"/login"}>
-            </Link>
-            </>
+            <LoginDisplayName handleLoginClick={props.handleLoginClick} currentURL={props.currentURL}/>
         )}
     </div>
+    )
+}
+
+function LogoutDisplayName(props: any) {
+    const auth = getAuth()
+    return (
+        <div 
+        style={{ paddingRight: '10px'}}>
+            {props.width > 920 ? (
+                <div
+                    style={{
+                        display: 'flex'
+                    }}>
+                    <div className="header-display-name-text">
+                        {props.user.user.displayName}
+                    </div>
+                    <div className="header-display-logout-text"
+                        onClick={() => signOut(auth)}>
+                        Logout
+                    </div>
+                </div>  
+            ):(
+                <div 
+                    className="header-display-logout-text"
+                    onClick={() => signOut(auth)}>
+                    Logout
+                </div>
+            )}
+    </div>
+    )
+}
+
+function LoginDisplayName(props: any) {
+    return (
+        <>
+        {props.currentURL !== 'http://localhost:3000/login' ? (
+        <div
+        style={{
+            marginRight: '15px',
+            padding: '5px',
+            borderRadius: '10px',
+            cursor: 'pointer',
+            background: '#761e21',
+            opacity: '.6'
+        }}
+        onClick={props.handleLoginClick}>
+        Login
+    </div>
+        ):(
+            <div></div>
+        )}
+        </>
     )
 }
 export default Header

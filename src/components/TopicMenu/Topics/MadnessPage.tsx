@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Heading } from "../../../model/Character/Heading.class";
 import { SubSection } from "../../../model/Character/SubSection.class";
 import { Table } from "../../../model/Character/Table.class";

@@ -20,7 +20,7 @@ class AstrickTrait {
 function CharacterRaceSelect(props: any) {
     const [raceSlug, setRaceSlug] = useState<string | undefined>()
     const [clicked, setClicked] = useState(false)
-    const { data, status } = useQuery(['races'], racesData.fetchRaces)
+    const { data } = useQuery(['races'], racesData.fetchRaces)
     const [raceData, setRaceData] = useState<AstrickTrait[]>([])
     const [raceDesc, setRaceDesc] = useState<RaceDesc>()
 
@@ -30,9 +30,8 @@ function CharacterRaceSelect(props: any) {
         setClicked(true)
     }
 
-    
     const handleClose = () => {setClicked(false)};
-   console.log(raceSlug)
+
     return (
         <>
         {props.race === "" ? (
@@ -78,15 +77,15 @@ function CharacterRaceSelect(props: any) {
            raceData={raceData}
            setRaceData={setRaceData}
            setRaceDesc={setRaceDesc}/>
-</div>
-        ):(
-            <SelectedRacePage 
-                raceData={raceData} 
-                setRace={props.setRace}
-                raceDesc={raceDesc}
-                raceSlug={props.raceSlug}
-                />
-        )}
+        </div>
+            ):(
+                <SelectedRacePage 
+                    raceData={raceData} 
+                    setRace={props.setRace}
+                    raceDesc={raceDesc}
+                    raceSlug={props.raceSlug}
+                    />
+            )}
         
 
        </>

@@ -29,7 +29,6 @@ function LoginPage() {
     const handleClickLogin = async () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in
             setError(false)
             navigate('/create/character-select')
         })

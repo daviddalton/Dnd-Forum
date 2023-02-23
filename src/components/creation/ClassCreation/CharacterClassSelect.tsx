@@ -5,19 +5,16 @@ import CharacterClass from "../../../model/Character/Character/CharacterClass.in
 import { ParentTrait } from "../../../model/Character/ParentTrait"
 import '../../styles/classCreate.css'
 import CharacterClassModal from "./CharacterClassModal"
-import ClassModal from "./CharacterClassModal"
 import SelectedClassPage from "./SelectedClassPage"
 
 const classesData = new CharacterClassData()
 
 function CharacterClassSelect(props: any) {
-    const {data, status} = useQuery(['classes'], classesData.fetchClasses)
-
-    
-    const [search, setSearch] = useState("")
+    const {data} = useQuery(['classes'], classesData.fetchClasses)
     const [clicked, setClicked] = useState(false)
     const [classes, setClasses] = useState<CharacterClass[]>([])
     const [classTraits, setClassTraits] = useState<ParentTrait[]>([])
+
     const handleClose = () => { setClicked(false) }
     const handleClick = (characterClass: CharacterClass) => {
         props.setClassSlug(characterClass.slug)
@@ -32,7 +29,7 @@ function CharacterClassSelect(props: any) {
 
     const handleSearch = (e: string) => {
         var index = classes?.filter((clazz: CharacterClass) => clazz.slug.includes(e) || clazz.name.includes(e))
-        setSearch(e)
+
         if (e.length === 0 && data?.results !== undefined) {
             console.log('works')
                 setClasses(data.results)

@@ -1,6 +1,5 @@
 import { ExpandMore } from "@mui/icons-material";
-import {  AccordionSummary, Box, Modal, styled, Typography } from "@mui/material"
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
+import {  AccordionSummary, Box, Modal, Typography } from "@mui/material"
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import fetch from "../../../api/fetch";
@@ -35,9 +34,7 @@ function CharacterRaceModal(props: any) {
     var traits = [raceAlignment, raceAge, raceAsiDesc, raceLanguages, raceSize, raceSpeedDesc]
 
     const [width, setWidth] = useState(window.innerWidth)
-    const {data , status} = useQuery(['races', props.raceSlug], FetchRace)
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(props.clicked);
+    const {data} = useQuery(['races', props.raceSlug], FetchRace)
     const handleClose = () => {
         props.setClicked(false)
     }

@@ -15,19 +15,19 @@ const racesData = new RacesData()
 
 function GetSectionsData() {
   var returnData: any
-  const { data, status } = useQuery(['sections'], sectionsData.fetchSections)
+  const { data } = useQuery(['sections'], sectionsData.fetchSections)
   returnData = data
   return returnData
 } 
 function GetClassesData() {
   var returnData: any
-  const { data, status } = useQuery(['classes'], classesData.fetchClasses)
+  const { data } = useQuery(['classes'], classesData.fetchClasses)
   returnData = data
   return returnData
 }
 function GetRacesData() {
   var returnData: any
-  const { data, status } = useQuery(['races'], racesData.fetchRaces)
+  const { data } = useQuery(['races'], racesData.fetchRaces)
   returnData = data
   return returnData
 }

@@ -1,15 +1,12 @@
 import { ExpandMore } from "@mui/icons-material"
 import { Accordion, AccordionSummary, Typography } from "@mui/material"
-import { useState } from "react"
 import '../../styles/settingsPage.css'
 import '../../styles/SectionAnimations.css'
 
 
 function CharacterSettingsPage(props: any): JSX.Element {
-    const [tempName, setTempName] = useState('')
     const handleNameChange = (e: { target: { value: any } }) => {
         props.setCharacterName(e.target.value)
-        setTempName(e.target.value) 
     }
     
    
