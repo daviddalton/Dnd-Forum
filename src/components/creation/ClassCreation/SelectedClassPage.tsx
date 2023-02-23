@@ -114,6 +114,20 @@ function ClassSelectTraits(props: any) {
                                 {str}
                             </div>
                         ))}
+                        {parentTrait.childrenTraits?.map((childTrait: ChildTrait) => (
+                            <div className="selected-class-indv-div">
+                                <div style={{ padding: '5px' }}>
+                                    <strong style={{ textDecoration: 'underline' }}>{childTrait.name}</strong>
+                                </div>
+                                <div>
+                                    {childTrait.desc.map((str: string) => (
+                                        <div style={{ padding: '5px 0px 5px 20px' }}>
+                                            {str}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
                     </Accordion>
                 ))}
 

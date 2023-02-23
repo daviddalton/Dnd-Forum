@@ -23,8 +23,6 @@ function CharacterClassModal(props: any) {
         return fetch(`https://api.open5e.com/classes/${props.classSlug}`)
     }
     var traitDirectory:ParentTrait[] = []
-    var targetTraitDirectory: ParentTrait
-    var targetChildDirectory: ChildTrait
 
     
     console.log(data)
@@ -128,7 +126,7 @@ function ClassModalTraits(props: any) {
                                 {parentTrait.childrenTraits?.map((childTrait: ChildTrait) => (
                                     <div>
                                         <div style={{ padding: '5px' }}>
-                                            <strong style={{ textDecoration: 'underline'}}>{childTrait.name}</strong>
+                                            <strong style={{ textDecoration: 'underline' }}>{childTrait.name}</strong>
                                         </div>
                                         <div>
                                             {childTrait.desc.map((str: string) => (
