@@ -72,27 +72,12 @@ function CharacterClassSelect(props: any) {
                                      </p>
                                  </div>
                                  <div className="class-arrow-container">
-
                                          {">"}
                                  </div>
                              </div>
                          </div>
                      ))}
                  </div>
-                 <div className="create-nav-save-container">
-                         <div 
-                             className="create-nav-save-left-arrow"
-                             onClick={() => props.setCurrentPage('Race')}>
-                         </div>
-                         <div className="create-nav-save-button-container">
-                             <button className="create-nav-save-button">
-                                 Save
-                             </button>
-                         </div>
-                         <div className="create-nav-save-right-arrow"
-                             onClick={() => props.setCurrentPage('Abilities')}>
-                         </div>
-                     </div>
                      <CharacterClassModal 
                          clicked={clicked}
                          classSlug={props.classSlug}

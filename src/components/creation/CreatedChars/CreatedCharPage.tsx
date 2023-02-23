@@ -57,68 +57,6 @@ function CreatedCharPage() {
                         wisdom={character.aScoreWis}
                         charisma={character.aScoreCharisma}/>
             </AppBar>
-    {/* <div
-        style={{
-            width: '100%',
-            height: '80vh',
-            display: 'flex',
-            justifyContent: 'center',
-            marginTop: '150px'
-        }}>
-
-        <Card
-            style={{
-                width: '1210px',
-                height: '550px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                background: '#3A3A3A',
-                borderRadius: '0px'
-            }}>
-            <div
-                style={{
-                    width: '484px',
-                    height: '495px',
-                    border: '1px red solid',
-                    background: '#756C6C'
-                }}>
-                <p>Image</p>
-            </div>
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    border: '1px white solid',
-                    width: '641px',
-                    height: '495px'
-                }}>
-                    <div
-                        style={{
-                            border: '1px white solid',
-                            width: '577px',
-                            height: '74px',
-                            marginTop: '25px',
-                            color: 'white'
-                        }}>
-                        <p>Info:</p>
-                    </div>
-                    <div
-                        style={{
-                            border: '1px white solid',
-                            width: '577px',
-                            height: '74px',
-                            marginTop: '25px',
-                            color: "white"
-                        }}>
-                        <p></p>
-                    </div>
-                
-                
-            </div>
-
-        </Card>
-    </div> */}
 
 
 
