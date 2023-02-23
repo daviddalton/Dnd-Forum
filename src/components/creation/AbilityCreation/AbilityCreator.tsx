@@ -81,7 +81,7 @@ function AbilityCreator(props: any) {
         charisma.scores[6].value = '+0'
         charisma.scores[0].value = charisma.findTotal()
         charisma.scores[1].value = charisma.findModifier()
-
+    console.log('test')
 
         const abilityScores = [strength, dexterity, constitution, intelligence, wisdom, charisma]
 
