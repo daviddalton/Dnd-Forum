@@ -201,7 +201,8 @@ function CharacterRaceModal(props: any) {
                                     style={{
                                         borderRadius: '10px',
                                         color: 'white',
-                                    }}>
+                                    }}
+                                    expandIcon={<ExpandMore style={{ color: 'white'}}/>}>
                                     <Typography style={{fontFamily: 'buenard'}}>
                                         {trait.title}
                                     </Typography>

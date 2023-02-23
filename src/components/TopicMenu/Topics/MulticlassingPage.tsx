@@ -166,7 +166,6 @@ function MulticlassingPage(props: any) {
                 <GeneralSubsectionContainer tempSection={tempSection} />
                 <div
                     style={{
-                        border: '1px white solid',
                         margin: '5px',
                         display: 'flex',
                         flexDirection: "column",
@@ -174,7 +173,6 @@ function MulticlassingPage(props: any) {
                     }}>
                         <div
                             style={{
-                                border: '1px white solid',
                                 margin: '5px',
                                 padding: '5px'
                             }}>
@@ -182,7 +180,6 @@ function MulticlassingPage(props: any) {
                         </div>
                         <div
                             style={{
-                                border: '1px white solid',
                                 margin: '5px',
                                 padding: '5px'
                             }}>
