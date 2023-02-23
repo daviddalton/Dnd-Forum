@@ -24,18 +24,10 @@ function CharacterClassModal(props: any) {
     }
     var traitDirectory:ParentTrait[] = []
 
-    
-    console.log(data)
-
-
-
-
-
     function handleConfirmClassClick() {
         props.setCharacterClass(data?.name)
         props.handleClose()
         props.setClassTraits(traitDirectory)
-
     }
 
     if (data?.desc !== undefined) {
