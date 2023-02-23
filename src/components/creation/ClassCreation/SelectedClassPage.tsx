@@ -36,8 +36,7 @@ function SelectedClassPage(props: any) {
     const topics = [hitDice, levelOneHp, higherLevelHp, profArmor]
 
     var traitDirectory:ParentTrait[] = []
-    var targetTraitDirectory: ParentTrait
-    var targetChildDirectory: ChildTrait
+
 
     function handleToClassPageClick() {
         navigate(`/wiki/classes/${data?.slug}`)
@@ -48,7 +47,7 @@ function SelectedClassPage(props: any) {
     }
     if (data?.desc !== undefined) {
         var splitData = cleanData(data)
-        createTraitDirectory(splitData, traitDirectory, targetTraitDirectory!, targetChildDirectory!)
+        createTraitDirectory(splitData, traitDirectory)
     }
     return (
         <div className="selected-class-container">
@@ -98,7 +97,8 @@ function ClassSelectTraits(props: any) {
         <div className="selected-class-traits-container">
                 {props.traitDirectory.map((parentTrait: ParentTrait) => (
                     <Accordion className="selected-class-indv-trait-accordion"
-                        key={parentTrait.id}>
+                        key={parentTrait.id}
+                        style={{ background: '#761e21'}}>
                         <AccordionSummary
                             style={{
                                 borderRadius: '10px',

@@ -42,7 +42,8 @@ function CharacterClassModal(props: any) {
 
     if (data?.desc !== undefined) {
         var splitData = cleanData(data)
-        createTraitDirectory(splitData, traitDirectory, targetTraitDirectory!, targetChildDirectory!)
+        createTraitDirectory(splitData, traitDirectory)
+        console.log(traitDirectory)
     }
     
     return(
@@ -115,9 +116,31 @@ function ClassModalTraits(props: any) {
                                 {parentTrait.name}
                             </Typography>
                         </AccordionSummary>
-                        <div className="class-modal-indv-accordion-div">
-                                {parentTrait.desc}
-                        </div>
+                        
+                                {parentTrait.desc.map((str: string) => (
+                                    <>
+                                    <div className="class-modal-indv-accordion-div">
+                                        {str}
+                                    </div>
+
+                                    </>
+                                ))}
+                                {parentTrait.childrenTraits?.map((childTrait: ChildTrait) => (
+                                    <div>
+                                        <div style={{ padding: '5px' }}>
+                                            <strong style={{ textDecoration: 'underline'}}>{childTrait.name}</strong>
+                                        </div>
+                                        <div>
+                                            {childTrait.desc.map((str: string) => (
+                                                <div style={{ padding: '5px 0px 5px 20px' }}>
+                                                    {str}
+                                                </div>
+
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                       
                     </Accordion>
                 ))}
         </div>
