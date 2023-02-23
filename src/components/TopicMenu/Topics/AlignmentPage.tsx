@@ -4,7 +4,6 @@ import GeneralSubsectionContainer from '../../../util/GeneralSubsectionContainer
 import SectionTitleDesc from '../../../util/SectionTitleDesc'
 import '../../styles/alignment.css'
 
-
 function AlignmentPage(props: any) {
     var tempSection = new TopicSection()
     var alignmentAndDesc: string[] | undefined = []

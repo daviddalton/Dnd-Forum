@@ -1,6 +1,3 @@
-
-
-
 function keyToArray(keys: any) {
     var properties = []
     for(var key in keys) {

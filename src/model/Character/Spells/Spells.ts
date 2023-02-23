@@ -1,6 +1,4 @@
 import Spell from "./spell";
-
-
 interface Spells {
     count: number;
     next: string;

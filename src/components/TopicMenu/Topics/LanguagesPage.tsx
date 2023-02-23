@@ -6,10 +6,6 @@ import recursiveCleaning from "../../../util/recursiveCleaning"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import "../../styles/languages.css"
 
-
-
-
-
 function LanguagesPage(props: any) {
     var tempSection = new TopicSection()
 
@@ -89,7 +85,6 @@ function LanguagesPage(props: any) {
             return table
         }
     }
-
     topicSectionCreate(props.splitDesc)
 
     return (
@@ -98,11 +93,17 @@ function LanguagesPage(props: any) {
             <div className="language-subSection-container">
                 {tempSection?.subSections.map((subSec: SubSection) => {
                     return (
-                        <div key={subSec.title} className="language-indv-subsection-container">
-                            <div  className="language-subSection-indv-title">
+                        <div key={subSec.title} 
+                            className="language-indv-subsection-container"
+                            style={{ border: '1px white solid', borderRadius: '10px' }}>
+                            <div  className="language-subSection-indv-title"
+                                style={{ borderRadius: '10px'}}>
                                 <h2>{subSec.title}</h2>
                             </div>
-                            <div className="language-subSection-indv-content">
+                            <div className="language-subSection-indv-content"
+                                style={{
+                                    borderRadius: '10px'
+                                }}>
                                 <LanguagesTables subSec={subSec}/>
                             </div>
                         </div>
@@ -117,7 +118,10 @@ function LanguagesTables(props: any) {
     return (
     <>
         {props.subSec.table?.headings.map((heading: Heading) => (
-            <div className="languages-table-container">
+            <div className="languages-table-container"
+                style={{
+                    borderRadius: '10px'
+                }}>
                 <div className="language-table-titles">
                     <h3>{heading.title}</h3>
                 </div>

@@ -1,6 +1,3 @@
-
-
-
 interface Subraces {
     name: string;
     slug: string;

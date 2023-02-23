@@ -1,8 +1,6 @@
 import { SubSection } from "../model/Character/SubSection.class"
 import { TopicSection } from "../model/Character/TopicSection.class"
 
-
-
 function hashSubsections(splitDesc: string[], tempSection: TopicSection) {
     var tempArr = splitDesc.filter((s: string) => s.includes('##') && !s.includes('###'))
     var subsectionDescKey = true

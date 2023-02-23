@@ -3,27 +3,25 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import Wiki from "./TopicMenu/Topics/Wiki";
 import Header from './Header/Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Create from './creation/CreatedChars/CharacterSelection';
+import Create from './creation/CreatedCharacters/CharacterSelection';
 import NoPage from './NoPage';
-import BackgroundsPage from './TopicMenu/Topics/BackgroundsPage';
 import SpellsPage from './TopicMenu/Topics/Spells/SpellsPage';
 import ClassSpellsPage from './TopicMenu/Topics/Spells/ClassSpellsPage';
 import ClassPage from './TopicMenu/Topics/ClassPage';
 import SectionPage from './TopicMenu/Topics/SectionPage';
 import RacePage from './TopicMenu/Topics/RacePage';
 import MonstersPage from './TopicMenu/Topics/MonstersPage';
-import CreatedCharPage from './creation/CreatedChars/CreatedCharPage';
-import CharCreation from './creation/CharCreator';
+import CreatedCharPage from './creation/CreatedCharacters/IndvCreatedCharacterPage';
+import CharCreation from './creation/CharacterCreationFramework/CharacterCreation';
 import LoginPage from './LoginPage';
 import Home from './Home';
 import WikiDesc from './TopicMenu/Topics/WikiDesc';
 import MagicItemsPage from './TopicMenu/Topics/MagicItemsPage';
-import LanguagesPage from './TopicMenu/Topics/LanguagesPage';
 import AuthRoute from './AuthRoute';
 import SignUpPage from './SignUpPage';
-import CreateLayout from './creation/CreateLayout';
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import CreateLayout from './creation/CharacterCreationFramework/CreateLayout';
 import './styles/SectionAnimations.css'
+import Search from './TopicMenu/Topics/SearchPage';
 
 const queryClient = new QueryClient();
 
@@ -40,14 +38,13 @@ function App() {
                 <Route path="/wiki" element={<Wiki/>}>
                   <Route index element={<WikiDesc />} />
                   <Route path="classes/:classSlug" element={<ClassPage/>} />
-                  <Route path="magicitems" element={<MagicItemsPage />} />
+                  <Route path="magicitems/:letterRange" element={<MagicItemsPage />} />
                   <Route path="monsters" element={<MonstersPage/>}/>
                   <Route path="races/:raceSlug" element={<RacePage/>}/>
-                  <Route path="sections/:sectionSlug" element={
-                            <SectionPage />
-                  }/>
+                  <Route path="sections/:sectionSlug" element={<SectionPage />}/>
                   <Route path="spells" element={<SpellsPage/>}/>
                   <Route path="spells/:clazzSlug" element={<ClassSpellsPage/>}/>
+                  <Route path="search/:searchSlug" element={<Search/>}/>
                   <Route path='*' element={<NoPage/>}/>
                 </Route>
                 

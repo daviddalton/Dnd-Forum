@@ -1,4 +1,3 @@
-import React, { useState } from "react"
 import { Heading } from "../../../model/Character/Heading.class"
 import { SubSection } from "../../../model/Character/SubSection.class"
 import { Table } from "../../../model/Character/Table.class"
@@ -7,19 +6,11 @@ import buildSectionDesc from "../../../util/buildSectionDesc"
 import recursiveCleaning from "../../../util/recursiveCleaning"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
+import { useWidth } from "../../WidthContext"
 
 function PoisonsPage(props: any) {
     var tempSection = new TopicSection()
-    const [width, setWidth] = useState(window.innerWidth)
-    
-    React.useEffect(() => {
-        window.addEventListener("resize", handleResize );
-        return () => window.removeEventListener("resize", handleResize)
-    })
-
-    function handleResize() {
-        setWidth(window.innerWidth)
-    }
+    const width = useWidth()
     function handlePoisons(splitDesc: string[]) {
         buildSectionDesc(tempSection, splitDesc, '*')
         buildTypesOfPoisons(tempSection, splitDesc)
@@ -90,8 +81,8 @@ function PoisonsPage(props: any) {
             alignItems: 'center',
             fontFamily: 'buenard'
         }}>
-            <SectionTitleDesc name={props.name} tempSection={tempSection} width={width} />
-            <SubSectionsWithSubSections tempSection={tempSection} width={width} />
+            <SectionTitleDesc name={props.name} tempSection={tempSection} width={width.width!} />
+            <SubSectionsWithSubSections tempSection={tempSection} width={width.width!} />
        </div>
     )
 }

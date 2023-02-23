@@ -1,6 +1,5 @@
 import { ExpandMore } from "@mui/icons-material";
-import {  AccordionSummary, Box, Modal, styled, Typography } from "@mui/material"
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
+import {  AccordionSummary, Box, Modal, Typography } from "@mui/material"
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import fetch from "../../../api/fetch";
@@ -8,6 +7,7 @@ import Race from "../../../model/Character/Races/race.interface";
 import { Link } from "react-router-dom"
 import '../../styles/raceCreate.css'
 import React from "react";
+import { Accordion, styleModal } from "../../../util/Constants";
 
 class RaceDesc {
     title!: string;
@@ -20,35 +20,9 @@ class AstrickTrait {
 class MultiAstrickTrait {
     astrickTraits: AstrickTrait[] = []
 }
-const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    maxWidth: '780px',
-    minWidth: '320px',
-    width: '100%',
-    height: 'fit-content',
-    transform: 'translate(-50%, -40%)',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    background: '#393E46',
-    padding: '10px',
-    borderRadius: '10px',
-  };
-  const Accordion = styled((props: AccordionProps) => (
-    <MuiAccordion disableGutters elevation={0} square {...props} />
-  ))(({ theme }) => ({
-    border: `1px solid ${theme.palette.divider}`,
-    '&:not(:last-child)': {
-      borderBottom: 0,
-    },
-    '&:before': {
-      display: 'none',
-    },
-  }));
 
-function RaceModal(props: any) { 
+
+function CharacterRaceModal(props: any) { 
     var raceDesc = new RaceDesc()
     var raceAlignment = new AstrickTrait()
     var raceAge = new AstrickTrait()
@@ -60,9 +34,7 @@ function RaceModal(props: any) {
     var traits = [raceAlignment, raceAge, raceAsiDesc, raceLanguages, raceSize, raceSpeedDesc]
 
     const [width, setWidth] = useState(window.innerWidth)
-    const {data , status} = useQuery(['races', props.raceSlug], FetchRace)
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(props.clicked);
+    const {data} = useQuery(['races', props.raceSlug], FetchRace)
     const handleClose = () => {
         props.setClicked(false)
     }
@@ -102,9 +74,7 @@ function RaceModal(props: any) {
             }
         });
     }
-    if (data !== undefined && props.raceSlug !== undefined) {
-        buildRaceData(data)
-    }
+
 
    function buildRaceData(data: Race) {
     if (data !== undefined) {
@@ -119,12 +89,16 @@ function RaceModal(props: any) {
         }
     }
     function handleSetRace() {
-        props.setRace(props.raceSlug)
+        props.setRace(data?.name)
         props.handleClose()
         props.setRaceData(traits)
         props.setRaceDesc(raceDesc)
     }
   
+    if (data !== undefined && props.raceSlug !== undefined) {
+        buildRaceData(data)
+    }
+
     return (
       <div>
         <Modal
@@ -133,7 +107,7 @@ function RaceModal(props: any) {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={style}>
+          <Box sx={styleModal}>
             <div className="race-modal-content-container">
                     <RaceTitle name={data?.name} handleClose={handleClose} raceDesc={raceDesc} width={width}/>
                     <CreateRaceDesc raceDesc={raceDesc} />
@@ -167,7 +141,7 @@ function RaceModal(props: any) {
   function RaceTitle(props: any) {
     return (
         <div className="race-modal-title-container">
-            <div className="race-modal-text">
+            <div className="race-modal-title-text">
                     <h2>{props.name}</h2>
             </div>
     </div>
@@ -253,4 +227,4 @@ function RaceModal(props: any) {
     </div>
     )
   }
-export default RaceModal
+export default CharacterRaceModal

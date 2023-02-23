@@ -1,10 +1,9 @@
-import { flexbox } from "@mui/system"
 import AbilityPointsGraphic from "./AbilityPointsGraphic"
 
 
 
 
-function CreatedCharHeader(props: any) {
+function IndvCreatedCharacterHeader(props: any) {
     return (
         <div
             style={{
@@ -135,4 +134,4 @@ function CreatedCharHeader(props: any) {
     )
 }
 
-export default CreatedCharHeader
+export default IndvCreatedCharacterHeader

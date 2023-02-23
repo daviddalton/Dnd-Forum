@@ -1,6 +1,5 @@
-import { addDoc, collection, deleteDoc, doc, getFirestore, setDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { NavigateFunction } from "react-router-dom";
-import { addSyntheticLeadingComment } from "typescript";
 import { firestore } from "../firebase-config";
 import { CreatedChar } from "../model/Character/CreatedChar.interface";
 

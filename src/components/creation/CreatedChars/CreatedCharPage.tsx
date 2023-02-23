@@ -1,11 +1,10 @@
-import { AppBar, Box, Card, Paper, Stack, styled } from "@mui/material";
-import { display } from "@mui/system";
-import { collection, doc, DocumentData, getDoc, getDocs, query, where } from "firebase/firestore";
+import { AppBar } from "@mui/material";
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firestore } from "../../../firebase-config";
 import { CreatedChar } from "../../../model/Character/CreatedChar.interface"
-import CreatedCharHeader from "./CreatedCharHeader";
+import IndvCreatedCharacterHeader from "../CreatedCharacters/IndvCreatedCharacterHeader";
 
 
 
@@ -31,15 +30,8 @@ function CreatedCharPage() {
             }
         }
         fetchCharacterData()
-    }, [])
+    }, [getCharacter])
 
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-      }));
 
 
 
@@ -52,7 +44,7 @@ function CreatedCharPage() {
                     height: '200px',
                     paddingTop: '5px'
                 }}>
-                    <CreatedCharHeader 
+                    <IndvCreatedCharacterHeader 
                         character={character}
                         characterName={character.characterName}
                         characterRace={character.race}

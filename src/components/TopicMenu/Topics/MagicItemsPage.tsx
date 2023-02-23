@@ -22,7 +22,7 @@ function MagicItemsPage() {
     function SetData() {
         for (let i = 0; i < pages.length; i++) {
             // eslint-disable-next-line react-hooks/rules-of-hooks
-            var {data, status} = useQuery([numbers[i]], () => fetchPage(pages[i]))
+            var {data} = useQuery([numbers[i]], () => fetchPage(pages[i]))
             if (data !== undefined) {
                 totalData.push(data)
             }

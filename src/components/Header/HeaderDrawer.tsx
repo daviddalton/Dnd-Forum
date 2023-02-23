@@ -11,6 +11,7 @@ import { ImportContacts, Person } from '@mui/icons-material';
 import { useAuth } from '../userContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase-config';
+import { create, login, logout } from '../../util/Constants';
 
 const drawerWidth = 240;
 
@@ -37,12 +38,14 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open'})<{
 const Drawer = styled ((props: DrawerProps) => (
   <MuiDrawer {...props}/>
 ))(({ theme }) => ({
-  // width: '250px'
+
 }))
 
-function DrawerHeader(props: any) {
+function HeaderDrawer(props: any) {
+  
   const user = useAuth()
   const navigation = useNavigate()
+
   const handleNav = (text: string) => {
     if (text === 'Create') {
       navigation('/create')
@@ -96,7 +99,7 @@ function DrawerHeader(props: any) {
                   style={{
                     margin: '5px'
                   }}>
-                    Login
+                    {login}
                 </div>
                 <div
                   style={{
@@ -125,7 +128,7 @@ function DrawerHeader(props: any) {
                     style={{
                       margin: '5px'
                     }}>
-                      Logout
+                      {logout}
                   </div>
                   <div
                     style={{
@@ -154,7 +157,7 @@ function DrawerHeader(props: any) {
                   style={{
                     margin: '5px'
                   }}>
-                    Create
+                    {create}
                 </div>
                 <div
                   style={{
@@ -208,6 +211,6 @@ function DrawerHeader(props: any) {
 }
 
 
-export default DrawerHeader
+export default HeaderDrawer
 
 

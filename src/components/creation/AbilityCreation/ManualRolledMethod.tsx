@@ -1,24 +1,11 @@
 import { ExpandMore } from "@mui/icons-material";
-import {  AccordionSummary, styled, Typography } from "@mui/material"
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
+import {  AccordionSummary, Typography } from "@mui/material"
 import { useState } from "react";
 import DiceRollMethod from "./DiceRollMethod";
 import '../../styles/manualRolled.css'
+import { Accordion } from "../../../util/Constants";
 
-
-const Accordion = styled((props: AccordionProps) => (
-    <MuiAccordion disableGutters elevation={0} square {...props} />
-  ))(({ theme }) => ({
-    border: `1px solid ${theme.palette.divider}`,
-    '&:not(:last-child)': {
-      borderBottom: 0,
-    },
-    '&:before': {
-      display: 'none',
-    },
-  }));
-
-function ManualRolledArray() {
+function ManualRolledMethod() {
     const [entered, setEntered] = useState(false)
     const handleMouseEnter = (e: any) => {
         e.target.style.background = "#C7C7C7"
@@ -78,4 +65,4 @@ function ManualRolledArray() {
     )
 }
 
-export default ManualRolledArray
+export default ManualRolledMethod

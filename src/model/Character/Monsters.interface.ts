@@ -1,6 +1,5 @@
 import Monster from "./Monster.interface";
 
-
 interface Monsters {
     count: number;
     next: string;

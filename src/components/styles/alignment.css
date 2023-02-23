@@ -1,11 +1,11 @@
 .alignment-content-container {
     width: 98%;
     margin-top: 20px;
-height: fit-content;
-display: flex;
-flex-direction: column;
-align-items: center;
-font-family: buenard;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: buenard;
 }
 .alignment-desc-container {
     display: flex;
@@ -44,6 +44,6 @@ font-family: buenard;
 }
 .title-container {
     background: rgb(118, 30, 33);
-display: flex;
-justify-content: center
+    display: flex;
+    justify-content: center
 }

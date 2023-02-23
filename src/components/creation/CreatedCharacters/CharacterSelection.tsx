@@ -3,11 +3,10 @@ import {DocumentData, onSnapshot, QuerySnapshot} from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { characterCollection } from '../../controller';
 import { CreatedChar } from '../../../model/Character/CreatedChar.interface';
-import CharacterCard from '../CharacterCard';
+import CharacterCard from './CharacterSelectionCard';
 import { AbilityScore } from '../../../model/Character/AbilityScore';
 import '../../styles/characterSelect.css'
 import '../../styles/characterCard.css'
-import { getAuth } from 'firebase/auth';
 import { useAuth } from '../../userContext';
 import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
@@ -17,7 +16,6 @@ function CharacterSelection() {
     const user = useAuth()
     const [characters, setCharacters] = useState<CreatedChar[]>([])
     const filteredCharacters = characters.filter((char: CreatedChar) => char.uid?.includes(user.user!.uid))
-    const auth = getAuth()
     const scoreTitles = ['Str', 'Dex', 'Con', 'Intl', 'Wis', 'Cha'];
 
     var Ascores : AbilityScore[] = []

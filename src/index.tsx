@@ -4,14 +4,22 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './components/userContext';
+import { WidthProvider } from './components/WidthContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+if (process.env.NODE_ENV === 'development') {
+  require('./mocks/browser')
+}
+
 root.render(
   <React.StrictMode>
     <AuthProvider>
+      <WidthProvider>
       <App />
+      </WidthProvider>
     </AuthProvider>
   </React.StrictMode>
 );

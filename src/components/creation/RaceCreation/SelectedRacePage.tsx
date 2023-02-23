@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Race from "../../../model/Character/Races/race.interface";
 import '../../styles/selectedRace.css'
 import fetch from "../../../api/fetch";
-import { ShowRaceTrait } from "./RaceModal";
+import { ShowRaceTrait } from "./CharacterRaceModal";
 import { ExpandMore } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
@@ -42,7 +42,8 @@ function SelectedRacePage(props: any) {
     var raceSpeedDesc = new AstrickTrait()
     var raceTraits = new MultiAstrickTrait()
     var traits = [raceAlignment, raceAge, raceAsiDesc, raceLanguages, raceSize, raceSpeedDesc]
-    const {data , status} = useQuery(['races', props.raceSlug], FetchRace)
+    
+    const {data} = useQuery(['races', props.raceSlug], FetchRace)
     const navigate = useNavigate()
 
     const handleToRaceClick = () => {

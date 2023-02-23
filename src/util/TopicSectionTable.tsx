@@ -26,7 +26,11 @@ function TopicSectionTable(props: any) {
                         <div className="generalTable-table-headings-container">
                             {table.headings.map((heading: Heading) => (
                                 <div className="generalTable-table-heading-data">
-                                    <div className="generalTable-table-indv-heading">
+                                    <div 
+                                        className="generalTable-table-indv-heading"
+                                        style={{
+                                            fontSize: props.tableChangeWidth > props.width ? ('10px'):('15px')
+                                        }}>
                                             {heading.title}
                                     </div>
                                     {heading.data.map((dat: string) => (

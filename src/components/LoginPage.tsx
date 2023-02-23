@@ -29,13 +29,13 @@ function LoginPage() {
     const handleClickLogin = async () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in
             setError(false)
             navigate('/create/character-select')
         })
         .catch((error) => {
             console.log(error.message)
             if (error.message === 'Firebase: Error (auth/invalid-email).') {
+                alert('login failed')
                 setError(true)
             }
         });

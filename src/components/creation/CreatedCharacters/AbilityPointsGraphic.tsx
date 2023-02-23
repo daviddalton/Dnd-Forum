@@ -1,10 +1,4 @@
-
-
-
-
-
 function AbilityPointsGraphic(props: any) {
-
     class AbilityScore {
         name!: string;
         total!: string;
@@ -39,7 +33,7 @@ function AbilityPointsGraphic(props: any) {
             return modifier!
         }
     }
-
+    console.log()
     const strength = new AbilityScore()
         strength.name = 'Strength'
         strength.total = props.character.aScoreStrength
@@ -64,8 +58,7 @@ function AbilityPointsGraphic(props: any) {
         charisma.name = "Dexterity"
         charisma.total = props.character.aScoreCharisma
         charisma.modifier = charisma.findModifier()
-
-    console.log(strength)
+    
     const abilityScores = [
         strength,
         dexterity,

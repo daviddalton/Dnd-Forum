@@ -8,20 +8,12 @@ import GeneralSubsectionContainer from "../../../util/GeneralSubsectionContainer
 import recursiveCleaning from "../../../util/recursiveCleaning"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
+import { useWidth } from "../../WidthContext"
 
 
 function ObjectsPage(props: any) {
     var tempSection = new TopicSection()
-    const [width, setWidth] = useState(window.innerWidth)
-    
-    React.useEffect(() => {
-        window.addEventListener("resize", handleResize );
-        return () => window.removeEventListener("resize", handleResize)
-    })
-
-    function handleResize() {
-        setWidth(window.innerWidth)
-    }
+    const width = useWidth()
 
     function handleObjects(splitDesc: string[]) {
         buildSectionDesc(tempSection, splitDesc, '#')
@@ -85,6 +77,7 @@ function ObjectsPage(props: any) {
      }
 
     handleObjects(props.splitDesc)
+
     return (
         <div
             style={{
@@ -93,9 +86,9 @@ function ObjectsPage(props: any) {
                 flexDirection: "column",
                 alignItems: "center",
             }}>
-                <SectionTitleDesc name={props.name} tempSection={tempSection} width={width}/>
-                <GeneralSubsectionContainer tempSection={tempSection} width={width} />
-                <TopicSectionTable tempSection={tempSection} width={width} />
+                <SectionTitleDesc name={props.name} tempSection={tempSection} width={width.width!}/>
+                <GeneralSubsectionContainer tempSection={tempSection} width={width.width!} />
+                <TopicSectionTable tempSection={tempSection} width={width.width!} />
         </div>
     )
 }

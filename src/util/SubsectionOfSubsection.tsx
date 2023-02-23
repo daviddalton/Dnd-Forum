@@ -1,6 +1,5 @@
 import { ExpandMore } from "@mui/icons-material"
 import { Accordion, AccordionSummary, Typography } from "@mui/material"
-import ClassPage from "../components/TopicMenu/Topics/ClassPage"
 import { SubSection } from "../model/Character/SubSection.class"
 import '../components/styles/sOfS.css'
 import { Heading } from "../model/Character/Heading.class"

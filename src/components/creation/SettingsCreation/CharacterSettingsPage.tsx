@@ -1,15 +1,12 @@
 import { ExpandMore } from "@mui/icons-material"
 import { Accordion, AccordionSummary, Typography } from "@mui/material"
-import { useState } from "react"
 import '../../styles/settingsPage.css'
 import '../../styles/SectionAnimations.css'
 
 
-function SettingsPage(props: any): JSX.Element {
-    const [tempName, setTempName] = useState('')
+function CharacterSettingsPage(props: any): JSX.Element {
     const handleNameChange = (e: { target: { value: any } }) => {
         props.setCharacterName(e.target.value)
-        setTempName(e.target.value) 
     }
     
    
@@ -110,7 +107,7 @@ function HitPointType(props: any) {
     )
 }
 
-export default SettingsPage
+export default CharacterSettingsPage
 
 
 

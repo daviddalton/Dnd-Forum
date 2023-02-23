@@ -1,15 +1,14 @@
-import { Paper, Stack, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addCharacter } from "../controller";
-import { useAuth } from "../userContext";
-import AbilityCreator from "./AbilityCreator/AbilityCreator";
+import { addCharacter } from "../../controller";
+import { useAuth } from "../../userContext";
+import AbilityCreator from "../AbilityCreation/AbilityCreator";
 import AppBarCreate from "./AppBarCreate";
-import ClassCard from "./ClassCreator/ClassCard";
-import RaceCard from "./RaceCreation/RaceCard";
-import SettingsPage from "./SettingsCreator/SettingPage";
-import { CSSTransition } from 'react-transition-group'
-import '../styles/SectionAnimations.css'
+import CharacterClassSelect from "../ClassCreation/CharacterClassSelect";
+import CharacterRaceSelect from "../RaceCreation/CharacterRaceSelect";
+import CharacterSettingsPage from "../SettingsCreation/CharacterSettingsPage";
+
+
   class AbilityScore {
     scoreName: string;
     total: string
@@ -31,7 +30,7 @@ class score {
     }
 }
 
-function CharCreation() {
+function CharacterCreation() {
     const user = useAuth()
     const uid = user.user?.uid
     const [id, setId] = useState("")
@@ -43,6 +42,7 @@ function CharCreation() {
     const [characterClass, setCharacterClass] = useState("")
     const [race, setRace] = useState("")
     const [raceSlug, setRaceSlug] = useState("")
+    const [classSlug, setClassSlug] = useState("")
     const [background, setBackground] = useState("")
     const [alignment, setAlignment] = useState("")
     const [currentPage, setCurrentPage] = useState('Settings')
@@ -181,7 +181,7 @@ function CharCreation() {
 
                     }}>
                 {currentPage === 'Settings' ? (
-                    <SettingsPage 
+                    <CharacterSettingsPage
                         setCharacterName={setCharacterName} 
                         characterName={characterName}
                         setAdvancementType={setAdvancementType}
@@ -193,7 +193,7 @@ function CharCreation() {
                 ) : currentPage === 'Race' ? (
                     <>
                         <div>
-                            <RaceCard 
+                            <CharacterRaceSelect
                                 race={race}
                                 setRace={setRace}
                                 raceSlug={raceSlug}
@@ -204,8 +204,11 @@ function CharCreation() {
                 ) : currentPage === 'Class' ? (
                     <>
                         <div>
-                            <ClassCard 
+                            <CharacterClassSelect
+                            classSlug={classSlug}
+                            setClassSlug={setClassSlug}
                             setCharacterClass={setCharacterClass}
+                            characterClass={characterClass}
                             setCurrentPage={setCurrentPage} />
                         </div>
                     </>
@@ -256,4 +259,4 @@ function CharCreation() {
     )
 }
 
-export default CharCreation
+export default CharacterCreation

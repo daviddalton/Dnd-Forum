@@ -1,15 +1,15 @@
 export class AbilityScore {
     scoreName: string;
     total: string
-    availableScores: score[]
+    availableScores: Score[]
 
-    constructor(scoreName: string, total: string, availableScores: score[]) {
+    constructor(scoreName: string, total: string, availableScores: Score[]) {
         this.scoreName = scoreName
         this.total = total
         this.availableScores = availableScores
     }
 }
-class score {
+export class Score {
     value: string;
     disabled: boolean
 
