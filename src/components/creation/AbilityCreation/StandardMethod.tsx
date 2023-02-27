@@ -10,7 +10,7 @@ import '../../styles/standardMethod.css';
 
 function StandardMethod(props: any) {
     const [scoreAccordions, setScoreAccordions] = useState([props.strength, props.dexterity, props.constitution, props.intelligence, props.wisdom, props.charisma])
-    const [test, setTest] = useState(false)
+    const [render, setRender] = useState(false)
     const [trueScores, setTrueScores] = useState<string[]>([])
 
     const HandleScoreClick = (abilityScore: AbilityScore, score: Score) => {
@@ -56,7 +56,7 @@ function StandardMethod(props: any) {
             if (!trueScores.includes(score.value)) {
                 score.disabled = false
                 props.setScores(tempScores)
-                setTest(!test)
+                setRender(!render)
             }
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -75,7 +75,8 @@ function StandardMethod(props: any) {
                                 {abilityScore.scoreName}
                         </div>
                         <Accordion className="standard-method-ability-score-accordion" 
-                            key={abilityScore.scoreName}>
+                            key={abilityScore.scoreName}
+                            style={{ background:'rgba(76,81,88)' }}>
                             <AccordionSummary className="standard-method-ability-score-summary"
                                 expandIcon={<ExpandMore style={{ color: 'rgba(255,255,255,.6)' }} />}
                                 style={{
