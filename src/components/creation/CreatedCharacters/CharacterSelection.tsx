@@ -21,7 +21,7 @@ function CharacterSelection() {
     var Ascores : AbilityScore[] = []
     function createAScores() {
         for (let i = 0; i < scoreTitles.length; i++) {
-            let abilityScore = new AbilityScore(scoreTitles[i], '--', [])
+            let abilityScore = new AbilityScore(scoreTitles[i], '--')
             Ascores.push(abilityScore)
         }
     }

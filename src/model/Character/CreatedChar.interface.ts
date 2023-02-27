@@ -1,3 +1,5 @@
+import { AbilityScore } from "./AbilityScore";
+
 export interface CreatedChar {
     id?: string;
     uid?: string;
@@ -11,11 +13,11 @@ export interface CreatedChar {
     background?: string;
     alignment?: string;
     level?: string;
-    aScoreStrength?: string;
-    aScoreDexterity?: string;
-    aScoreCon?: string;
-    aScoreIntel?: string;
-    aScoreWis?: string;
-    aScoreCharisma?: string
+    strength?: AbilityScore;
+    dexterity?: AbilityScore;
+    constitution?: AbilityScore;
+    intelligence?: AbilityScore;
+    wisdom?: AbilityScore;
+    charisma?: AbilityScore
 }
 

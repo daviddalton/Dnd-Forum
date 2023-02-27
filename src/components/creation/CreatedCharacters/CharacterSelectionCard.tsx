@@ -12,7 +12,7 @@ function CharacterSelectionCard({character}: IProps) {
 
     var Ascores : AbilityScore[] = []
 
-    const scoreTotals = [character.aScoreStrength, character.aScoreDexterity, character.aScoreCon, character.aScoreIntel, character.aScoreWis, character.aScoreCharisma];
+    const scoreTotals = [character.strength, character.dexterity, character.constitution, character.intelligence, character.wisdom, character.charisma];
     const navigate = useNavigate();
     const handleClickCharacter = (id: string | undefined) => {
         navigate(`/create/character-select/${id}`)
@@ -20,7 +20,7 @@ function CharacterSelectionCard({character}: IProps) {
     
     function createAScores() {
         for (let i = 0; i < scoreTitles.length; i++) {
-            let abilityScore = new AbilityScore(scoreTitles[i], scoreTotals[i]!, [])
+            let abilityScore = new AbilityScore(scoreTitles[i], scoreTotals[i]?.total!, )
             Ascores.push(abilityScore)
         }
     }
