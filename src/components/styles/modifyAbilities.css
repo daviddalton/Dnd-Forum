@@ -1,0 +1,8 @@
+.ability-score-creation-method {
+    padding-right: 10px;
+    opacity: .6
+}
+.ability-score-creation-method:hover {
+    padding-right: 10px;
+    opacity: .8
+}

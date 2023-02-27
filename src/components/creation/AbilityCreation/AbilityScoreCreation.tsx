@@ -2,6 +2,9 @@ import { useState } from "react";
 import ManualRolledMethod from "./ManualRolledMethod";
 import PointByMethod from "./PointByMethod";
 import StandardMethod from "./StandardMethod";
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
+import '../../styles/modifyAbilities.css'
 
 function AbilityScoreCreation(props: any) {
     class Method {
@@ -38,7 +41,6 @@ function AbilityScoreCreation(props: any) {
     return (
         <div
             style={{
-                border: '1px white solid',
                 background: 'rgba(57,62,70,.6'
             }}>
                 <AbilityScoreCreationTitle />
@@ -48,6 +50,11 @@ function AbilityScoreCreation(props: any) {
                     handleMethodClick={handleMethodClick}
                     options={options}/>
                 {method === 'Standard Array' ? (
+                    <CSSTransition
+                        in={true}
+                        appear={true}
+                        timeout={1000}
+                        classNames="fade">
                     <StandardMethod 
                     scores={props.scores}
                     setScores={props.setScores}
@@ -62,19 +69,8 @@ function AbilityScoreCreation(props: any) {
                     setConstitution={props.setConstitution}
                     setIntelligence={props.setIntelligence}
                     setWisdom={props.setWisdom}
-                    setCharisma={props.setCharisma}
-                    aScoreSetStrength={props.aScoreSetStrength}
-                    aScoreSetDexterity={props.aScoreSetDexterity}
-                    aScoreSetCon={props.aScoreSetCon}
-                    aScoreSetIntel={props.aScoreSetIntel}
-                    aScoreSetWis={props.aScoreSetWis}
-                    aScoreSetCharisma={props.aScoreSetCharisma}
-                    aScoreStrength={props.aScoreStrength}
-                    aScoreDexterity={props.aScoreDexterity}
-                    aScoreCon={props.aScoreCon}
-                    aScoreIntel={props.aScoreIntel}
-                    aScoreWis={props.aScoreWis}
-                    aScoreCharisma={props.aScoreCharisma}/>
+                    setCharisma={props.setCharisma}/>
+                    </CSSTransition>
                 ): method === 'Manual / Rolled' ? (
                     <ManualRolledMethod />
                 ): method === 'Point By' ? (
@@ -90,10 +86,9 @@ function AbilityScoreCreationTitle() {
     return (
         <div
         style={{
-            border: '1px white solid',
             display: 'flex',
-            margin: '5px',
-            justifyContent: "center"
+            justifyContent: "center",
+            opacity: '.6'
         }}>
             <h1>Modify your ability scores</h1>
     </div>
@@ -114,13 +109,12 @@ function AbilityScoreCreationMethodsAccordion(props: any) {
     return (
         <div
             style={{
-                border: '1px white solid',
                 margin: '5px',
                 display: 'flex',
                 justifyContent: 'center',
             }}>
                 {props.options.map((method: Method) => (
-                    <div style={{ paddingRight: '10px' }}>
+                    <div className="ability-score-creation-method">
                     <label>{method.methodName}</label>
                     <input 
                         type="radio" 
@@ -138,10 +132,10 @@ function ChooseAMethodText() {
     return (
         <div
             style={{
-                border: '1px white solid',
                 margin: '5px',
                 display: 'flex',
-                justifyContent: "center"
+                justifyContent: "center",
+                opacity: '.6'
             }}>
                 Choose a method below
         </div>
