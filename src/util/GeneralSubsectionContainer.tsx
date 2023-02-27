@@ -14,7 +14,7 @@ function GeneralSubsectionContainer(props: any) {
         setWidth(window.innerWidth)
     }
     return (
-        <div className='subtopics-container' style={{ border: '1px white solid' }}>
+        <div className='subtopics-container'>
             {props.tempSection?.subSections.map((subSec: SubSection) => (
                 <><div className='indv-subtopic-container'
                     style={{

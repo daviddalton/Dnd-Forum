@@ -7,6 +7,8 @@ import fetch from "../../../api/fetch";
 import { ShowRaceTrait } from "./CharacterRaceModal";
 import { ExpandMore } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 class RaceDesc {
     title!: string;
@@ -96,6 +98,11 @@ function SelectedRacePage(props: any) {
         }
     }
     return(
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className="selected-race-container">
             <div className="selected-race-image-desc-container">
                     <div className="selected-race-image">
@@ -153,6 +160,7 @@ function SelectedRacePage(props: any) {
 
             </div>
         </div>
+        </CSSTransition>
     )
 }
 

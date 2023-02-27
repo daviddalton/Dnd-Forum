@@ -4,6 +4,8 @@ import { ExpandMore } from "@mui/icons-material";
 import { AbilityScore, Score } from "../../../model/Character/AbilityScore";
 import { Accordion } from "../../../util/Constants";
 import React from "react";
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 import '../../styles/standardMethod.css';
 
 function StandardMethod(props: any) {
@@ -61,6 +63,11 @@ function StandardMethod(props: any) {
     }, [trueScores])
 
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className="standard-method-container">
                 {scoreAccordions.map((abilityScore: AbilityScore) => (
                     <div>
@@ -83,6 +90,7 @@ function StandardMethod(props: any) {
                     </div>
                 ))}
         </div>
+        </CSSTransition>
     )
 }
 

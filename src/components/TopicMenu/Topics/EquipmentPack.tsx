@@ -3,6 +3,8 @@ import { TopicSection } from "../../../model/Character/TopicSection.class"
 import buildSectionDesc from "../../../util/buildSectionDesc"
 import GeneralSubsectionContainer from "../../../util/GeneralSubsectionContainer"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 
 function EquipmentPacksPage(props: any) {
@@ -29,6 +31,11 @@ function EquipmentPacksPage(props: any) {
     handleEquipmentPack(props.splitDesc)
 
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div
             style={{
                 margin: '20px',
@@ -39,6 +46,7 @@ function EquipmentPacksPage(props: any) {
                 <SectionTitleDesc name={props.name} tempSection={tempSection}/>
                 <GeneralSubsectionContainer tempSection={tempSection} />
         </div>
+        </CSSTransition>
     )
 }
 

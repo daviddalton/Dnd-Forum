@@ -3,6 +3,8 @@ import { TopicSection } from '../../../model/Character/TopicSection.class'
 import recursiveCleaning from '../../../util/recursiveCleaning'
 import SectionTitleDesc from '../../../util/SectionTitleDesc'
 import SubSectionAccordion from '../../../util/SubSectionAccordion'
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 import '../../styles/adventuringGear.css'
 
 function AdventuringGearPage(props: any) {
@@ -43,12 +45,18 @@ function AdventuringGearPage(props: any) {
     topicSectionCreate(props.splitDesc)
 
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className='adventuringGear-content-container'>
             <SectionTitleDesc name={props.name} tempSection={tempSection} />
             <div className='adventuringGear-subSection-container'>
                 <SubSectionAccordion tempSection={tempSection} />
             </div>
         </div>
+        </CSSTransition>
     )
 }
 

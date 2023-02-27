@@ -4,6 +4,8 @@ import hashSubsection from "../../../util/hashSubsections"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
 import { useWidth } from "../../WidthContext"
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 
 
@@ -17,6 +19,11 @@ function DiseasesPage(props: any) {
 
     handleDiseases(props.splitDesc)
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div
             style={{
                 marginTop: '20px',
@@ -28,6 +35,7 @@ function DiseasesPage(props: any) {
                 <SectionTitleDesc name={props.name} tempSection={tempSection} width={width.width!}/>
                 <SubSectionsWithSubSections tempSection={tempSection} width={width.width!} />
         </div>
+        </CSSTransition>
     )
 }
 

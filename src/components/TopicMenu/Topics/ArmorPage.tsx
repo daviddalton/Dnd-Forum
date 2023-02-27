@@ -9,6 +9,8 @@ import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
 import { useWidth } from "../../WidthContext"
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 function ArmorPage(props: any) {
     var tempSection = new TopicSection()
@@ -72,6 +74,11 @@ function ArmorPage(props: any) {
     handleArmor(props.splitDesc)
 
     return(
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className='armor-content-container'>
                 <SectionTitleDesc name={props.name} tempSection={tempSection} width={width}/>
                 <div className='armor-subSections-container'>
@@ -83,6 +90,7 @@ function ArmorPage(props: any) {
                     )}
                 </div>
         </div>
+        </CSSTransition>
     )
 }
 

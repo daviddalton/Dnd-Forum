@@ -9,6 +9,8 @@ import { ChildTrait } from "../../../model/Character/ChildTrait";
 import { cleanData, createTraitDirectory } from "../../../util/cleanClassData";
 import { useNavigate } from "react-router-dom";
 import '../../styles/selectedClass.css'
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 
 class ClassTopic {
@@ -51,17 +53,24 @@ function SelectedClassPage(props: any) {
         createTraitDirectory(splitData, traitDirectory, targetTraitDirectory!, targetChildDirectory!)
     }
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className="selected-class-container">
                 <SelectedClassHeader topics={topics} name={data!.name}/>
                 <ClassSelectedButtons handleToClassPageClick={handleToClassPageClick} handleChangeClassClick={handleChangeClassClick}/>
                 <ClassSelectTraits traitDirectory={traitDirectory}/>
         </div>
+        </CSSTransition>
     )
 }
 
 
 function SelectedClassHeader(props: any) {
     return (
+
     <div className="selected-class-header-container">
             <div className="selected-class-image"/>
             <div>
@@ -75,6 +84,7 @@ function SelectedClassHeader(props: any) {
                 ))}
             </div>
     </div>
+
     )
 }
 
@@ -98,7 +108,8 @@ function ClassSelectTraits(props: any) {
         <div className="selected-class-traits-container">
                 {props.traitDirectory.map((parentTrait: ParentTrait) => (
                     <Accordion className="selected-class-indv-trait-accordion"
-                        key={parentTrait.id}>
+                        key={parentTrait.id}
+                        style={{ background: '#761e21' }}>
                         <AccordionSummary
                             style={{
                                 borderRadius: '10px',

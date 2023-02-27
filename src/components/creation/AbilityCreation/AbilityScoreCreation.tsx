@@ -39,6 +39,12 @@ function AbilityScoreCreation(props: any) {
 
     
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
+        <div className="selected-class-container">
         <div
             style={{
                 background: 'rgba(57,62,70,.6'
@@ -50,27 +56,23 @@ function AbilityScoreCreation(props: any) {
                     handleMethodClick={handleMethodClick}
                     options={options}/>
                 {method === 'Standard Array' ? (
-                    <CSSTransition
-                        in={true}
-                        appear={true}
-                        timeout={1000}
-                        classNames="fade">
-                    <StandardMethod 
-                    scores={props.scores}
-                    setScores={props.setScores}
-                    strength={props.strength}
-                    dexterity={props.dexterity}
-                    constitution={props.constitution}
-                    intelligence={props.intelligence}
-                    wisdom={props.wisdom}
-                    charisma={props.charisma}
-                    setStrength={props.setStrength}
-                    setDexterity={props.setDexterity}
-                    setConstitution={props.setConstitution}
-                    setIntelligence={props.setIntelligence}
-                    setWisdom={props.setWisdom}
-                    setCharisma={props.setCharisma}/>
-                    </CSSTransition>
+
+                        <StandardMethod 
+                            scores={props.scores}
+                            setScores={props.setScores}
+                            strength={props.strength}
+                            dexterity={props.dexterity}
+                            constitution={props.constitution}
+                            intelligence={props.intelligence}
+                            wisdom={props.wisdom}
+                            charisma={props.charisma}
+                            setStrength={props.setStrength}
+                            setDexterity={props.setDexterity}
+                            setConstitution={props.setConstitution}
+                            setIntelligence={props.setIntelligence}
+                            setWisdom={props.setWisdom}
+                            setCharisma={props.setCharisma}/>
+      
                 ): method === 'Manual / Rolled' ? (
                     <ManualRolledMethod />
                 ): method === 'Point By' ? (
@@ -79,6 +81,8 @@ function AbilityScoreCreation(props: any) {
                     <div></div>
                 )}
         </div>
+    </div>
+        </CSSTransition>
     )
 }
 
