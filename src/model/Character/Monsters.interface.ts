@@ -1,4 +1,4 @@
-import Monster from "./Monster.interface";
+import Monster from "./Monster";
 
 interface Monsters {
     count: number;

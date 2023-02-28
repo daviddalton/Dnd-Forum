@@ -59,6 +59,8 @@ function TopicMenu(props: any){
     races.name = 'Races'
   var magicItems = new TopicMenuTopic()
     magicItems.name = 'Magic Items'
+  var monsters = new TopicMenuTopic()
+    monsters.name = 'Monsters'
   var spells = new TopicMenuTopic()
     spells.name = 'Spells'
 
@@ -108,7 +110,7 @@ function TopicMenu(props: any){
     createSpellSubTopics()
   }
 
-  const topics = [characters, classes, equipment, magicItems, races, rules, spells, spellcasting, appendixes]
+  const topics = [characters, classes, equipment, monsters, magicItems, races, rules, spells, spellcasting, appendixes]
 
   return (
     <>
