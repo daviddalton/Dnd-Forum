@@ -9,6 +9,8 @@ import { ChildTrait } from "../../../model/Character/ChildTrait";
 import { cleanData, createTraitDirectory } from "../../../util/cleanClassData";
 import { useNavigate } from "react-router-dom";
 import '../../styles/selectedClass.css'
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 
 class ClassTopic {
@@ -50,17 +52,24 @@ function SelectedClassPage(props: any) {
         createTraitDirectory(splitData, traitDirectory)
     }
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className="selected-class-container">
                 <SelectedClassHeader topics={topics} name={data!.name}/>
                 <ClassSelectedButtons handleToClassPageClick={handleToClassPageClick} handleChangeClassClick={handleChangeClassClick}/>
                 <ClassSelectTraits traitDirectory={traitDirectory}/>
         </div>
+        </CSSTransition>
     )
 }
 
 
 function SelectedClassHeader(props: any) {
     return (
+
     <div className="selected-class-header-container">
             <div className="selected-class-image"/>
             <div>
@@ -74,6 +83,7 @@ function SelectedClassHeader(props: any) {
                 ))}
             </div>
     </div>
+
     )
 }
 

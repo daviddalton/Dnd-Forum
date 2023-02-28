@@ -1,123 +1,135 @@
-import { AccordionSummary, InputLabel, Typography } from "@mui/material";
+import { AccordionSummary, Typography } from "@mui/material";
 import { useState } from "react";
 import { ExpandMore } from "@mui/icons-material";
 import { AbilityScore, Score } from "../../../model/Character/AbilityScore";
 import { Accordion } from "../../../util/Constants";
+import React from "react";
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
+import '../../styles/standardMethod.css';
 
-function StandardArray(props: any) {
-    const [abilityScores, setAbilityScores] = useState([props.strength, props.dexterity, props.constitution, props.intelligence, props.wisdom, props.charisma])
+function StandardMethod(props: any) {
+    const [scoreAccordions, setScoreAccordions] = useState([props.strength, props.dexterity, props.constitution, props.intelligence, props.wisdom, props.charisma])
+    const [render, setRender] = useState(false)
+    const [trueScores, setTrueScores] = useState<string[]>([])
 
-    function unDisableValues(ability: AbilityScore) {
-        var unDisableIndex = ability.availableScores.findIndex((sco) => sco.value === ability.total)
-        abilityScores.forEach((sco) => sco.availableScores[unDisableIndex].disabled = false)
-    }
-    function disableValues(ability: AbilityScore, valueClicked: string) {
-        if (valueClicked !== '--') {
-            var disableIndex = ability.availableScores.findIndex((sco) => sco.value === valueClicked)
-            abilityScores.forEach((sco) => sco.availableScores[disableIndex].disabled = true)
+    const HandleScoreClick = (abilityScore: AbilityScore, score: Score) => {
+        switch(abilityScore.scoreName) {
+            case 'STRENGTH': props.setStrength(new AbilityScore("STRENGTH", score.value));
+                break;
+            case 'DEXTERITY': props.setDexterity(new AbilityScore('DEXTERITY', score.value));
+                break;
+            case 'CONSTITUTION': props.setConstitution(new AbilityScore("CONSTITUTION", score.value));
+                break;
+            case 'INTELLIGENCE': props.setIntelligence(new AbilityScore("INTELLIGENCE", score.value));
+                break;
+            case 'WISDOM': props.setWisdom(new AbilityScore("WISDOM", score.value));
+                break;
+            case 'CHARISMA': props.setCharisma(new AbilityScore("CHARISMA", score.value));
+                break;
         }
     }
     
-    const handleScoreChange = (ability: AbilityScore, valueClicked: string) => {
-        unDisableValues(ability)
-        ability.total = valueClicked
-        if (ability.scoreName.includes('STRENGTH')) { 
-            props.setStrength(ability)
-            props.aScoreSetStrength(valueClicked)
-        }
-        else if (ability.scoreName.includes('DEXTERITY')) { 
-            props.setDexterity(ability)
-            props.aScoreSetDexterity(valueClicked)
-        }
-        else if (ability.scoreName.includes('CONSTITUTION')) {
-            props.setConstitution(ability)
-            props.aScoreSetCon(valueClicked)
-        }
-        else if (ability.scoreName.includes('INTELLIGENCE')) {
-            props.setIntelligence(ability)
-            props.aScoreSetIntel(valueClicked)
-        }
-        else if (ability.scoreName.includes('WISDOM')) {
-            props.setWisdom(ability)
-            props.aScoreSetWis(valueClicked)
-        }
-        else if (ability.scoreName.includes('CHARISMA')) {
-            props.setCharisma(ability)
-            props.aScoreSetCharisma(valueClicked)
-        }
-        disableValues(ability, valueClicked)
-        setAbilityScores([props.strength, props.dexterity, props.constitution, props.intelligence, props.wisdom, props.charisma])
-    }
+    React.useEffect(() => {
+        setScoreAccordions([props.strength, props.dexterity, props.constitution, props.intelligence, props.wisdom, props.charisma])
+    }, [props.charisma, props.constitution, props.dexterity, props.intelligence, props.strength, props.wisdom])
 
-    return(
-        <div
-            style={{
-                display: 'flex',
-                marginTop: '20px',
-                justifyContent: 'center',
-                height: 'fit-content',
-                }}>
-            {abilityScores.map((aScore) => (
-                <div
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                        padding: '1px',
-                        height: 'fit-content'
-                    }}
-                    key={aScore.scoreName}>
-                    <InputLabel
-                        id="standard-array-label"
-                        style={{
-                            color: 'white',
-                            fontSize: '12px'
-                        }}>
-                            {aScore.scoreName}
-                    </InputLabel>
-                    <Accordion
-                        style={{
-                            width: '100px',
-                            margin: '0px 5px 0px 5px',
-                            background: '#D8D8D8'
-                        }}>
-                        <AccordionSummary 
-                            expandIcon={<ExpandMore />}
-                            style={{
-                                
-                            }}>
-                            <Typography>
-                                {aScore.total}
-                            </Typography>
-                        </AccordionSummary>
-                        {aScore.availableScores.map((selScore: Score) => (
-                            <Accordion
-                                key={selScore.value}
-                                defaultValue={selScore.value}
+    React.useEffect(() => {
+        var tempScores = props.scores;
+        var tempTrueScores : string[] = []
+        tempScores.forEach((score: Score) => {
+            scoreAccordions.forEach((ability: AbilityScore) => {
+                if (score.value === ability.total && ability.total !== '--') {
+                    score.disabled = true
+                    tempTrueScores.push(score.value)
+                    props.setScores(tempScores)
+                }
+                setTrueScores(tempTrueScores)
+            })
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [scoreAccordions])
+
+    React.useEffect(() => {
+        var tempScores = props.scores;
+        tempScores.forEach((score: Score) => {
+            if (!trueScores.includes(score.value)) {
+                score.disabled = false
+                props.setScores(tempScores)
+                setRender(!render)
+            }
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [trueScores])
+
+    return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
+        <div className="standard-method-container">
+                {scoreAccordions.map((abilityScore: AbilityScore) => (
+                    <div>
+                        <div className="standard-method-ability-score-name">
+                                {abilityScore.scoreName}
+                        </div>
+                        <Accordion className="standard-method-ability-score-accordion" 
+                            key={abilityScore.scoreName}
+                            style={{ background:'rgba(76,81,88)' }}>
+                            <AccordionSummary className="standard-method-ability-score-summary"
+                                expandIcon={<ExpandMore style={{ color: 'rgba(255,255,255,.6)' }} />}
                                 style={{
-                                    display: "flex",
-                                    marginTop: "1px",
-                                    alignItems: "center",
-                                    background: '#3A3A3A',
-                                    fontSize: '20px',
-                                    color: 'white',
-                                    height: '40px',
-                                    width: '98px',
-                                    cursor: 'pointer'
-                                }}
-                                disabled={selScore.disabled}
-                                onClick={(valueClicked) => handleScoreChange(aScore, valueClicked.currentTarget.outerText)}>
-                                    <AccordionSummary>
-                                        {selScore.value}
-                                    </AccordionSummary>
-                            </Accordion>
-                            ))}
-
-                    </Accordion>
-                </div>
-            ))}
+                                    borderRadius: '10px'
+                                }}>
+                                <Typography style={{ color: 'rgba(255,255,255,.6)' }}>
+                                    {abilityScore.total}
+                                </Typography>
+                            </AccordionSummary>
+                            <ScoreButtons scores={props.scores} HandleScoreClick={HandleScoreClick} abilityScore={abilityScore} />
+                        </Accordion>
+                    </div>
+                ))}
         </div>
+        </CSSTransition>
     )
 }
 
-export default StandardArray
+function ScoreButtons(props: any) {
+    return (
+        <>
+        {props.scores.map((score: Score) => (
+            <div className="standard-method-score-container">
+                    {score.disabled === false ? (
+                        <button className="standard-method-score-button"
+                            disabled={score.disabled}
+                            type="button"
+                            onClick={() => props.HandleScoreClick(props.abilityScore, score)}
+                            style={{
+                                borderTopRightRadius: score.value === '--' ? ('10px'):(''),
+                                borderTopLeftRadius: score.value === '--' ? ('10px'):(''),
+                                borderBottomLeftRadius: score.value === '15' ? ('10px'):(''),
+                                borderBottomRightRadius: score.value === '15' ? ('10px'):('')
+                            }}>
+                            {score.value}
+                        </button>
+                    ):(
+                        <button className="standard-method-disabled-score-button"
+                            disabled={score.disabled}
+                            type="button"
+                            onClick={() => props.HandleScoreClick(props.abilityScore, score)}
+                            style={{
+                                borderTopRightRadius: score.value === '--' ? ('10px'):(''),
+                                borderTopLeftRadius: score.value === '--' ? ('10px'):(''),
+                                borderBottomLeftRadius: score.value === '15' ? ('10px'):(''),
+                                borderBottomRightRadius: score.value === '15' ? ('10px'):('')
+                            }}>
+                            {score.value}
+                        </button>
+                    )}
+            </div>
+        ))}
+        </>
+    )
+}
+export default StandardMethod

@@ -14,10 +14,15 @@ function SearchPage() {
     const { searchSlug } = useParams()
     const [search, setSearch] = useState()
     const navigate = useNavigate()
-    const { data } = useQuery([search ? (search):(searchSlug)], fetchSearch)
+    const { data, status } = useQuery([search ? (search):(searchSlug)], fetchSearch)
 
     const handleInput = (event: { target: { value: any; }; }) => {
-        setSearch(event.target.value)
+        if (status === 'success') {
+            console.log('api call has succeeded')
+            setSearch(event.target.value)
+        } else {
+            console.log('passed api call has not succeeded yet')
+        }
     }
     const handleClick = (route: string, slug: string) => {
         navigate(`/wiki/${route}${slug}`)

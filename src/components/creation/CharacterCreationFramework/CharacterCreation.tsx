@@ -2,22 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addCharacter } from "../../controller";
 import { useAuth } from "../../userContext";
-import AbilityCreator from "../AbilityCreation/AbilityCreator";
+import AbilityCreator from "../AbilityCreation/AbilityScoreCreation";
 import AppBarCreate from "./AppBarCreate";
 import CharacterClassSelect from "../ClassCreation/CharacterClassSelect";
 import CharacterRaceSelect from "../RaceCreation/CharacterRaceSelect";
 import CharacterSettingsPage from "../SettingsCreation/CharacterSettingsPage";
+import AbilityScoreCreation from "../AbilityCreation/AbilityScoreCreation";
 
 
   class AbilityScore {
     scoreName: string;
-    total: string
-    availableScores: score[]
+    total: string;
 
-    constructor(scoreName: string, total: string, availableScores: score[]) {
+    constructor(scoreName: string, total: string) {
         this.scoreName = scoreName
         this.total = total
-        this.availableScores = availableScores
     }
 }
 class score {
@@ -46,91 +45,23 @@ function CharacterCreation() {
     const [background, setBackground] = useState("")
     const [alignment, setAlignment] = useState("")
     const [currentPage, setCurrentPage] = useState('Settings')
-    const [aScoreStrength, aScoreSetStrength] = useState('--')
-    const [aScoreDexterity, aScoreSetDexterity] = useState('--')
-    const [aScoreCon, aScoreSetCon] = useState('--')
-    const [aScoreIntel, aScoreSetIntel] = useState('--')
-    const [aScoreWis, aScoreSetWis] = useState('--')
-    const [aScoreCharisma, aScoreSetCharisma] = useState('--')
+    const [strength, setStrength] = useState(new AbilityScore('STRENGTH', '--'))
+    const [dexterity, setDexterity] = useState(new AbilityScore('DEXTERITY', '--'))
+    const [constitution, setConstitution] = useState(new AbilityScore('CONSTITUTION', '--'))
+    const [intelligence, setIntelligence] = useState(new AbilityScore('INTELLIGENCE', '--'))
+    const [wisdom, setWisdom] = useState(new AbilityScore('WISDOM', '--'))
+    const [charisma, setCharisma] = useState(new AbilityScore('CHARISMA', '--'))
     const navigate = useNavigate();
-    const [strength, setStrength] = useState(new AbilityScore(
-        'STRENGTH',
-        aScoreStrength,
-        [
-            new score('--', false),
-            new score('8', false),
-            new score('10', false),
-            new score('12', false),
-            new score('13', false),
-            new score('14', false),
-            new score('15', false)
-        ]
-    ))
-    const [dexterity, setDexterity] = useState(new AbilityScore(
-        'DEXTERITY',
-        aScoreDexterity,
-        [
-            new score('--', false),
-            new score('8', false),
-            new score('10', false),
-            new score('12', false),
-            new score('13', false),
-            new score('14', false),
-            new score('15', false)
-        ]
-    ))
-    const [constitution, setConstitution] = useState(new AbilityScore(
-        'CONSTITUTION',
-        aScoreCon,
-        [
-            new score('--', false),
-            new score('8', false),
-            new score('10', false),
-            new score('12', false),
-            new score('13', false),
-            new score('14', false),
-            new score('15', false)
-        ]
-    ))
-    const [intelligence, setIntelligence] = useState(new AbilityScore(
-        'INTELLIGENCE',
-        aScoreIntel,
-        [
-            new score('--', false),
-            new score('8', false),
-            new score('10', false),
-            new score('12', false),
-            new score('13', false),
-            new score('14', false),
-            new score('15', false)
-        ]
-    ))
-    const [wisdom, setWisdom] = useState(new AbilityScore(
-        'WISDOM',
-        aScoreWis,
-        [
-            new score('--', false),
-            new score('8', false),
-            new score('10', false),
-            new score('12', false),
-            new score('13', false),
-            new score('14', false),
-            new score('15', false)
-        ]
-    ))
-    const [charisma, setCharisma] = useState(new AbilityScore(
-        'CHARISMA',
-        aScoreCharisma,
-        [
-            new score('--', false),
-            new score('8', false),
-            new score('10', false),
-            new score('12', false),
-            new score('13', false),
-            new score('14', false),
-            new score('15', false)
-        ]
-    ))
+
+    const [scores, setScores] = useState(        [
+        new score('--', false),
+        new score('8', false),
+        new score('10', false),
+        new score('12', false),
+        new score('13', false),
+        new score('14', false),
+        new score('15', false)
+    ])
     const addNewCharacter = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         addCharacter({
@@ -144,12 +75,12 @@ function CharacterCreation() {
             background,
             alignment,
             level,
-            aScoreStrength,
-            aScoreDexterity,
-            aScoreCon,
-            aScoreIntel,
-            aScoreWis,
-            aScoreCharisma
+            strength,
+            dexterity,
+            constitution,
+            intelligence,
+            wisdom,
+            charisma
             
         });
         navigate('/create/character-select')
@@ -215,8 +146,10 @@ function CharacterCreation() {
                 ) : currentPage === 'Abilities' ? (
                     <>
                         <div>
-                            <AbilityCreator 
+                            <AbilityScoreCreation
                                 race={race}
+                                scores={scores}
+                                setScores={setScores}
                                 strength={strength}
                                 dexterity={dexterity}
                                 constitution={constitution}
@@ -228,19 +161,7 @@ function CharacterCreation() {
                                 setConstitution={setConstitution}
                                 setIntelligence={setIntelligence}
                                 setWisdom={setWisdom}
-                                setCharisma={setCharisma}
-                                aScoreSetStrength={aScoreSetStrength}
-                                aScoreSetDexterity={aScoreSetDexterity}
-                                aScoreSetCon={aScoreSetCon}
-                                aScoreSetIntel={aScoreSetIntel}
-                                aScoreSetWis={aScoreSetWis}
-                                aScoreSetCharisma={aScoreSetCharisma}
-                                aScoreStrength={aScoreStrength}
-                                aScoreDexterity={aScoreDexterity}
-                                aScoreCon={aScoreCon}
-                                aScoreIntel={aScoreIntel}
-                                aScoreWis={aScoreWis}
-                                aScoreCharisma={aScoreCharisma}/>
+                                setCharisma={setCharisma}/>
                         </div>
                         </>
                 ) : (

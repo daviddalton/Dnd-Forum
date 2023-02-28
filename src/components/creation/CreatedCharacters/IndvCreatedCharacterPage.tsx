@@ -49,12 +49,12 @@ function IndvCreatedCharacterPage() {
                         characterRace={character.race}
                         characterClass={character.characterClass}
                         characterLevel={character.level}
-                        strength={character.aScoreStrength}
-                        dexterity={character.aScoreDexterity}
-                        constitution={character.aScoreCon}
-                        intelligence={character.aScoreIntel}
-                        wisdom={character.aScoreWis}
-                        charisma={character.aScoreCharisma}/>
+                        strength={character.strength}
+                        dexterity={character.dexterity}
+                        constitution={character.constitution}
+                        intelligence={character.intelligence}
+                        wisdom={character.wisdom}
+                        charisma={character.charisma}/>
             </AppBar>
     </>
 }

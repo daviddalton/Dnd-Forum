@@ -2,6 +2,8 @@ import { SubSection } from '../../../model/Character/SubSection.class'
 import { TopicSection } from '../../../model/Character/TopicSection.class'
 import GeneralSubsectionContainer from '../../../util/GeneralSubsectionContainer'
 import SectionTitleDesc from '../../../util/SectionTitleDesc'
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 import '../../styles/alignment.css'
 
 function AlignmentPage(props: any) {
@@ -35,10 +37,16 @@ function AlignmentPage(props: any) {
     }
     handleAlignment(props.splitDesc)
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className="alignment-content-container">
             <SectionTitleDesc name={props.name} tempSection={tempSection}/>
             <GeneralSubsectionContainer tempSection={tempSection} />
         </div>
+        </CSSTransition>
     )
 }
 

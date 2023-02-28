@@ -5,6 +5,8 @@ import Race from "../../../model/Character/Races/race.interface";
 import RaceModal from "./CharacterRaceModal";
 import '../../styles/raceCreate.css'
 import SelectedRacePage from "./SelectedRacePage";
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 const racesData = new RacesData()
 
@@ -35,6 +37,11 @@ function CharacterRaceSelect(props: any) {
     return (
         <>
         {props.race === "" ? (
+        <CSSTransition
+            in={true}
+            appear={true}
+            timeout={1000}
+            classNames="fade">
        <div className="race-title-content-container">
        <div>
                <h1
@@ -78,6 +85,7 @@ function CharacterRaceSelect(props: any) {
            setRaceData={setRaceData}
            setRaceDesc={setRaceDesc}/>
         </div>
+        </CSSTransition>
             ):(
                 <SelectedRacePage 
                     raceData={raceData} 
