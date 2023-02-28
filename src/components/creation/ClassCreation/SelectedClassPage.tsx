@@ -38,8 +38,7 @@ function SelectedClassPage(props: any) {
     const topics = [hitDice, levelOneHp, higherLevelHp, profArmor]
 
     var traitDirectory:ParentTrait[] = []
-    var targetTraitDirectory: ParentTrait
-    var targetChildDirectory: ChildTrait
+
 
     function handleToClassPageClick() {
         navigate(`/wiki/classes/${data?.slug}`)
@@ -50,7 +49,7 @@ function SelectedClassPage(props: any) {
     }
     if (data?.desc !== undefined) {
         var splitData = cleanData(data)
-        createTraitDirectory(splitData, traitDirectory, targetTraitDirectory!, targetChildDirectory!)
+        createTraitDirectory(splitData, traitDirectory)
     }
     return (
         <CSSTransition
@@ -109,7 +108,7 @@ function ClassSelectTraits(props: any) {
                 {props.traitDirectory.map((parentTrait: ParentTrait) => (
                     <Accordion className="selected-class-indv-trait-accordion"
                         key={parentTrait.id}
-                        style={{ background: '#761e21' }}>
+                        style={{ background: '#761e21'}}>
                         <AccordionSummary
                             style={{
                                 borderRadius: '10px',
@@ -123,6 +122,20 @@ function ClassSelectTraits(props: any) {
                         {parentTrait.desc.map((str: string) => (
                             <div className="selected-class-indv-div">
                                 {str}
+                            </div>
+                        ))}
+                        {parentTrait.childrenTraits?.map((childTrait: ChildTrait) => (
+                            <div className="selected-class-indv-div">
+                                <div style={{ padding: '5px' }}>
+                                    <strong style={{ textDecoration: 'underline' }}>{childTrait.name}</strong>
+                                </div>
+                                <div>
+                                    {childTrait.desc.map((str: string) => (
+                                        <div style={{ padding: '5px 0px 5px 20px' }}>
+                                            {str}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         ))}
                     </Accordion>
