@@ -36,5 +36,26 @@ align-items: center
     color: white;
     padding: 5px;
     background: rgba(76,81,88);
+    opacity: .6;
+    cursor: pointer
+}
+.monster-indv-data-container:hover {
+    opacity: .8
+}
+.monster-column-other-container {
+    display: flex;
+    flex-direction: column
+}
+.monster-title-other-container {
+    color: white;
+    padding: 5px;
+    background: #761e21;
+    opacity: .6
+}
+.monster-indv-data-other-container {
+    border: 1px white solid;
+    color: white;
+    padding: 5px;
+    background: rgba(76,81,88);
     opacity: .6
 }

@@ -4,11 +4,13 @@ import Monsters from "../../../model/Character/Monsters.interface"
 import axios from 'axios';
 import Monster from "../../../model/Character/Monster";
 import { useWidth } from "../../WidthContext";
-import '../../styles/monsters.css'
+import '../../styles/monsters.css';
+import { useNavigate } from "react-router-dom"
 
 function MonstersPage() {
     const [page, setPage] = React.useState(1)
     const [monsterData, setMonsterData] = useState<Monsters>();
+    const navigate = useNavigate()
     const width = useWidth()
 
     useEffect(() => {
@@ -24,11 +26,15 @@ function MonstersPage() {
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
       };
+
+    const handleMonsterLinkClick = (monsterSlug: string) => {
+        navigate(`/wiki/monsters/${monsterSlug}`)
+    }
      
     return<>
         <div className="monster-page-container">
                 <MonsterPagination handlePageChange={handlePageChange} />
-                <MonsterTable monsterData={monsterData} width={width.width} />
+                <MonsterTable monsterData={monsterData} width={width.width} handleMonsterLinkClick={handleMonsterLinkClick}/>
         </div>
     </>
 }
@@ -51,18 +57,18 @@ function MonsterTable(props: any) {
         <div className="monster-table-container">
                 {props.width < 600 ? (
                 <>
-                    <MonsterName monsterData={props.monsterData}/>
+                    <MonsterName monsterData={props.monsterData} handleMonsterLinkClick={props.handleMonsterLinkClick}/>
                     <MonsterHitPoints monsterData={props.monsterData}/>
                 </>
                 ): props.width < 700 && props.width > 600 ? (
                 <>
-                    <MonsterName monsterData={props.monsterData}/>
+                    <MonsterName monsterData={props.monsterData} handleMonsterLinkClick={props.handleMonsterLinkClick}/>
                     <MonsterHitPoints monsterData={props.monsterData}/>
                     <MonsterType monsterData={props.monsterData}/>
                 </>
                 ): props.width > 700 ? (
                 <>
-                    <MonsterName monsterData={props.monsterData}/>
+                    <MonsterName monsterData={props.monsterData} handleMonsterLinkClick={props.handleMonsterLinkClick}/>
                     <MonsterHitPoints monsterData={props.monsterData}/>
                     <MonsterType monsterData={props.monsterData}/>
                     <MonsterSize monsterData={props.monsterData}/>
@@ -81,8 +87,10 @@ function MonsterName(props: any) {
                     Name
             </div>
             {props.monsterData?.results.map((monster: Monster) => (
-                <div className="monster-indv-data-container">
-                    {monster.name}
+                <div 
+                    className="monster-indv-data-container"
+                    onClick={() => props.handleMonsterLinkClick(monster.slug)}>
+                     {monster.name}
                 </div>
             ))}
         </div>
@@ -91,12 +99,12 @@ function MonsterName(props: any) {
 
 function MonsterType(props: any) {
     return (
-        <div className="monster-column-container">
-            <div className="monster-title-container">
+        <div className="monster-column-other-container">
+            <div className="monster-title-other-container">
                     Type
             </div>
             {props.monsterData?.results.map((monster: Monster) => (
-                <div className="monster-indv-data-container">
+                <div className="monster-indv-data-other-container">
                     {monster.type}
                 </div>
             ))}
@@ -106,12 +114,12 @@ function MonsterType(props: any) {
 
 function MonsterSize(props: any) {
     return (
-    <div className="monster-column-container">
-            <div className="monster-title-container">
+    <div className="monster-column-other-container">
+            <div className="monster-title-other-container">
                     Size
             </div>
             {props.monsterData?.results.map((monster: Monster) => (
-                <div className="monster-indv-data-container">
+                <div className="monster-indv-data-other-container">
                     {monster.size}
                 </div>
             ))}
@@ -121,12 +129,12 @@ function MonsterSize(props: any) {
 
 function MonsterHitPoints(props: any) {
     return (
-        <div className="monster-column-container">
-            <div className="monster-title-container">
+        <div className="monster-column-other-container">
+            <div className="monster-title-other-container">
                     HP
             </div>
             {props.monsterData?.results.map((monster: Monster) => (
-                <div className="monster-indv-data-container">
+                <div className="monster-indv-data-other-container">
                     {monster.hit_points}
                 </div>
             ))}

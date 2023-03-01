@@ -22,6 +22,7 @@ import SignUpPage from './SignUpPage';
 import CreateLayout from './creation/CharacterCreationFramework/CreateLayout';
 import './styles/SectionAnimations.css'
 import Search from './TopicMenu/Topics/SearchPage';
+import IndvMonsterPage from './TopicMenu/Topics/IndvMonsterPage';
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ function App() {
                   <Route path="classes/:classSlug" element={<ClassPage/>} />
                   <Route path="magicitems/:letterRange" element={<MagicItemsPage />} />
                   <Route path="monsters" element={<MonstersPage/>}/>
+                  <Route path="monsters/:monsterSlug" element={<IndvMonsterPage/>}/>
                   <Route path="races/:raceSlug" element={<RacePage/>}/>
                   <Route path="sections/:sectionSlug" element={<SectionPage />}/>
                   <Route path="spells" element={<SpellsPage/>}/>
