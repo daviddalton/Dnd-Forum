@@ -3,6 +3,7 @@ import Monster from "../../../model/Character/Monster";
 import React, { useEffect, useState } from "react"
 import axios from 'axios';
 import { AbilityScore } from "../../../model/Character/AbilityScore";
+import { useWidth } from "../../WidthContext";
 
 
 
@@ -38,7 +39,7 @@ function IndvMonsterPage(props: any) {
 
     }, [monsterData])
     
-    console.log(abilityScores)
+    console.log(monsterData)
     return (
         <div
             style={{
@@ -76,6 +77,13 @@ function IndvMonsterPage(props: any) {
                             monsterWisdom={monsterData?.wisdom}
                             monsterCharisma={monsterData?.charisma}
                             abilityScores={abilityScores}/>
+                        <MonsterTraits 
+                            abilityScores={abilityScores}
+                            monsterResistences={monsterData?.damage_resistances}
+                            monsterDamageImmunities={monsterData?.damage_immunities}
+                            monsterSenses={monsterData?.senses}
+                            monsterLanguages={monsterData?.languages}
+                            monsterChallengeRating={monsterData?.chanllenge_rating}/>
                 </div>
         </div>
     )
@@ -141,6 +149,8 @@ function MonsterArmorHPSpeed(props: any) {
 }
 
 function MonsterAbilityScores(props: any) {
+    const width = useWidth()
+
     return (
         <div
             style={{
@@ -152,29 +162,87 @@ function MonsterAbilityScores(props: any) {
                 {props.abilityScores.map((abilityScore: AbilityScore) => (
                 <div
                 style={{
-                    border: '1px white solid',
+
                 }}>
                     <div
                         style={{
-                            border: '1px white solid',
                             margin: '5px',
                             display: 'flex',
                             justifyContent: "center"
                         }}>
                             <strong>{abilityScore.scoreName}</strong>
                     </div>
-                    <div
-                        style={{
-                            border: '1px white solid',
-                            margin: '5px',
-                            display: 'flex',
-                            justifyContent: "center"
-                        }}>
-                            {abilityScore.total} ({abilityScore.modifier})
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: width.width! > 450 ? ('row'):('column')
+                    }}>
+                        <div
+                            style={{
+                                margin: '5px',
+                                display: 'flex',
+                                justifyContent: "center"
+                            }}>
+                                {abilityScore.total} 
+                        </div>
+                        <div
+                            style={{
+                                margin: '5px',
+                                display: 'flex',
+                                justifyContent: "center"
+                            }}>
+                                ({abilityScore.modifier})
+                        </div>
                     </div>
                 </div>
                 ))}
 
+        </div>
+    )
+}
+
+function MonsterTraits(props: any) {
+    return (
+        <div
+            style={{
+                border: '1px white solid',
+                margin: '5px'
+            }}>
+                <div
+                    style={{
+                        display: 'flex',
+                    }}>
+                        <div
+                            style={{
+                                border: '1px white solid',
+                                margin: '5px'
+                            }}>
+                            <strong>Saving Throws: </strong> 
+                        </div>
+                    {props.abilityScores.map((abilityScores: AbilityScore) => (
+                        <div
+                            style={{
+                                border: '1px white solid',
+                                margin: '5px'
+                            }}>
+                                {abilityScores.scoreName} {abilityScores.modifier}
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <strong>Damage Resistances:</strong> {props.monsterResistences}
+                </div>
+                <div>
+                    <strong>Damage Immunities:</strong> {props.monsterDamageImmunities}
+                </div>
+                <div>
+                    <strong>Senses:</strong> {props.monsterSenses}
+                </div>
+                <div>
+                    <strong>Languages:</strong> {props.monsterLanguages}
+                </div>
+                <div>
+                    <strong>Challenge:</strong> {props.monsterChallengeRating}
+                </div>
         </div>
     )
 }
