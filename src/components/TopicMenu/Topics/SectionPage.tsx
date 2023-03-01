@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
+import {useState} from "react";
 import { useParams } from 'react-router-dom'
-import fetch from '../../../api/fetch'
+
 import Section from '../../../model/Character/Section.interface'
 import AlignmentPage from './AlignmentPage'
 import '../../styles/topics.css'
@@ -29,17 +30,37 @@ import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
 import LevelingUpPage from './LevelingUpPage'
 import MulticlassingPage from './MulticlassingPage'
+import React from 'react';
 
 function SectionPage() {
     const { sectionSlug } = useParams()
-    const { data } = useQuery(['sections', sectionSlug], FetchSection)
+    const [data, setData] = useState<Section>()
+    // const { data } = useQuery(['sections', sectionSlug], FetchSection)
+
+
+    React.useEffect(() => {
+        let isMounted = true;
+        fetch(`https://api.open5e.com/sections/${sectionSlug}`)
+            .then((response) => response.json())
+            .then((data) => {
+                if (isMounted) {
+                    setData(data)
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error)
+            })
+            return () => {
+                isMounted = false;
+            };
+        }, [sectionSlug]);
 
     var splitDesc: string[] | undefined = [] 
     
     
-    function FetchSection(): Promise<Section> {
-        return fetch(`https://api.open5e.com/sections/${sectionSlug}`)
-    }
+    // function FetchSection(): Promise<Section> {
+    //     return fetch(`https://api.open5e.com/sections/${sectionSlug}`)
+    // }
     function modifyData() {
         if (data !== undefined) {
             splitDesc = data?.desc.split('\n\n')
@@ -56,7 +77,7 @@ function SectionPage() {
             appear={true}
             timeout={1000}
             classNames="fade">
-        <div
+        <div role={"contentinfo"}
             style={{
                 width: '100%',
                 display: 'flex',
@@ -65,7 +86,7 @@ function SectionPage() {
                 marginBottom: '10px',
                 color: 'white',
             }}>
-
+                name is {data?.name}
                 {data?.name === 'Alignment' ? (
                     <AlignmentPage name={data?.name} splitDesc={splitDesc}/>
                 ): data?.name === 'Backgrounds' ? (

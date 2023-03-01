@@ -102,7 +102,9 @@ function TitleAndButtons(props: any) {
         <>
         <div className="header-center-screen-wiki"
             >
-            <button className='wiki-button'
+            <button
+                data-testid={'wiki-button'} 
+                className='wiki-button'
                 onClick={props.handleClickWiki}
                 onMouseEnter={props.handleMouseEnter}
                 onMouseLeave={props.handleMouseLeave}
@@ -111,7 +113,9 @@ function TitleAndButtons(props: any) {
             </button>
         </div>
             <div className="header-center-screen-create">
-                <button className='create-button'
+                <button 
+                    data-testid={'create-button'} 
+                    className='create-button'
                     onClick={props.handleClickCreate}
                     onMouseEnter={props.handleMouseEnter}
                     onMouseLeave={props.handleMouseLeave}

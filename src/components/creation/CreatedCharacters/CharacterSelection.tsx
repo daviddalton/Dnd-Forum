@@ -57,7 +57,9 @@ function CharacterSelection() {
                         <div className='character-cards-container'>
                                 <div className='character-select-indv-card-container'
                                     onClick={handleClickNewCharacter}>
-                                        <div className='character-select-indv-title-text'>
+                                        <div 
+                                        data-testid={'new-character'}
+                                        className='character-select-indv-title-text'>
                                                 New Character
                                         </div>
                                         <div className='character-select-indv-info-container'>
