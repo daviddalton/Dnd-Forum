@@ -27,7 +27,7 @@ class Monster {
     condition_immunities?: string;
     senses?: string;
     languages?: string;
-    chanllenge_rating?: string;
+    challenge_rating?: string;
     actions?: [
         {
             name: string;

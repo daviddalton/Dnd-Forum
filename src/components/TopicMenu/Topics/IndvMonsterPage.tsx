@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 import axios from 'axios';
 import { AbilityScore } from "../../../model/Character/AbilityScore";
 import { useWidth } from "../../WidthContext";
+import '../../styles/indvMonster.css'
 
 
 
@@ -13,8 +14,8 @@ function IndvMonsterPage(props: any) {
     const [monsterData, setMonsterData] = useState<Monster>()
     const abilityShortNames = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA']
     const monsterAbilityScores = [monsterData?.strength, monsterData?.dexterity, monsterData?.constitution, monsterData?.intelligence, monsterData?.wisdom, monsterData?.charisma]
+    const monsterTraits = [monsterData?.damage_resistances, monsterData?.damage_immunities, monsterData?.senses, monsterData?.languages, monsterData?.challenge_rating]
     const [abilityScores, setAbilityScores] = useState<AbilityScore[]>([])
-
 
     React.useEffect(() => {
         axios.get(`https://api.open5e.com/monsters/${monsterSlug}`)
@@ -36,29 +37,11 @@ function IndvMonsterPage(props: any) {
             }
             setAbilityScores(tempAbilityArray)
         }
-
     }, [monsterData])
-    
-    console.log(monsterData)
+
     return (
-        <div
-            style={{
-                marginTop: '20px',
-                border: '1px white solid',
-                width: '100%',
-                color: 'white',
-                display: 'flex',
-                justifyContent: 'center'
-            }}>
-                <div
-                    style={{
-                        border: '1px white solid',
-                        margin: '5px',
-                        minWidth: '320px',
-                        maxWidth: '780px',
-                        width: '100%',
-                        opacity: '.6'
-                    }}>
+        <div className="indv-monster-page-container">
+                <div className="indv-monster-content-container">
                         <MonsterTitle monsterName={monsterData?.name} />
                         <MonsterSizeTypeAlignment 
                             monsterSize={monsterData?.size} 
@@ -83,7 +66,11 @@ function IndvMonsterPage(props: any) {
                             monsterDamageImmunities={monsterData?.damage_immunities}
                             monsterSenses={monsterData?.senses}
                             monsterLanguages={monsterData?.languages}
-                            monsterChallengeRating={monsterData?.chanllenge_rating}/>
+                            monsterChallengeRating={monsterData?.challenge_rating}/>
+                        <MonsterSpecialAbilities 
+                            monsterSpecialAbilities={monsterData?.special_abilities}/>
+                        <MonsterActions 
+                            monsterActions={monsterData?.actions}/>
                 </div>
         </div>
     )
@@ -91,14 +78,7 @@ function IndvMonsterPage(props: any) {
 
 function MonsterTitle(props: any) {
     return (
-        <div
-            style={{
-                border: '1px white solid',
-                margin: '5px',
-                display: 'flex',
-
-                background: '#761e21'
-            }}>
+        <div className="indv-monster-title-container">
                 <h1>{props.monsterName}</h1>
         </div>
     )
@@ -107,13 +87,7 @@ function MonsterTitle(props: any) {
 function MonsterSizeTypeAlignment(props: any) {
     return (
         <>
-        <div style={{ borderTop: '1px white solid' }} />
-        <div
-            style={{
-                border: '1px white solid',
-                margin: '5px',
-                display: 'flex',
-            }}>
+        <div className="indv-monster-size-alignment-type-container">
                 {props.monsterSize} | {props.monsterType} | {props.monsterAlignment}
         </div>
         </>
@@ -122,23 +96,14 @@ function MonsterSizeTypeAlignment(props: any) {
 
 function MonsterArmorHPSpeed(props: any) {
     return (
-        <div
-            style={{
-                border: '1px white solid',
-                display: 'flex',
-                margin: '5px',
-                flexDirection: "column"
-            }}>
+        <div className="indv-monster-armor-hp-speed-container">
                 <div>
                     <strong>Armor Class: </strong>{props.monsterArmor}
                 </div>
                 <div>
                     <strong>Hit Points: </strong>{props.monsterHitPoints} ({props.monsterHitPointsDesc})
                 </div>
-                <div
-                    style={{
-                        display: 'flex'
-                    }}>
+                <div style={{ display: 'flex' }}>
                     <strong>Speed:</strong> 
                     <div style={{ paddingLeft: '5px'}}>{props.monsterSpeed?.burrow !== undefined ? (<span> Burrow - {props.monsterSpeed?.burrow} ft.</span>):(<div></div>)}</div>
                     <div style={{ paddingLeft: '5px'}}>{props.monsterSpeed?.swim !== undefined ? (<span> Swim - {props.monsterSpeed?.swim} ft.</span>):(<div></div>)}</div>
@@ -152,78 +117,40 @@ function MonsterAbilityScores(props: any) {
     const width = useWidth()
 
     return (
-        <div
-            style={{
-                border: '1px white solid',
-                margin: '5px',
-                display: 'flex',
-                justifyContent: "space-evenly"
-            }}>
-                {props.abilityScores.map((abilityScore: AbilityScore) => (
-                <div
-                style={{
-
-                }}>
-                    <div
-                        style={{
-                            margin: '5px',
-                            display: 'flex',
-                            justifyContent: "center"
-                        }}>
+        <div className="indv-monster-ability-score-container">
+                {props.abilityScores.map((abilityScore: AbilityScore, index: number) => (
+                <div key={index}>
+                    <div className="indv-monster-ability-score-name-container">
                             <strong>{abilityScore.scoreName}</strong>
                     </div>
-                    <div style={{
+                    <div 
+                        style={{
                         display: 'flex',
                         flexDirection: width.width! > 450 ? ('row'):('column')
                     }}>
-                        <div
-                            style={{
-                                margin: '5px',
-                                display: 'flex',
-                                justifyContent: "center"
-                            }}>
+                        <div className="indv-monster-score-container">
                                 {abilityScore.total} 
                         </div>
-                        <div
-                            style={{
-                                margin: '5px',
-                                display: 'flex',
-                                justifyContent: "center"
-                            }}>
+                        <div className="indv-monster-modifier-container">
                                 ({abilityScore.modifier})
                         </div>
                     </div>
                 </div>
                 ))}
-
         </div>
     )
 }
 
 function MonsterTraits(props: any) {
     return (
-        <div
-            style={{
-                border: '1px white solid',
-                margin: '5px'
-            }}>
-                <div
-                    style={{
-                        display: 'flex',
-                    }}>
-                        <div
-                            style={{
-                                border: '1px white solid',
-                                margin: '5px'
-                            }}>
+        <div className="indv-monster-traits-container">
+                <div style={{ display: 'flex' }}>
+                        <div style={{ marginTop: '5px' }}>
                             <strong>Saving Throws: </strong> 
                         </div>
-                    {props.abilityScores.map((abilityScores: AbilityScore) => (
-                        <div
-                            style={{
-                                border: '1px white solid',
-                                margin: '5px'
-                            }}>
+                    {props.abilityScores.map((abilityScores: AbilityScore, index: number) => (
+                        <div key={index}
+                            style={{ margin: '5px' }}>
                                 {abilityScores.scoreName} {abilityScores.modifier}
                         </div>
                     ))}
@@ -243,6 +170,35 @@ function MonsterTraits(props: any) {
                 <div>
                     <strong>Challenge:</strong> {props.monsterChallengeRating}
                 </div>
+        </div>
+    )
+}
+
+function MonsterSpecialAbilities(props: any) {
+    return (
+        <div className="indv-monster-special-abilities-container">
+                {props.monsterSpecialAbilities?.map((special_abilities: {name: string, desc: string}, index: number) => (
+                    <div key={index}
+                        style={{ margin: '5px' }}>
+                            <strong>{special_abilities.name}</strong> - {special_abilities.desc}
+                    </div>
+                ))}
+        </div>
+    )
+}
+
+function MonsterActions(props: any) {
+    return (
+        <div style={{ margin: '5px' }}>
+                <div className="indv-monster-actions-title-container">
+                        <h2>Actions</h2>
+                </div>
+                {props.monsterActions?.map((action: {name: string, desc: string}, index: number) => (
+                    <div key={index}
+                        style={{ margin: '5px' }}>
+                            <strong>{action.name}</strong> - {action.desc}
+                    </div>
+                ))}
         </div>
     )
 }

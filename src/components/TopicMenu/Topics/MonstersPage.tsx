@@ -86,8 +86,8 @@ function MonsterName(props: any) {
             <div className="monster-title-container">
                     Name
             </div>
-            {props.monsterData?.results.map((monster: Monster) => (
-                <div 
+            {props.monsterData?.results.map((monster: Monster, index: number) => (
+                <div key={index}
                     className="monster-indv-data-container"
                     onClick={() => props.handleMonsterLinkClick(monster.slug)}>
                      {monster.name}
@@ -103,8 +103,9 @@ function MonsterType(props: any) {
             <div className="monster-title-other-container">
                     Type
             </div>
-            {props.monsterData?.results.map((monster: Monster) => (
-                <div className="monster-indv-data-other-container">
+            {props.monsterData?.results.map((monster: Monster, index: number) => (
+                <div key={index} 
+                    className="monster-indv-data-other-container">
                     {monster.type}
                 </div>
             ))}
@@ -118,8 +119,9 @@ function MonsterSize(props: any) {
             <div className="monster-title-other-container">
                     Size
             </div>
-            {props.monsterData?.results.map((monster: Monster) => (
-                <div className="monster-indv-data-other-container">
+            {props.monsterData?.results.map((monster: Monster, index: number) => (
+                <div key={index} 
+                    className="monster-indv-data-other-container">
                     {monster.size}
                 </div>
             ))}
@@ -133,8 +135,9 @@ function MonsterHitPoints(props: any) {
             <div className="monster-title-other-container">
                     HP
             </div>
-            {props.monsterData?.results.map((monster: Monster) => (
-                <div className="monster-indv-data-other-container">
+            {props.monsterData?.results.map((monster: Monster, index: number) => (
+                <div key={index} 
+                    className="monster-indv-data-other-container">
                     {monster.hit_points}
                 </div>
             ))}
