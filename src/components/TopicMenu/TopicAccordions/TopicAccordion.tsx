@@ -1,5 +1,4 @@
-import { AccordionSummary, Typography, styled, Accordion, dividerClasses } from "@mui/material";
-import { useState } from "react";
+import { AccordionSummary, Typography, Accordion } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ExpandMore } from "@mui/icons-material";
 import '../../styles/TopicsMenu.css'
@@ -15,7 +14,7 @@ class Topic {
 
 function TopicAccordion(props: any) {
     const routing = useNavigate()
-
+    const topicsWithoutArrow = ['Magic Items', 'Monsters']
     
     function handleRouting(slug: string, parentName: string) {
         let sections = ['Characters', 'Equipment', 'Rules', 'Appendix', 'Spellcasting']
@@ -32,6 +31,8 @@ function TopicAccordion(props: any) {
     function handleTitleClick(topicName: string) {
         if (topicName === 'Magic Items') {
             routing('wiki/magicitems')
+        } else if (topicName === 'Monsters') {
+            routing('wiki/monsters')
         }
     }
 
@@ -45,7 +46,7 @@ function TopicAccordion(props: any) {
             <AccordionSummary 
                 className="topic-accordion-summary"
                 sx={{ color: "white"}}
-                expandIcon={props.topic.name !== 'Magic Items' ? (<ExpandMore style={{ color: 'white' }}/>):('')}
+                expandIcon={!topicsWithoutArrow.includes(props.topic.name) ? (<ExpandMore style={{ color: 'white' }}/>):('')}
                 onClick={() => handleTitleClick(props.topic.name)}>
                 <Typography>
                     {props.topic.name}

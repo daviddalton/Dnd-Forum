@@ -20,7 +20,6 @@ export const deleteCharacter = async (
 ) => {
     const document = doc(firestore, `characters/${id}`);
     await deleteDoc(document);
-    console.log('The hotel has been deleted');
     navigate("/create")
 
 }
