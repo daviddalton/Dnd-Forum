@@ -60,7 +60,7 @@ function Header() {
                     <LoggedInContainer user={user} width={width.width!} auth={auth} handleLoginClick={handleLoginClick} currentURL={currentURL}/>
                 </div>
         </AppBar>
-        <HeaderDrawer 
+        <HeaderDrawer
             open={open}
             setOpen={setOpen}
             handleDrawerClose={handleDrawerClose}/>
@@ -102,7 +102,9 @@ function TitleAndButtons(props: any) {
         <>
         <div className="header-center-screen-wiki"
             >
-            <button className='wiki-button'
+            <button
+                data-testId="wiki-button" 
+                className='wiki-button'
                 onClick={props.handleClickWiki}
                 onMouseEnter={props.handleMouseEnter}
                 onMouseLeave={props.handleMouseLeave}
@@ -111,7 +113,9 @@ function TitleAndButtons(props: any) {
             </button>
         </div>
             <div className="header-center-screen-create">
-                <button className='create-button'
+                <button
+                    data-testId="create-button" 
+                    className='create-button'
                     onClick={props.handleClickCreate}
                     onMouseEnter={props.handleMouseEnter}
                     onMouseLeave={props.handleMouseLeave}
@@ -154,7 +158,9 @@ function LogoutDisplayName(props: any) {
                     <div className="header-display-name-text">
                         {props.user.user.displayName}
                     </div>
-                    <div className="header-display-logout-text"
+                    <div
+                        
+                        className="header-display-logout-text"
                         onClick={() => signOut(auth)}>
                         Logout
                     </div>
@@ -175,15 +181,16 @@ function LoginDisplayName(props: any) {
         <>
         {props.currentURL !== 'http://localhost:3000/login' ? (
         <div
-        style={{
-            marginRight: '15px',
-            padding: '5px',
-            borderRadius: '10px',
-            cursor: 'pointer',
-            background: '#761e21',
-            opacity: '.6'
-        }}
-        onClick={props.handleLoginClick}>
+        data-testId="login"
+            style={{
+                marginRight: '15px',
+                padding: '5px',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                background: '#761e21',
+                opacity: '.6'
+            }}
+            onClick={props.handleLoginClick}>
         Login
     </div>
         ):(

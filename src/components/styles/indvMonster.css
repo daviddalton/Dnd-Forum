@@ -1,0 +1,64 @@
+.indv-monster-page-container {
+    margin-top: 20px;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center
+}
+.indv-monster-content-container {
+    margin: 5px;
+    min-width: 320px;
+    max-width: 780px;
+    width: 100%;
+    opacity: .6
+}
+.indv-monster-title-container {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    background: #761e21;
+    border-radius: 10px
+}
+.indv-monster-size-alignment-type-container {
+    margin: 5px;
+    display: flex
+}
+.indv-monster-armor-hp-speed-container {
+    border-top: 1px white solid;
+    display: flex;
+    margin: 5px;
+    flex-direction: column
+}
+.indv-monster-ability-score-container {
+    border-top: 1px white solid;
+    margin: 5px;
+    display: flex;
+    justify-content: space-evenly
+}
+.indv-monster-ability-score-name-container {
+    margin: 5px;
+    display: flex;
+    justify-content: center
+}
+.indv-monster-score-container {
+    margin: 5px;
+    display: flex;
+    justify-content: center
+}
+.indv-monster-modifier-container {
+    margin: 5px;
+    display: flex;
+    justify-content: center
+}
+.indv-monster-traits-container {
+    border-top: 1px white solid;
+    margin: 5px
+}
+.indv-monster-special-abilities-container {
+    border-top: 1px white solid;
+    margin: 5px
+}
+.indv-monster-actions-title-container {
+    border-bottom: 1px white solid;
+    margin: 5px
+}

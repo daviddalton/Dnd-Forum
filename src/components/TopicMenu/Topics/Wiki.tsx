@@ -2,7 +2,8 @@ import { Outlet } from "react-router-dom";
 
 
 function Wiki() {
-    
+    // const url = window.location.href
+    // console.log(url)
     return<>
     <div
         style={{
