@@ -1,8 +1,8 @@
 export class AbilityScore {
     scoreName: string;
     total: string
-    modifier!: string
-    availableScores!: Score[]
+    modifier?: string
+
 
 
     constructor(scoreName: string, total: string) {

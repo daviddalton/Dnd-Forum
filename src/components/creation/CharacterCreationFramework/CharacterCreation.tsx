@@ -8,17 +8,10 @@ import CharacterClassSelect from "../ClassCreation/CharacterClassSelect";
 import CharacterRaceSelect from "../RaceCreation/CharacterRaceSelect";
 import CharacterSettingsPage from "../SettingsCreation/CharacterSettingsPage";
 import AbilityScoreCreation from "../AbilityCreation/AbilityScoreCreation";
+import { AbilityScore } from "../../../model/Character/AbilityScore";
 
 
-  class AbilityScore {
-    scoreName: string;
-    total: string;
 
-    constructor(scoreName: string, total: string) {
-        this.scoreName = scoreName
-        this.total = total
-    }
-}
 class score {
     value: string;
     disabled: boolean

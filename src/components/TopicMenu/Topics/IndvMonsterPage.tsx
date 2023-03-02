@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Monster from "../../../model/Character/Monster";
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import axios from 'axios';
 import { AbilityScore } from "../../../model/Character/AbilityScore";
 import { useWidth } from "../../WidthContext";
@@ -14,7 +14,6 @@ function IndvMonsterPage(props: any) {
     const [monsterData, setMonsterData] = useState<Monster>()
     const abilityShortNames = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA']
     const monsterAbilityScores = [monsterData?.strength, monsterData?.dexterity, monsterData?.constitution, monsterData?.intelligence, monsterData?.wisdom, monsterData?.charisma]
-    const monsterTraits = [monsterData?.damage_resistances, monsterData?.damage_immunities, monsterData?.senses, monsterData?.languages, monsterData?.challenge_rating]
     const [abilityScores, setAbilityScores] = useState<AbilityScore[]>([])
 
     React.useEffect(() => {
@@ -31,12 +30,13 @@ function IndvMonsterPage(props: any) {
         if (monsterData) {
             var tempAbilityArray: AbilityScore[] = []
             for(let i = 0; i < abilityShortNames.length; i++) {
-                let tempAbilityScore = new AbilityScore(abilityShortNames[i], monsterAbilityScores[i]!.toString(),[])
+                let tempAbilityScore = new AbilityScore(abilityShortNames[i], monsterAbilityScores[i]!.toString())
                 tempAbilityScore.modifier = tempAbilityScore.findModifier()
                 tempAbilityArray.push(tempAbilityScore)
             }
             setAbilityScores(tempAbilityArray)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [monsterData])
 
     return (
