@@ -58,6 +58,8 @@ function HeaderDrawer(props: any) {
     <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <Drawer
+            role='header-drawer'
+            my-attribute={props.open ? 'open':'closed'}
             sx={{
               flexShrink: 0,
               [`& .MuiDrawer-paper`]: { 
