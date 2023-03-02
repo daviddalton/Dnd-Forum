@@ -6,6 +6,8 @@ import { ParentTrait } from "../../../model/Character/ParentTrait"
 import '../../styles/classCreate.css'
 import CharacterClassModal from "./CharacterClassModal"
 import SelectedClassPage from "./SelectedClassPage"
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 const classesData = new CharacterClassData()
 
@@ -41,6 +43,11 @@ function CharacterClassSelect(props: any) {
     return (
         <>
         {props.characterClass === "" ? (
+            <CSSTransition
+            in={true}
+            appear={true}
+            timeout={1000}
+            classNames="fade">
              <div
              className="classCard-container">
                  <div className="classCard-title-text">
@@ -86,6 +93,7 @@ function CharacterClassSelect(props: any) {
                          setCharacterClass={props.setCharacterClass}
                          handleClose={handleClose}/>
              </div>
+             </CSSTransition>
         ):(
             <SelectedClassPage 
                 classTraits={classTraits}

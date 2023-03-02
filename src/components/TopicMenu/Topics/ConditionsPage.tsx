@@ -6,6 +6,8 @@ import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import SubSectionAccordion from "../../../util/SubSectionAccordion"
 import TopicSectionTable from "../../../util/TopicSectionTable"
 import { useWidth } from "../../WidthContext"
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 
 
@@ -22,6 +24,11 @@ function ConditionsPage(props: any) {
 
     handleConditions(props.splitDesc)
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div
             style={{
                 marginTop: '20px',
@@ -49,8 +56,8 @@ function ConditionsPage(props: any) {
                         <TopicSectionTable tempSection={tempSection} />
                     </div>
                 </div>
-
         </div>
+        </CSSTransition>
     )
 }
 

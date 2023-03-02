@@ -1,7 +1,8 @@
 import { ExpandMore } from "@mui/icons-material"
 import { Accordion, AccordionSummary, Typography } from "@mui/material"
-import '../../styles/settingsPage.css'
+import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
+import '../../styles/settingsPage.css'
 
 
 function CharacterSettingsPage(props: any): JSX.Element {
@@ -12,6 +13,11 @@ function CharacterSettingsPage(props: any): JSX.Element {
    
 
     return(
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className="settings-container">
                 <div className="settings-title-container">
                        <h1>Character Settings</h1>
@@ -23,6 +29,7 @@ function CharacterSettingsPage(props: any): JSX.Element {
                         <HitPointType hitPointType={props.hitPointType} setHitPointType={props.setHitPointType} />
                 </div>
         </div>
+        </CSSTransition>
     )
 }
 

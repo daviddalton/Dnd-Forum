@@ -3,6 +3,8 @@ import { TopicSection } from "../../../model/Character/TopicSection.class"
 import buildSectionDesc from "../../../util/buildSectionDesc"
 import buildSubsections from "../../../util/buildSubSection"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 import '../../styles/backgrounds.css'
 
 function BackgroundSubsecDesc(props: any) {
@@ -60,6 +62,11 @@ function BackgroundsPage(props: any) {
     handleBackgrounds(props.splitDesc)
     
     return<>
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className="backgrounds-content-container">
             <SectionTitleDesc name={props.name} tempSection={tempSection}/>
                 <div className="backgrounds-subsections-container">
@@ -86,6 +93,7 @@ function BackgroundsPage(props: any) {
                         )}
                 </div>
         </div>
+        </CSSTransition>
     </>
 }
 

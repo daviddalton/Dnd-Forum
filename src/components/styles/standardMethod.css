@@ -1,0 +1,52 @@
+.standard-method-container {
+    margin: 5px;
+display: flex;
+justify-content: center
+}
+.standard-method-ability-score-name {
+    margin: 5px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    opacity: .6
+}
+.standard-method-ability-score-accordion {
+    margin: 5px;
+    height: 50px;
+    width: 80px;
+    background: rgba(76,81,88,.6);
+    border-radius: 10px
+}
+.standard-method-ability-score-accordion:hover {
+    background: rgba(76,81,88,.8);
+}
+.standard-method-score-container {
+    display: flex;
+    flex-direction: column;
+    background: rgb(34, 40, 49);
+    border-radius: 10px
+}
+.standard-method-score-button {
+    height: 30px;
+    cursor: pointer;
+    background: #60646a;
+    color: white;
+    border-style: none;
+    opacity: .6
+}
+.standard-method-score-button:hover {
+    height: 30px;
+    cursor: pointer;
+    background: #60646a;
+    color: white;
+    border-style: none;
+    opacity: .8
+}
+.standard-method-disabled-score-button {
+    height: 30px;
+    cursor: pointer;
+    background: #60646a;
+    color: white;
+    border-style: none;
+    opacity: .4
+}

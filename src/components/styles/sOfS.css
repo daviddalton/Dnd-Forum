@@ -5,7 +5,6 @@
     width: 100%;
 }
 .s-title-desc-container {
-    
     background: #393E46;
     opacity: .6;
     height: fit-content;
@@ -18,7 +17,6 @@
 }
 .s-title {
     background: rgb(118, 30, 33);
-    opacity: .6;
     height: fit-content;
     padding-left: 10px;
     display: flex;

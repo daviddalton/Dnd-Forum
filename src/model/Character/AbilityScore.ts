@@ -2,12 +2,12 @@ export class AbilityScore {
     scoreName: string;
     total: string
     modifier!: string
-    availableScores: Score[]
+    availableScores!: Score[]
 
-    constructor(scoreName: string, total: string, availableScores: Score[]) {
+
+    constructor(scoreName: string, total: string) {
         this.scoreName = scoreName
         this.total = total
-        this.availableScores = availableScores
     }
     findModifier() {
         var total = this.total

@@ -9,6 +9,8 @@ import { ChildTrait } from "../../../model/Character/ChildTrait";
 import { cleanData, createTraitDirectory } from "../../../util/cleanClassData";
 import { useNavigate } from "react-router-dom";
 import '../../styles/selectedClass.css'
+import { CSSTransition } from 'react-transition-group'
+import '../../styles/SectionAnimations.css'
 
 
 class ClassTopic {
@@ -36,8 +38,7 @@ function SelectedClassPage(props: any) {
     const topics = [hitDice, levelOneHp, higherLevelHp, profArmor]
 
     var traitDirectory:ParentTrait[] = []
-    var targetTraitDirectory: ParentTrait
-    var targetChildDirectory: ChildTrait
+
 
     function handleToClassPageClick() {
         navigate(`/wiki/classes/${data?.slug}`)
@@ -48,20 +49,27 @@ function SelectedClassPage(props: any) {
     }
     if (data?.desc !== undefined) {
         var splitData = cleanData(data)
-        createTraitDirectory(splitData, traitDirectory, targetTraitDirectory!, targetChildDirectory!)
+        createTraitDirectory(splitData, traitDirectory)
     }
     return (
+        <CSSTransition
+        in={true}
+        appear={true}
+        timeout={1000}
+        classNames="fade">
         <div className="selected-class-container">
                 <SelectedClassHeader topics={topics} name={data!.name}/>
                 <ClassSelectedButtons handleToClassPageClick={handleToClassPageClick} handleChangeClassClick={handleChangeClassClick}/>
                 <ClassSelectTraits traitDirectory={traitDirectory}/>
         </div>
+        </CSSTransition>
     )
 }
 
 
 function SelectedClassHeader(props: any) {
     return (
+
     <div className="selected-class-header-container">
             <div className="selected-class-image"/>
             <div>
@@ -75,6 +83,7 @@ function SelectedClassHeader(props: any) {
                 ))}
             </div>
     </div>
+
     )
 }
 
@@ -98,7 +107,8 @@ function ClassSelectTraits(props: any) {
         <div className="selected-class-traits-container">
                 {props.traitDirectory.map((parentTrait: ParentTrait) => (
                     <Accordion className="selected-class-indv-trait-accordion"
-                        key={parentTrait.id}>
+                        key={parentTrait.id}
+                        style={{ background: '#761e21'}}>
                         <AccordionSummary
                             style={{
                                 borderRadius: '10px',
@@ -112,6 +122,20 @@ function ClassSelectTraits(props: any) {
                         {parentTrait.desc.map((str: string) => (
                             <div className="selected-class-indv-div">
                                 {str}
+                            </div>
+                        ))}
+                        {parentTrait.childrenTraits?.map((childTrait: ChildTrait) => (
+                            <div className="selected-class-indv-div">
+                                <div style={{ padding: '5px' }}>
+                                    <strong style={{ textDecoration: 'underline' }}>{childTrait.name}</strong>
+                                </div>
+                                <div>
+                                    {childTrait.desc.map((str: string) => (
+                                        <div style={{ padding: '5px 0px 5px 20px' }}>
+                                            {str}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         ))}
                     </Accordion>
