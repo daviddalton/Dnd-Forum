@@ -7,7 +7,7 @@ import buildSectionDesc from "../../../util/buildSectionDesc"
 import buildTable from "../../../util/buildTable"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 
 function ToolsPage(props: any) {
     var tempSection = new TopicSection()

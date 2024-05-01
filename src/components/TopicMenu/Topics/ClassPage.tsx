@@ -16,7 +16,7 @@ import TopicSectionTable from "../../../util/TopicSectionTable";
 import '../../styles/characterClass.css'
 import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
-import { useWidth } from "../../WidthContext";
+import { useWidth } from "../../creation/Providers/WidthContext";
 
 function ClassPage() {
     var tempClassDesc = new classDesc()

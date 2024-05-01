@@ -8,7 +8,7 @@ import '../../styles/armorPage.css'
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
 

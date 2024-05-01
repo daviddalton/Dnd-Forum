@@ -7,8 +7,8 @@ import HeaderDrawer from "./HeaderDrawer";
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { useAuth } from "../userContext";
-import { useWidth } from "../WidthContext";
+import { useAuth } from "../creation/Providers/userContext";
+import { useWidth } from "../creation/Providers/WidthContext";
 import { create, title, wiki } from "../../util/Constants";
 
 function Header() {

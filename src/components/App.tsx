@@ -13,12 +13,12 @@ import RacePage from './TopicMenu/Topics/RacePage';
 import MonstersPage from './TopicMenu/Topics/MonstersPage';
 import CreatedCharPage from './creation/CreatedCharacters/IndvCreatedCharacterPage';
 import CharCreation from './creation/CharacterCreationFramework/CharacterCreation';
-import LoginPage from './LoginPage';
+import LoginPage from './Login/Logout/LoginPage';
 import Home from './Home';
 import WikiDesc from './TopicMenu/Topics/WikiDesc';
 import MagicItemsPage from './TopicMenu/Topics/MagicItemsPage';
-import AuthRoute from './AuthRoute';
-import SignUpPage from './SignUpPage';
+import AuthRoute from './creation/Providers/AuthRoute';
+import SignUpPage from './Login/Logout/SignUpPage';
 import CreateLayout from './creation/CharacterCreationFramework/CreateLayout';
 import './styles/SectionAnimations.css'
 import Search from './TopicMenu/Topics/SearchPage';

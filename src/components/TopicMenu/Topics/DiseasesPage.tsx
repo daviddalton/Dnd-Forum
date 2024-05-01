@@ -3,7 +3,7 @@ import buildSectionDesc from "../../../util/buildSectionDesc"
 import hashSubsection from "../../../util/hashSubsections"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
 

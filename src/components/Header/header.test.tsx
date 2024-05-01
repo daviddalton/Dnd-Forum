@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Header from '../Header/Header'
-import { AuthProvider } from '../userContext';
-import { WidthProvider } from '../WidthContext';
+import { AuthProvider } from '../creation/Providers/userContext';
+import { WidthProvider } from '../creation/Providers/WidthContext';
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import userEvent from '@testing-library/user-event';
 

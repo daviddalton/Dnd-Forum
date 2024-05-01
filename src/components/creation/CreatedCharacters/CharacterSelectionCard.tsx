@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { AbilityScore } from "../../../model/Character/AbilityScore";
 import { CreatedChar } from "../../../model/Character/CreatedChar.interface"
 import { scoreTitles } from "../../../util/Constants";
-import { deleteCharacter } from "../../controller";
+import { deleteCharacter } from "../../Controllers/controller";
 import '../../styles/characterSelect.css'
 interface IProps {
     character: CreatedChar

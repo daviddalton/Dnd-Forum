@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react';
 import {DocumentData, onSnapshot, QuerySnapshot} from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import { characterCollection } from '../../controller';
+import { characterCollection } from '../../Controllers/controller';
 import { CreatedChar } from '../../../model/Character/CreatedChar.interface';
 import CharacterCard from './CharacterSelectionCard';
 import { AbilityScore } from '../../../model/Character/AbilityScore';
 import '../../styles/characterSelect.css'
 import '../../styles/characterCard.css'
-import { useAuth } from '../../userContext';
+import { useAuth } from '../Providers/userContext';
 import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
 

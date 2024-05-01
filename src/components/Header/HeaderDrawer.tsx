@@ -8,7 +8,7 @@ import Divider from '@mui/material/Divider';
 import TopicMenu from '../TopicMenu/TopicMenu';
 import { useNavigate } from 'react-router-dom';
 import { ImportContacts, Person } from '@mui/icons-material';
-import { useAuth } from '../userContext';
+import { useAuth } from '../creation/Providers/userContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase-config';
 import { create, login, logout } from '../../util/Constants';

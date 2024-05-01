@@ -8,7 +8,7 @@ import GeneralSubsectionContainer from "../../../util/GeneralSubsectionContainer
 import recursiveCleaning from "../../../util/recursiveCleaning"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 
 
 function ObjectsPage(props: any) {

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import Monsters from "../../../model/Character/Monsters.interface"
 import axios from 'axios';
 import Monster from "../../../model/Character/Monster";
-import { useWidth } from "../../WidthContext";
+import { useWidth } from "../../creation/Providers/WidthContext";
 import '../../styles/monsters.css';
 import { useNavigate } from "react-router-dom"
 

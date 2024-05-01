@@ -2,7 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d97999-8f73-4bba-a3f5-dec03c8275d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthRoute.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderDrawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/header.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/header.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SignUpPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ArmorPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ArmorPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ClassPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ClassPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ConditionsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ConditionsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/DiseasesPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/DiseasesPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ExpensesPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ExpensesPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/IndvMonsterPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/IndvMonsterPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/LevelingUpPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/LevelingUpPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/MadnessPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/MadnessPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/MonstersPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/MonstersPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/MountsVehiclesPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/MountsVehiclesPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ObjectsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ObjectsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/PoisonsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/PoisonsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ToolsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/ToolsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/TrapsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/TrapsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopicMenu/Topics/WeaponsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopicMenu/Topics/WeaponsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WidthContext.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/creation/CharacterCreationFramework/CharacterCreation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/creation/CharacterCreationFramework/CharacterCreation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/creation/CreatedCharacters/CharacterSelection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/creation/CreatedCharacters/CharacterSelection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/creation/CreatedCharacters/CharacterSelectionCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/creation/CreatedCharacters/CharacterSelectionCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/userContext.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,23 +61,24 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectId" id="2HYMGzqvzw32nHjNKMVXJE9SBtB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "indv-monster-page",
+    "last_opened_file_path": "C:/Users/Jared Williams/dev/Dnd-Forum",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Jared Williams\\dev\\Dnd-Forum\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -57,6 +87,13 @@
       <envs />
       <method v="2" />
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-WS-241.14494.235" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -69,6 +106,7 @@
       <workItem from="1669142036319" duration="150000" />
       <workItem from="1669142240554" duration="724000" />
       <workItem from="1675952331421" duration="447000" />
+      <workItem from="1714572595581" duration="293000" />
     </task>
     <servers />
   </component>
