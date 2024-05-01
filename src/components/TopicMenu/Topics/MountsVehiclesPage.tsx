@@ -5,7 +5,7 @@ import buildTable from "../../../util/buildTable"
 import GeneralSubsectionContainer from "../../../util/GeneralSubsectionContainer"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 
 function MountsVehiclesPage(props: any) {
     var tempSection = new TopicSection()

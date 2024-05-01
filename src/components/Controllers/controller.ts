@@ -1,7 +1,7 @@
 import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { NavigateFunction } from "react-router-dom";
-import { firestore } from "../firebase-config";
-import { CreatedChar } from "../model/Character/CreatedChar.interface";
+import { firestore } from "../../firebase-config";
+import { CreatedChar } from "../../model/Character/CreatedChar.interface";
 
 
 

@@ -1,10 +1,10 @@
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import './styles/login.css'
+import '../../styles/login.css'
 import { Error, Facebook, GitHub, Google } from '@mui/icons-material'
 import { CSSTransition } from 'react-transition-group'
-import '../components/styles/SectionAnimations.css'
+import '../../styles/SectionAnimations.css'
 
 function LoginPage() {
     const [email, setEmail] = useState('')

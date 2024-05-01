@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-import { AuthProvider } from './components/userContext';
-import { WidthProvider } from './components/WidthContext';
+import { AuthProvider } from './components/creation/Providers/userContext';
+import { WidthProvider } from './components/creation/Providers/WidthContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

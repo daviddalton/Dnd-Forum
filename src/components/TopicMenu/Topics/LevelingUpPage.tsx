@@ -2,7 +2,7 @@ import { TopicSection } from "../../../model/Character/TopicSection.class"
 import buildTable from "../../../util/buildTable"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import TopicSectionTable from "../../../util/TopicSectionTable"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 
 function LevelingUpPage(props: any) {
     var tempSection = new TopicSection()

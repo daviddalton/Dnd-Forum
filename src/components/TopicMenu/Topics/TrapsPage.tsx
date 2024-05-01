@@ -3,7 +3,7 @@ import buildSectionDesc from "../../../util/buildSectionDesc"
 import hashSubsections from "../../../util/hashSubsections"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 
 
 

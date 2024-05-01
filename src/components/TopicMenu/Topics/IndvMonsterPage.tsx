@@ -3,7 +3,7 @@ import Monster from "../../../model/Character/Monster";
 import React, { useState } from "react"
 import axios from 'axios';
 import { AbilityScore } from "../../../model/Character/AbilityScore";
-import { useWidth } from "../../WidthContext";
+import { useWidth } from "../../creation/Providers/WidthContext";
 import '../../styles/indvMonster.css'
 
 

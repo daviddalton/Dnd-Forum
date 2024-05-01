@@ -5,7 +5,7 @@ import buildTable from "../../../util/buildTable"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import SubSectionAccordion from "../../../util/SubSectionAccordion"
 import TopicSectionTable from "../../../util/TopicSectionTable"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 import { CSSTransition } from 'react-transition-group'
 import '../../styles/SectionAnimations.css'
 

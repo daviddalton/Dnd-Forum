@@ -1,6 +1,6 @@
 import { getAuth, onAuthStateChanged, User } from "firebase/auth"
 import React, { useState } from "react"
-import { app } from "../firebase-config"
+import { app } from "../../../firebase-config"
 import { IAuthRouteProps } from "./AuthRoute"
 
 const auth = getAuth(app)

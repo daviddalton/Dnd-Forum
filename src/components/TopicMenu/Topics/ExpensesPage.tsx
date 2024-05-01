@@ -5,7 +5,7 @@ import buildTable from "../../../util/buildTable"
 import GeneralTable from "../../../util/TopicSectionTable"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 
 
 

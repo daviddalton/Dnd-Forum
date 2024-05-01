@@ -5,7 +5,7 @@ import { TopicSection } from "../../../model/Character/TopicSection.class";
 import buildSectionDesc from "../../../util/buildSectionDesc";
 import SectionTitleDesc from "../../../util/SectionTitleDesc";
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection";
-import { useWidth } from "../../WidthContext";
+import { useWidth } from "../../creation/Providers/WidthContext";
 
 
 

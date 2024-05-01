@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addCharacter } from "../../controller";
-import { useAuth } from "../../userContext";
+import { addCharacter } from "../../Controllers/controller";
+import { useAuth } from "../Providers/userContext";
 import AbilityCreator from "../AbilityCreation/AbilityScoreCreation";
 import AppBarCreate from "./AppBarCreate";
 import CharacterClassSelect from "../ClassCreation/CharacterClassSelect";

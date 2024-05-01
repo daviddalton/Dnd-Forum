@@ -6,7 +6,7 @@ import buildSectionDesc from "../../../util/buildSectionDesc"
 import recursiveCleaning from "../../../util/recursiveCleaning"
 import SectionTitleDesc from "../../../util/SectionTitleDesc"
 import SubSectionsWithSubSections from "../../../util/SubsectionOfSubsection"
-import { useWidth } from "../../WidthContext"
+import { useWidth } from "../../creation/Providers/WidthContext"
 
 function PoisonsPage(props: any) {
     var tempSection = new TopicSection()
